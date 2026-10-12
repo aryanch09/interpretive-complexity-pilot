@@ -1,0 +1,75 @@
+F1/F2 — What is the measure actually responding to?
+==============================================================================
+
+windows: 664   (no model calls)
+
+F2  Informativeness proxies vs disagreement
+------------------------------------------------------------------------------
+  The placebo result (boilerplate scores HIGHER than real text) predicts
+  that disagreement FALLS as a window carries more concrete content.
+
+    numeric_density      rho = -0.260  p = 0.0000  n = 664 *
+    type_token_ratio     rho = +0.213  p = 0.0000  n = 664 *
+    word_count           rho = +0.071  p = 0.0685  n = 664
+    mean_word_len        rho = +0.214  p = 0.0000  n = 664 *
+
+F2  Position within section
+------------------------------------------------------------------------------
+    first quarter    n = 204   mean = 0.3490
+    second           n = 154   mean = 0.3382
+    third            n = 131   mean = 0.3309
+    last quarter     n = 175   mean = 0.3342
+    Spearman(position, disagreement) rho = -0.091, p = 0.0197
+
+F2  By section
+------------------------------------------------------------------------------
+    mda      n = 362   mean = 0.3291
+    risk     n = 302   mean = 0.3510
+
+F2  By topic (window mentions the topic vs not)
+------------------------------------------------------------------------------
+    litigation   with 0.3494 (n=238)  without 0.3333 (n=426)  diff +0.0161
+    guidance     with 0.3454 (n=315)  without 0.3333 (n=349)  diff +0.0121
+    macro        with 0.3440 (n=385)  without 0.3321 (n=279)  diff +0.0119
+    accounting   with 0.3356 (n=403)  without 0.3444 (n=261)  diff -0.0088
+    liquidity    with 0.3415 (n=414)  without 0.3350 (n=250)  diff +0.0064
+    segments     with 0.3384 (n=264)  without 0.3395 (n=400)  diff -0.0011
+
+F1  Case studies
+==============================================================================
+
+[LOWEST] MSFT (large) 10-K mda#0  disagreement = 0.1525  numeric density = 0.037
+  excerpt: "ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to help the reader understand the results of operations and financial condition of Mi..."
+    value         Microsoft’s FY‑2026 MD&A shows robust top‑line momentum—cloud revenue grew 27% to $214.4 B, Azure alone up 41%, and commercial performance obligations surged 84% to $678 B—underscoring a durable compe
+    sentiment     The MD&A foregrounds robust growth figures—Microsoft Cloud up 27%, Azure and other cloud services up 41%, and Microsoft 365 revenue up 17–28%—which signals a confident, forward‑looking stance. The fir
+    fundamentals  Microsoft’s FY‑2026 MD&A shows robust revenue expansion, especially in cloud (27% overall, 41% Azure+other) and consumer productivity (28% Microsoft 365 consumer), underscoring strong execution and ma
+
+[LOWEST] MSFT (large) 10-Q mda#1  disagreement = 0.1544  numeric density = 0.091
+  excerpt: "segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. Additional information on our reportable segments is contained in Note 16 – Segment Informat..."
+    value         Microsoft’s Q1 FY 2026 results show a robust 18 % revenue rise driven by Microsoft Cloud and Azure, with operating income up 20 % and net income up 23 %, underscoring strong profitability. Gross margi
+    sentiment     The MD&A emphasizes solid revenue and margin growth, citing “18% revenue increase driven by Microsoft Cloud” and “gross margin increased 16% with growth across each of our segments.” These statements 
+    fundamentals  Microsoft’s Q1 FY‑2026 results show a robust 18% revenue increase, with gross margin rising 16% and operating income up 20%, indicating that the company is successfully scaling its cloud and productiv
+
+[LOWEST] HAS (mid) 10-K mda#2  disagreement = 0.1636  numeric density = 0.093
+  excerpt: "expense, Net: Other income, net was $21.7 million in 2025 compared to other expense of $69.1 million in 2024. Other (income) expense, net in 2024 was impacted by an impairment loss of $78.2 million related to our joint venture investment in the Discovery Family Channel as discussed in Note 9, Equity..."
+    value         The filing shows a dramatic collapse in operating profit to a $11.1 million loss from $690 million, driven largely by a $942.6 million loss in the Consumer Products segment and a $1.02 billion goodwil
+    sentiment     The filing balances upbeat metrics for the Wizards of the Coast & Digital Gaming segment—highlighting a 44.7% revenue rise and a 59.3% jump in operating profit—with starkly negative results for Consum
+    fundamentals  The Wizards of the Coast & Digital Gaming segment shows strong revenue and margin expansion, but the Consumer Products segment swung from a modest profit to a $942.6 million loss, dragging total opera
+
+[HIGHEST] GOOGL (large) 10-K mda#1  disagreement = 0.5550  numeric density = 0.002
+  excerpt: "and customer incentives; • general economic conditions and various external dynamics, including geopolitical events, regulations, and other measures and their effect on advertiser, consumer, and enterprise spending; • new product, service, and market launches; and • seasonality. Additionally, fluctu..."
+    value         Alphabet’s 10‑K highlights a highly diversified revenue base—advertising, subscriptions, cloud, and other bets—each with distinct growth drivers and high barriers to entry, underscoring a durable moat
+    sentiment     The filing adopts a highly descriptive, risk‑aware tone, listing numerous “may continue to be affected” and “fluctuations” qualifiers that signal uncertainty without asserting a clear upward or downwa
+    fundamentals  The excerpt provides a detailed taxonomy of revenue streams and cost components but offers no quantitative evidence of growth, margin expansion, or operational improvement. Management emphasizes that 
+
+[HIGHEST] TOL (mid) 10-Q mda#5  disagreement = 0.6071  numeric density = 0.158
+  excerpt: "million of cash in financing activities in the six-month period ended April 30, 2025, primarily for the repurchase of $204.9 million of our common stock, payments of $66.3 million of loans payable, net of borrowings, the payment of dividends on our common stock of $49.0 million, $35.0 million of pay..."
+    value         Toll Brothers’ revenue fell 7 % year‑over‑year and units delivered dropped 7 % overall, while inventory surged to $11.3 billion—over four times revenue—indicating potential over‑building or slow sales
+    sentiment     The filing’s language is largely descriptive and factual, with no explicit forward‑looking optimism or pessimistic warnings. Phrases such as “no material changes to those critical accounting estimates
+    fundamentals  The core home‑building revenue fell 4 % YoY while units delivered fell 14 %, indicating a clear decline in demand that price growth (≈8 %) has only partially offset. Land‑sales revenue surged 600 % an
+
+[HIGHEST] UTMD (small) 10-K mda#0  disagreement = 0.6848  numeric density = 0.144
+  excerpt: "ITEM 7 - MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Currency amounts are in thousands except per-share amounts and where noted. Currencies are abbreviated as follows: the U.S. Dollar (USD or $), the Great Britain Pound (GBP or £), the Euro (EUR or €), the A..."
+    value         Utah Medical Products’ 2025 results show a modest 5.8% drop in revenue and a 5.5% decline in net margin, largely driven by a cancelled China distributor order and weaker overseas Filshie sales. Despit
+    sentiment     The MD&A acknowledges a decline in revenue and higher operating costs, describing them as “unexpected circumstances” and noting “lower sales.” However, management repeatedly highlights resilience—“exc
+    fundamentals  The 2025 results show a 5.

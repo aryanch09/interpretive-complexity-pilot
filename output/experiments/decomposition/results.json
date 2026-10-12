@@ -1,0 +1,75 @@
+{
+ "seed": 20261004,
+ "cells": {
+  "truncated_single_unit_S1b": {
+   "tier_means": {
+    "large": 0.33500292301177975,
+    "mid": 0.37063199182351425,
+    "small": 0.39209040602048234
+   },
+   "gradient": 0.05708748300870259,
+   "monotone": true,
+   "jt_p": 0.028639694452192447,
+   "n_firms": 30
+  },
+  "complete_single_unit_S1c": {
+   "tier_means": {
+    "large": 0.3439103325208028,
+    "mid": 0.4126428733269374,
+    "small": 0.38737200200557703
+   },
+   "gradient": 0.04346166948477426,
+   "monotone": false,
+   "jt_p": 0.07424421144712587,
+   "n_firms": 30
+  },
+  "complete_windowed_main": {
+   "tier_means": {
+    "large": 0.3201722981390499,
+    "mid": 0.3355477885904795,
+    "small": 0.3351718931550544
+   },
+   "gradient": 0.014999595016004508
+  },
+  "truncated_windowed_S1a_k2_gradient": 0.0204354907075563
+ },
+ "coverage_effect_S1b_minus_S1c": {
+  "gradient_shift": 0.013625813523928332,
+  "paired": {
+   "mean": -0.01539996233251362,
+   "ci": [
+    -0.04068855185475618,
+    0.00925781829489597
+   ],
+   "n_firms": 30,
+   "differs": false
+  },
+  "note": "scoring unit held constant (both single-unit); only coverage differs"
+ },
+ "aggregation_effect_S1c_minus_main": {
+  "gradient_shift": 0.02846207446876975,
+  "paired": {
+   "mean": 0.05101107598957783,
+   "ci": [
+    0.028282148270840763,
+    0.0751624745689861
+   ],
+   "n_firms": 30,
+   "differs": true
+  },
+  "note": "coverage held constant (both complete); only the scoring unit and the averaging differ"
+ },
+ "total_S1b_minus_main": {
+  "gradient_shift": 0.04208788799269808,
+  "paired": {
+   "mean": 0.0356111136570642,
+   "ci": [
+    0.017225977558040267,
+    0.05404368662502012
+   ],
+   "n_firms": 30,
+   "differs": true
+  }
+ },
+ "caveat": "S1c scores a complete MD&A in one call, which is the design this project rejected because long-context degradation is worst for the longest sections and therefore for the largest firms. S1c carries a size-correlated bias of its own, so this decomposition bounds the two effects rather than cleanly identifying them."
+}

@@ -1,0 +1,26 @@
+S2 — The coverage confound at scale (zero model calls)
+==============================================================================
+
+Filings measured : 800   usable 785   unavailable 0
+Extraction success: 98.1%
+Public float range: $49 .. $4,135,959,950,000
+
+Do larger firms file longer narratives?
+------------------------------------------------------------------------------
+  elasticity of log(MD&A + Risk words) on log(public float) = +0.0527
+  Spearman(public float, narrative words) rho = +0.161  p = 5.63e-06  n = 785
+
+Fraction of the narrative read under budgets common in the literature
+------------------------------------------------------------------------------
+  budget           words  median read  bottom decile  top decile  truncated
+  512 tokens         384         1.8%           2.6%        1.8%     100.0%
+  2,000 words      2,000         9.5%          13.4%        9.3%      99.1%
+  4k tokens        3,072        14.6%          20.5%       14.3%      97.7%
+  8k tokens        6,144        29.3%          41.1%       28.5%      93.8%
+  32k tokens      24,576       100.0%         100.0%      100.0%      39.7%
+  128k tokens     98,304       100.0%         100.0%      100.0%       0.1%
+
+  'bottom decile' is the smallest firms by public float, 'top decile' the
+  largest. A budget reads a SMALLER share of a larger firm's filing, so
+  under any fixed budget coverage is a function of firm size — which is
+  the variable size-effect studies regress on.

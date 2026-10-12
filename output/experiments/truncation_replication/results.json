@@ -1,0 +1,39 @@
+{
+ "seed": 20261004,
+ "n_filings_scored": 59,
+ "n_filings_clean": 59,
+ "cap_words": 2000,
+ "truncated": {
+  "tier_means": {
+   "large": 0.33500292301177975,
+   "mid": 0.37063199182351425,
+   "small": 0.39209040602048234
+  },
+  "gradient_small_minus_large": 0.05708748300870259,
+  "monotone": true,
+  "jt_p_one_sided": 0.028639694452192447,
+  "jt_z": 1.9011727515734338,
+  "n_firms": 30
+ },
+ "complete": {
+  "tier_means": {
+   "large": 0.3201722981390499,
+   "mid": 0.3355477885904795,
+   "small": 0.3351718931550544
+  },
+  "gradient_small_minus_large": 0.014999595016004508,
+  "monotone": false,
+  "jt_p_one_sided": 0.23501026593314445,
+  "n_firms": 30
+ },
+ "paired_delta": {
+  "n_firms": 30,
+  "mean_truncated_minus_complete": 0.0356111136570642,
+  "ci": [
+   0.017225977558040267,
+   0.05404368662502012
+  ],
+  "differs_from_zero": true
+ },
+ "gradient_shift": 0.04208788799269808
+}

@@ -1,0 +1,37 @@
+{
+  "seed": 20261004,
+  "label": "null",
+  "tier_effect": 0.0,
+  "numeric_tier_effect": 0.0,
+  "base_embedding": 0.28,
+  "base_numeric": 0.6,
+  "firm_sd": 0.03,
+  "filing_sd": 0.02,
+  "window_sd": 0.06,
+  "numeric_window_sd": 0.15,
+  "failure_rate": 0.0,
+  "gate_breaking_filings": [],
+  "parse_error_rate": 0.0,
+  "n_filings_without_risk": 10,
+  "notes": "",
+  "realised": {
+    "n_firms": 30,
+    "n_filings": 59,
+    "n_windows": 667,
+    "n_mda_windows": 363,
+    "n_risk_windows": 304,
+    "mda_median_by_tier": {
+      "large": 6.5,
+      "mid": 6.5,
+      "small": 4.0
+    },
+    "mda_min": 2,
+    "mda_max": 25,
+    "n_filings_without_risk": 10,
+    "seed": 20261004,
+    "n_failed_windows": 0,
+    "word_count_min": 404,
+    "word_count_max": 1592,
+    "word_count_median": 1200.0
+  }
+}

@@ -1,0 +1,2888 @@
+{
+  "meta": {
+    "module": "analysis.window_battery",
+    "tests": [
+      "W1",
+      "W2",
+      "W3",
+      "W4",
+      "W6",
+      "W7"
+    ],
+    "w5_note": "W5 (window-level mixed model) is implemented in a separate module and is deliberately not imported here",
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "seed": 20261004,
+    "w3_iterations": 2000,
+    "w6_iterations": 10000,
+    "n_permutations": 10000,
+    "aggregation": "window -> filing (unweighted mean over that filing's windows of the analysed section) -> firm (unweighted mean over the firm's filings) -> tier",
+    "confirmatory_unit": "firm",
+    "failed_window_rule": "any_failed windows are DROPPED, never imputed (ANALYSIS_PLAN.md s8 rule 1)",
+    "usability_gate_note": "the ANALYSIS_PLAN.md s8 rule 2 gate (>= 2 surviving windows AND >= half surviving) governs the PRIMARY pipeline and is applied there by aggregate_to_firm.  The battery's variants deliberately do not re-apply it, because W4(ii) is defined to leave a 2-window filing with 1 window and W7(i) is defined to exclude tails; re-gating would silently narrow the sensitivity checks.  Each variant reports its own filing and firm counts, and W7(i) also reports the gradient with the gate applied.",
+    "tier_rank_convention": "large=3, mid=2, small=1",
+    "sibling_provenance": {
+      "aggregate_to_firm": "analysis.trend_tests",
+      "jonckheere_terpstra": "analysis.trend_tests",
+      "label_permutation_test": "analysis.trend_tests",
+      "tier_trend_statistic": "analysis.trend_tests"
+    },
+    "network_calls": 0,
+    "model_calls": 0
+  },
+  "primary": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "n_windows_in_section": 363,
+    "n_windows_dropped_failed": 1,
+    "n_windows_used": 362,
+    "n_filings": 59,
+    "n_firms": 30,
+    "n_firms_in_firm_frame": 30,
+    "tier_firm_counts": {
+      "large": 10,
+      "mid": 10,
+      "small": 10
+    },
+    "tier_means": {
+      "large": {
+        "n": 10,
+        "mean": 0.3201722981390499,
+        "sd": 0.034107848546305414,
+        "median": 0.33106574520232185,
+        "min": 0.25881030658880866,
+        "max": 0.3518553538454903
+      },
+      "mid": {
+        "n": 10,
+        "mean": 0.3355477885904795,
+        "sd": 0.031171766741031993,
+        "median": 0.33951139524579044,
+        "min": 0.2846784038203103,
+        "max": 0.38079142024119694
+      },
+      "small": {
+        "n": 10,
+        "mean": 0.3351718931550544,
+        "sd": 0.021799977106164062,
+        "median": 0.32514809828902047,
+        "min": 0.3152637117438846,
+        "max": 0.372900682191054
+      }
+    },
+    "gradient_small_minus_large": 0.014999595016004508,
+    "gradient_sign": 1,
+    "gradient_definition": "firm-level small-cap mean minus large-cap mean; this is the signed quantity W2/W3/W4/W6/W7 are defined on",
+    "monotone_small_gt_mid_gt_large": false,
+    "tier_trend_statistic_J": 169.0,
+    "tier_trend_statistic_note": "the ordered-trend (Jonckheere-Terpstra) statistic returned by analysis.trend_tests.tier_trend_statistic; non-negative, hence not usable as a signed gradient",
+    "jonckheere_terpstra": {
+      "statistic": 169.0,
+      "z": 0.7224456455979048,
+      "p_value": 0.23501026593314445,
+      "n_ties": 0,
+      "n_tie_groups": 0,
+      "tie_group_sizes": [],
+      "alternative": "increasing",
+      "group_order": [
+        "g0",
+        "g1",
+        "g2"
+      ],
+      "group_sizes": [
+        10,
+        10,
+        10
+      ],
+      "n_total": 30,
+      "expected_statistic": 150.0,
+      "variance": 691.6666666666666,
+      "degenerate": false,
+      "n": 30
+    },
+    "label_permutation": {
+      "observed": 169.0,
+      "p_value": 0.24187581241875813,
+      "n_draws_used": 10000,
+      "seed": 20261004,
+      "alternative": "greater",
+      "n_at_least_as_extreme": 2418,
+      "n_units": 30,
+      "distinct_assignments": 5550996791339.985,
+      "exhaustive_possible": false,
+      "null_mean": 150.0584,
+      "null_sd": 26.465351517089136,
+      "null_percentiles": {
+        "p0.5": 82.0,
+        "p1": 88.0,
+        "p2.5": 97.0,
+        "p5": 106.0,
+        "p10": 116.0,
+        "p25": 132.0,
+        "p50": 150.0,
+        "p75": 168.0,
+        "p90": 184.0,
+        "p95": 194.0,
+        "p97.5": 201.0,
+        "p99": 211.01000000000022,
+        "p99.5": 217.0
+      }
+    },
+    "label_permutation_statistic": "Jonckheere-Terpstra J (C1-perm as pre-registered)",
+    "gradient_permutation": {
+      "observed": 0.014999595016004508,
+      "p_value": 0.13158684131586842,
+      "n_draws_used": 10000,
+      "seed": 20261004,
+      "alternative": "greater",
+      "n_at_least_as_extreme": 1315,
+      "n_units": 30,
+      "distinct_assignments": 5550996791339.985,
+      "exhaustive_possible": false,
+      "null_mean": 3.6303616347741097e-06,
+      "null_sd": 0.013195838700933472,
+      "null_percentiles": {
+        "p0.5": -0.0330942227107778,
+        "p1": -0.029979458838341442,
+        "p2.5": -0.025667440513415855,
+        "p5": -0.021830379062941926,
+        "p10": -0.01699896483565891,
+        "p25": -0.009066529331003992,
+        "p50": 5.50330930379761e-05,
+        "p75": 0.008862632922039787,
+        "p90": 0.017118984062430644,
+        "p95": 0.021859117870538423,
+        "p97.5": 0.025875612873506117,
+        "p99": 0.030023440080000956,
+        "p99.5": 0.03300048499616159
+      }
+    },
+    "gradient_permutation_statistic": "signed Small-minus-Large firm-mean difference",
+    "firm_means": [
+      {
+        "ticker": "AAPL",
+        "tier": "large",
+        "value": 0.25881030658880866,
+        "n_filings": 2,
+        "n_windows": 5,
+        "filings": "10-K:2025-10-31|10-Q:2026-07-31",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "AMZN",
+        "tier": "large",
+        "value": 0.3337272809611427,
+        "n_filings": 2,
+        "n_windows": 11,
+        "filings": "10-K:2026-02-06|10-Q:2026-07-31",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "BAC",
+        "tier": "large",
+        "value": 0.333813331524531,
+        "n_filings": 2,
+        "n_windows": 35,
+        "filings": "10-K:2026-02-25|10-Q:2026-07-31",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "GOOGL",
+        "tier": "large",
+        "value": 0.3090576941058749,
+        "n_filings": 2,
+        "n_windows": 14,
+        "filings": "10-K:2026-02-05|10-Q:2026-07-23",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "HD",
+        "tier": "large",
+        "value": 0.32253534595171607,
+        "n_filings": 2,
+        "n_windows": 8,
+        "filings": "10-K:2026-03-18|10-Q:2026-08-25",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "JPM",
+        "tier": "large",
+        "value": 0.350874699652195,
+        "n_filings": 2,
+        "n_windows": 11,
+        "filings": "10-K:2026-02-13|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "MSFT",
+        "tier": "large",
+        "value": 0.2626874057783021,
+        "n_filings": 2,
+        "n_windows": 14,
+        "filings": "10-K:2026-07-29|10-Q:2026-04-29",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "PG",
+        "tier": "large",
+        "value": 0.3518553538454903,
+        "n_filings": 2,
+        "n_windows": 22,
+        "filings": "10-K:2026-08-04|10-Q:2026-04-24",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "WMT",
+        "tier": "large",
+        "value": 0.328404209443501,
+        "n_filings": 2,
+        "n_windows": 12,
+        "filings": "10-K:2026-03-13|10-Q:2026-05-29",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "XOM",
+        "tier": "large",
+        "value": 0.34995735353893703,
+        "n_filings": 2,
+        "n_windows": 14,
+        "filings": "10-K:2026-02-18|10-Q:2026-08-03",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "CATY",
+        "tier": "mid",
+        "value": 0.2973361371292008,
+        "n_filings": 2,
+        "n_windows": 19,
+        "filings": "10-K:2026-03-02|10-Q:2026-08-07",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "CLFD",
+        "tier": "mid",
+        "value": 0.33746107816696164,
+        "n_filings": 2,
+        "n_windows": 9,
+        "filings": "10-K:2025-11-25|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "DRI",
+        "tier": "mid",
+        "value": 0.30808550152513714,
+        "n_filings": 2,
+        "n_windows": 11,
+        "filings": "10-K:2026-07-24|10-Q:2026-03-27",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "HAS",
+        "tier": "mid",
+        "value": 0.2846784038203103,
+        "n_filings": 2,
+        "n_windows": 14,
+        "filings": "10-K:2026-02-25|10-Q:2026-07-30",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "IBP",
+        "tier": "mid",
+        "value": 0.32735862831274665,
+        "n_filings": 2,
+        "n_windows": 13,
+        "filings": "10-K:2026-02-26|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "KFRC",
+        "tier": "mid",
+        "value": 0.3415617123246193,
+        "n_filings": 2,
+        "n_windows": 9,
+        "filings": "10-K:2026-02-20|10-Q:2026-07-29",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "PLAB",
+        "tier": "mid",
+        "value": 0.38079142024119694,
+        "n_filings": 2,
+        "n_windows": 9,
+        "filings": "10-K:2025-12-17|10-Q:2026-06-11",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "TOL",
+        "tier": "mid",
+        "value": 0.36601605298944595,
+        "n_filings": 2,
+        "n_windows": 20,
+        "filings": "10-K:2025-12-19|10-Q:2026-05-29",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "WTS",
+        "tier": "mid",
+        "value": 0.3532147876642368,
+        "n_filings": 2,
+        "n_windows": 15,
+        "filings": "10-K:2026-02-23|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "WYNN",
+        "tier": "mid",
+        "value": 0.35897416373093916,
+        "n_filings": 2,
+        "n_windows": 15,
+        "filings": "10-K:2026-03-02|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "CLIR",
+        "tier": "small",
+        "value": 0.3593909343083699,
+        "n_filings": 2,
+        "n_windows": 6,
+        "filings": "10-K:2026-03-31|10-Q:2026-08-14",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "HAYN",
+        "tier": "small",
+        "value": 0.3152637117438846,
+        "n_filings": 1,
+        "n_windows": 6,
+        "filings": "10-Q:2024-08-01",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "IIIN",
+        "tier": "small",
+        "value": 0.36319072710143196,
+        "n_filings": 2,
+        "n_windows": 6,
+        "filings": "10-K:2025-10-23|10-Q:2026-07-16",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "LWAY",
+        "tier": "small",
+        "value": 0.3359811628858248,
+        "n_filings": 2,
+        "n_windows": 7,
+        "filings": "10-K:2026-03-17|10-Q:2026-08-13",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "MLAB",
+        "tier": "small",
+        "value": 0.3185290351510048,
+        "n_filings": 2,
+        "n_windows": 9,
+        "filings": "10-K:2026-06-03|10-Q:2026-08-10",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "NGVC",
+        "tier": "small",
+        "value": 0.3285024317484053,
+        "n_filings": 2,
+        "n_windows": 13,
+        "filings": "10-K:2025-12-11|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "OFLX",
+        "tier": "small",
+        "value": 0.372900682191054,
+        "n_filings": 2,
+        "n_windows": 6,
+        "filings": "10-K:2026-03-12|10-Q:2026-08-13",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "RELL",
+        "tier": "small",
+        "value": 0.31862961302200954,
+        "n_filings": 2,
+        "n_windows": 9,
+        "filings": "10-K:2026-08-03|10-Q:2026-04-09",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "UFPT",
+        "tier": "small",
+        "value": 0.3217937648296356,
+        "n_filings": 2,
+        "n_windows": 6,
+        "filings": "10-K:2026-02-27|10-Q:2026-08-06",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      },
+      {
+        "ticker": "UTMD",
+        "tier": "small",
+        "value": 0.3175368685689237,
+        "n_filings": 2,
+        "n_windows": 14,
+        "filings": "10-K:2026-03-27|10-Q:2026-08-12",
+        "section": "mda",
+        "measure": "embedding_disagreement"
+      }
+    ]
+  },
+  "W1": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "criterion": null,
+    "note": "Descriptive. No pass/fail (ANALYSIS_PLAN.md s5, W1).",
+    "windows_per_filing_by_tier": {
+      "large": {
+        "n": 20,
+        "mean": 7.3,
+        "sd": 4.921488863299291,
+        "median": 6.5,
+        "min": 2.0,
+        "max": 25.0
+      },
+      "mid": {
+        "n": 20,
+        "mean": 6.7,
+        "sd": 2.2734161635370636,
+        "median": 6.5,
+        "min": 4.0,
+        "max": 12.0
+      },
+      "small": {
+        "n": 19,
+        "mean": 4.315789473684211,
+        "sd": 1.634782743939708,
+        "median": 4.0,
+        "min": 2.0,
+        "max": 8.0
+      }
+    },
+    "windows_per_filing_overall": {
+      "n": 59,
+      "mean": 6.135593220338983,
+      "sd": 3.4812682346140114,
+      "median": 5.0,
+      "min": 2.0,
+      "max": 25.0
+    },
+    "windows_per_firm_by_tier": {
+      "total": {
+        "large": {
+          "n": 10,
+          "mean": 14.6,
+          "sd": 8.435375246872871,
+          "median": 13.0,
+          "min": 5.0,
+          "max": 35.0
+        },
+        "mid": {
+          "n": 10,
+          "mean": 13.4,
+          "sd": 4.005551702879947,
+          "median": 13.5,
+          "min": 9.0,
+          "max": 20.0
+        },
+        "small": {
+          "n": 10,
+          "mean": 8.2,
+          "sd": 3.0477678535099892,
+          "median": 6.5,
+          "min": 6.0,
+          "max": 14.0
+        }
+      },
+      "mean_per_filing": {
+        "large": {
+          "n": 10,
+          "mean": 7.3,
+          "sd": 4.2176876234364356,
+          "median": 6.5,
+          "min": 2.5,
+          "max": 17.5
+        },
+        "mid": {
+          "n": 10,
+          "mean": 6.7,
+          "sd": 2.0027758514399734,
+          "median": 6.75,
+          "min": 4.5,
+          "max": 10.0
+        },
+        "small": {
+          "n": 10,
+          "mean": 4.4,
+          "sd": 1.577621275493231,
+          "median": 4.0,
+          "min": 3.0,
+          "max": 7.0
+        }
+      }
+    },
+    "mean_window_words_by_tier": {
+      "filing_level": {
+        "large": {
+          "n": 20,
+          "mean": 1177.1598015873014,
+          "sd": 74.86753356928628,
+          "median": 1148.4944444444445,
+          "min": 1042.0,
+          "max": 1360.0
+        },
+        "mid": {
+          "n": 20,
+          "mean": 1171.3992586580086,
+          "sd": 58.90569048918222,
+          "median": 1175.125,
+          "min": 1058.2,
+          "max": 1259.0
+        },
+        "small": {
+          "n": 19,
+          "mean": 1162.25820802005,
+          "sd": 107.45252949500579,
+          "median": 1158.5,
+          "min": 997.6666666666666,
+          "max": 1337.5
+        }
+      },
+      "firm_level": {
+        "large": {
+          "n": 10,
+          "mean": 1177.1598015873014,
+          "sd": 42.863580746984525,
+          "median": 1190.0416666666665,
+          "min": 1113.0714285714284,
+          "max": 1236.6666666666665
+        },
+        "mid": {
+          "n": 10,
+          "mean": 1171.3992586580086,
+          "sd": 39.93892030241143,
+          "median": 1169.919642857143,
+          "min": 1091.725,
+          "max": 1229.357142857143
+        },
+        "small": {
+          "n": 10,
+          "mean": 1161.4869642857143,
+          "sd": 43.363273509064406,
+          "median": 1166.6494047619049,
+          "min": 1097.3,
+          "max": 1232.25
+        }
+      }
+    },
+    "window_words_overall": {
+      "n": 362,
+      "mean": 1170.03591160221,
+      "sd": 168.06874774907533,
+      "median": 1200.0,
+      "min": 403.0,
+      "max": 1577.0
+    },
+    "spearman": {
+      "filing_level": {
+        "window_count_vs_tier_rank": {
+          "rho": 0.37217150707671853,
+          "p_value": 0.0037008627661171776,
+          "n": 59
+        },
+        "window_count_vs_numeric": {
+          "rho": 0.040491801805652934,
+          "p_value": 0.7607518363623675,
+          "n": 59
+        },
+        "window_count_vs_embedding": {
+          "rho": -0.1584602753340581,
+          "p_value": 0.23064257342233455,
+          "n": 59
+        },
+        "mean_window_words_vs_tier_rank": {
+          "rho": 0.045158545386686386,
+          "p_value": 0.734141925067666,
+          "n": 59
+        },
+        "mean_window_words_vs_numeric": {
+          "rho": 0.04646405610753945,
+          "p_value": 0.7267516484270097,
+          "n": 59
+        },
+        "mean_window_words_vs_embedding": {
+          "rho": -0.035184102863822335,
+          "p_value": 0.7913532726628513,
+          "n": 59
+        }
+      },
+      "firm_level": {
+        "window_count_vs_tier_rank": {
+          "rho": 0.4347786942602117,
+          "p_value": 0.016350535830790967,
+          "n": 30
+        },
+        "window_count_vs_numeric": {
+          "rho": 0.04684126314208259,
+          "p_value": 0.8058422749377704,
+          "n": 30
+        },
+        "window_count_vs_embedding": {
+          "rho": -0.007620109793448842,
+          "p_value": 0.9681217676410866,
+          "n": 30
+        },
+        "mean_window_words_vs_tier_rank": {
+          "rho": 0.1556499881100708,
+          "p_value": 0.41145937162584184,
+          "n": 30
+        },
+        "mean_window_words_vs_numeric": {
+          "rho": 0.14927697441601778,
+          "p_value": 0.43110163086919145,
+          "n": 30
+        },
+        "mean_window_words_vs_embedding": {
+          "rho": -0.17241379310344826,
+          "p_value": 0.3622578182219747,
+          "n": 30
+        }
+      }
+    },
+    "tier_rank_convention": "large=3, mid=2, small=1 (as in coverage_diagnostic.py)",
+    "filing_table": [
+      {
+        "ticker": "AAPL",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "AAPL|10-K|2025-10-31",
+        "n_windows": 2,
+        "mean_window_words": 1360.0,
+        "embedding_disagreement": 0.250436395406723,
+        "numeric_disagreement": 0.567888697541114,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "AAPL",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "AAPL|10-Q|2026-07-31",
+        "n_windows": 3,
+        "mean_window_words": 1113.3333333333333,
+        "embedding_disagreement": 0.26718421777089435,
+        "numeric_disagreement": 0.9546523107069906,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "AMZN",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "AMZN|10-K|2026-02-06",
+        "n_windows": 6,
+        "mean_window_words": 1138.8333333333333,
+        "embedding_disagreement": 0.3313279085689121,
+        "numeric_disagreement": 0.7233597837429245,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "AMZN",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "AMZN|10-Q|2026-07-31",
+        "n_windows": 5,
+        "mean_window_words": 1270.4,
+        "embedding_disagreement": 0.3361266533533732,
+        "numeric_disagreement": 0.8059898682161333,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "BAC",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "BAC|10-K|2026-02-25",
+        "n_windows": 10,
+        "mean_window_words": 1229.0,
+        "embedding_disagreement": 0.34074214696884153,
+        "numeric_disagreement": 0.5777297638795534,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "BAC",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "BAC|10-Q|2026-07-31",
+        "n_windows": 25,
+        "mean_window_words": 1213.6,
+        "embedding_disagreement": 0.3268845160802205,
+        "numeric_disagreement": 0.5544610429035782,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "CATY",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "CATY|10-K|2026-03-02",
+        "n_windows": 12,
+        "mean_window_words": 1166.25,
+        "embedding_disagreement": 0.3038785970873303,
+        "numeric_disagreement": 0.6369699944605648,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "CATY",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "CATY|10-Q|2026-08-07",
+        "n_windows": 7,
+        "mean_window_words": 1244.7142857142858,
+        "embedding_disagreement": 0.29079367717107135,
+        "numeric_disagreement": 0.6007330592752398,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "CLFD",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "CLFD|10-K|2025-11-25",
+        "n_windows": 5,
+        "mean_window_words": 1094.2,
+        "embedding_disagreement": 0.3075264573097229,
+        "numeric_disagreement": 0.43107960978136983,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "CLFD",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "CLFD|10-Q|2026-08-06",
+        "n_windows": 4,
+        "mean_window_words": 1210.75,
+        "embedding_disagreement": 0.36739569902420044,
+        "numeric_disagreement": 0.8125419084615741,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "CLIR",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "CLIR|10-K|2026-03-31",
+        "n_windows": 3,
+        "mean_window_words": 1325.6666666666667,
+        "embedding_disagreement": 0.33547853098975283,
+        "numeric_disagreement": 0.4169040397751504,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "CLIR",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "CLIR|10-Q|2026-08-14",
+        "n_windows": 3,
+        "mean_window_words": 1081.3333333333333,
+        "embedding_disagreement": 0.383303337626987,
+        "numeric_disagreement": 0.8751624153773209,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "DRI",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "DRI|10-K|2026-07-24",
+        "n_windows": 5,
+        "mean_window_words": 1210.4,
+        "embedding_disagreement": 0.3201568961143494,
+        "numeric_disagreement": 0.5518727636004422,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "DRI",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "DRI|10-Q|2026-03-27",
+        "n_windows": 6,
+        "mean_window_words": 1077.1666666666667,
+        "embedding_disagreement": 0.29601410693592495,
+        "numeric_disagreement": 0.8973421917368949,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "GOOGL",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "GOOGL|10-K|2026-02-05",
+        "n_windows": 7,
+        "mean_window_words": 1086.142857142857,
+        "embedding_disagreement": 0.2955225422268822,
+        "numeric_disagreement": 0.5480445449006158,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "GOOGL",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "GOOGL|10-Q|2026-07-23",
+        "n_windows": 7,
+        "mean_window_words": 1140.0,
+        "embedding_disagreement": 0.32259284598486765,
+        "numeric_disagreement": 0.6996529121614247,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "HAS",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "HAS|10-K|2026-02-25",
+        "n_windows": 7,
+        "mean_window_words": 1225.0,
+        "embedding_disagreement": 0.25245894136882957,
+        "numeric_disagreement": 0.9077740052814376,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "HAS",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "HAS|10-Q|2026-07-30",
+        "n_windows": 7,
+        "mean_window_words": 1233.7142857142858,
+        "embedding_disagreement": 0.316897866271791,
+        "numeric_disagreement": 0.46371895264640123,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "HAYN",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "HAYN|10-Q|2024-08-01",
+        "n_windows": 6,
+        "mean_window_words": 1146.8333333333333,
+        "embedding_disagreement": 0.3152637117438846,
+        "numeric_disagreement": 0.4963308869511311,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "HD",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "HD|10-K|2026-03-18",
+        "n_windows": 4,
+        "mean_window_words": 1200.5,
+        "embedding_disagreement": 0.33935186266899103,
+        "numeric_disagreement": 0.7613253159636069,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "HD",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "HD|10-Q|2026-08-25",
+        "n_windows": 4,
+        "mean_window_words": 1042.0,
+        "embedding_disagreement": 0.3057188292344411,
+        "numeric_disagreement": 0.6387650294931412,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "IBP",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "IBP|10-K|2026-02-26",
+        "n_windows": 8,
+        "mean_window_words": 1184.625,
+        "embedding_disagreement": 0.29344164331754047,
+        "numeric_disagreement": 0.4925928022380796,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "IBP",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "IBP|10-Q|2026-08-06",
+        "n_windows": 5,
+        "mean_window_words": 1237.4,
+        "embedding_disagreement": 0.3612756133079528,
+        "numeric_disagreement": 0.6133411494549303,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "IIIN",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "IIIN|10-K|2025-10-23",
+        "n_windows": 3,
+        "mean_window_words": 1013.6666666666666,
+        "embedding_disagreement": 0.34562459256913924,
+        "numeric_disagreement": 0.6316139109732953,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "IIIN",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "IIIN|10-Q|2026-07-16",
+        "n_windows": 3,
+        "mean_window_words": 1258.0,
+        "embedding_disagreement": 0.38075686163372463,
+        "numeric_disagreement": 0.5996797405156107,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "JPM",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "JPM|10-K|2026-02-13",
+        "n_windows": 8,
+        "mean_window_words": 1187.375,
+        "embedding_disagreement": 0.2834562410910924,
+        "numeric_disagreement": 0.19164980452030625,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "JPM",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "JPM|10-Q|2026-08-06",
+        "n_windows": 3,
+        "mean_window_words": 1207.3333333333333,
+        "embedding_disagreement": 0.41829315821329754,
+        "numeric_disagreement": 0.0942809041582064,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "KFRC",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "KFRC|10-K|2026-02-20",
+        "n_windows": 5,
+        "mean_window_words": 1184.0,
+        "embedding_disagreement": 0.32902634143829346,
+        "numeric_disagreement": 0.8952641888818157,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "KFRC",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "KFRC|10-Q|2026-07-29",
+        "n_windows": 4,
+        "mean_window_words": 1149.5,
+        "embedding_disagreement": 0.35409708321094513,
+        "numeric_disagreement": 0.6540201994741152,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "LWAY",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "LWAY|10-K|2026-03-17",
+        "n_windows": 4,
+        "mean_window_words": 1203.5,
+        "embedding_disagreement": 0.3101702580849329,
+        "numeric_disagreement": 0.3946238212001511,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "LWAY",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "LWAY|10-Q|2026-08-13",
+        "n_windows": 3,
+        "mean_window_words": 1261.0,
+        "embedding_disagreement": 0.3617920676867166,
+        "numeric_disagreement": 0.5368535606238122,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "MLAB",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "MLAB|10-K|2026-06-03",
+        "n_windows": 5,
+        "mean_window_words": 1122.6,
+        "embedding_disagreement": 0.30169391234715776,
+        "numeric_disagreement": 0.35345907194655385,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "MLAB",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "MLAB|10-Q|2026-08-10",
+        "n_windows": 4,
+        "mean_window_words": 1072.0,
+        "embedding_disagreement": 0.33536415795485175,
+        "numeric_disagreement": 0.6357011178353984,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "MSFT",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "MSFT|10-K|2026-07-29",
+        "n_windows": 6,
+        "mean_window_words": 1261.8333333333333,
+        "embedding_disagreement": 0.28020992543962264,
+        "numeric_disagreement": 0.6139605880271954,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "MSFT",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "MSFT|10-Q|2026-04-29",
+        "n_windows": 8,
+        "mean_window_words": 1103.625,
+        "embedding_disagreement": 0.24516488611698145,
+        "numeric_disagreement": 0.4673061922527939,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "NGVC",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "NGVC|10-K|2025-12-11",
+        "n_windows": 7,
+        "mean_window_words": 1125.7142857142858,
+        "embedding_disagreement": 0.3321811528432937,
+        "numeric_disagreement": 0.3430087430244588,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "NGVC",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "NGVC|10-Q|2026-08-06",
+        "n_windows": 6,
+        "mean_window_words": 1212.8333333333333,
+        "embedding_disagreement": 0.32482371065351695,
+        "numeric_disagreement": 0.4115067148301817,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "OFLX",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "OFLX|10-K|2026-03-12",
+        "n_windows": 4,
+        "mean_window_words": 1006.75,
+        "embedding_disagreement": 0.3732320417960485,
+        "numeric_disagreement": 0.3662669822911769,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "OFLX",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "OFLX|10-Q|2026-08-13",
+        "n_windows": 2,
+        "mean_window_words": 1337.5,
+        "embedding_disagreement": 0.37256932258605957,
+        "numeric_disagreement": 0.7257450504708617,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "PG",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "PG|10-K|2026-08-04",
+        "n_windows": 12,
+        "mean_window_words": 1144.9166666666667,
+        "embedding_disagreement": 0.37167185213830733,
+        "numeric_disagreement": 0.8488619843753691,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "PG",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "PG|10-Q|2026-04-24",
+        "n_windows": 10,
+        "mean_window_words": 1149.1,
+        "embedding_disagreement": 0.3320388555526733,
+        "numeric_disagreement": 0.622336663200757,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "PLAB",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "PLAB|10-K|2025-12-17",
+        "n_windows": 5,
+        "mean_window_words": 1058.2,
+        "embedding_disagreement": 0.40829650958379105,
+        "numeric_disagreement": 0.3511802715042368,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "PLAB",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "PLAB|10-Q|2026-06-11",
+        "n_windows": 4,
+        "mean_window_words": 1125.25,
+        "embedding_disagreement": 0.3532863308986028,
+        "numeric_disagreement": 0.46054788644938316,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "RELL",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "RELL|10-K|2026-08-03",
+        "n_windows": 5,
+        "mean_window_words": 1041.8,
+        "embedding_disagreement": 0.35679945945739744,
+        "numeric_disagreement": 0.45543221907928605,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "RELL",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "RELL|10-Q|2026-04-09",
+        "n_windows": 4,
+        "mean_window_words": 1286.25,
+        "embedding_disagreement": 0.28045976658662153,
+        "numeric_disagreement": 0.39404227508204515,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "TOL",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "TOL|10-K|2025-12-19",
+        "n_windows": 11,
+        "mean_window_words": 1144.6363636363637,
+        "embedding_disagreement": 0.371526792193904,
+        "numeric_disagreement": 0.6986594562182219,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "TOL",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "TOL|10-Q|2026-05-29",
+        "n_windows": 9,
+        "mean_window_words": 1156.4444444444443,
+        "embedding_disagreement": 0.36050531378498785,
+        "numeric_disagreement": 0.6789974217486625,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "UFPT",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "UFPT|10-K|2026-02-27",
+        "n_windows": 3,
+        "mean_window_words": 997.6666666666666,
+        "embedding_disagreement": 0.31328221162160236,
+        "numeric_disagreement": 0.5251397435951366,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "UFPT",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "UFPT|10-Q|2026-08-06",
+        "n_windows": 3,
+        "mean_window_words": 1200.6666666666667,
+        "embedding_disagreement": 0.3303053180376689,
+        "numeric_disagreement": 0.49816067903933936,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "UTMD",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "UTMD|10-K|2026-03-27",
+        "n_windows": 8,
+        "mean_window_words": 1230.625,
+        "embedding_disagreement": 0.34725220253070194,
+        "numeric_disagreement": 0.7229535924576261,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "UTMD",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "UTMD|10-Q|2026-08-12",
+        "n_windows": 6,
+        "mean_window_words": 1158.5,
+        "embedding_disagreement": 0.2878215346071455,
+        "numeric_disagreement": 0.9887028974563262,
+        "tier_rank": 1
+      },
+      {
+        "ticker": "WMT",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "WMT|10-K|2026-03-13",
+        "n_windows": 7,
+        "mean_window_words": 1141.7142857142858,
+        "embedding_disagreement": 0.3278748222759792,
+        "numeric_disagreement": 0.6878779936401044,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "WMT",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "WMT|10-Q|2026-05-29",
+        "n_windows": 5,
+        "mean_window_words": 1264.0,
+        "embedding_disagreement": 0.32893359661102295,
+        "numeric_disagreement": 0.6211932703454585,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "WTS",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "WTS|10-K|2026-02-23",
+        "n_windows": 9,
+        "mean_window_words": 1120.5555555555557,
+        "embedding_disagreement": 0.33572192766048287,
+        "numeric_disagreement": 0.47602729017289686,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "WTS",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "WTS|10-Q|2026-08-06",
+        "n_windows": 6,
+        "mean_window_words": 1259.0,
+        "embedding_disagreement": 0.37070764766799075,
+        "numeric_disagreement": 0.4839338067035906,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "WYNN",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "WYNN|10-K|2026-03-02",
+        "n_windows": 8,
+        "mean_window_words": 1220.75,
+        "embedding_disagreement": 0.3521199325720469,
+        "numeric_disagreement": 0.4376556006197137,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "WYNN",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "WYNN|10-Q|2026-08-06",
+        "n_windows": 7,
+        "mean_window_words": 1125.4285714285713,
+        "embedding_disagreement": 0.3658283948898315,
+        "numeric_disagreement": 0.418296120827824,
+        "tier_rank": 2
+      },
+      {
+        "ticker": "XOM",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "XOM|10-K|2026-02-18",
+        "n_windows": 9,
+        "mean_window_words": 1147.888888888889,
+        "embedding_disagreement": 0.3361884289317661,
+        "numeric_disagreement": 0.5726834679322778,
+        "tier_rank": 3
+      },
+      {
+        "ticker": "XOM",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "XOM|10-Q|2026-08-03",
+        "n_windows": 5,
+        "mean_window_words": 1141.6,
+        "embedding_disagreement": 0.363726278146108,
+        "numeric_disagreement": 0.404448493543948,
+        "tier_rank": 3
+      }
+    ]
+  },
+  "W2": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "unit": "filing",
+    "primary_sign": 1,
+    "bins": {
+      "2-3": {
+        "n_filings": 11,
+        "tier_composition": {
+          "large": 3,
+          "mid": 0,
+          "small": 8
+        },
+        "identified_for_three_tier": false,
+        "identification_note": "NOT IDENTIFIED for a three-tier comparison - missing tier(s): mid",
+        "tier_means": {
+          "large": {
+            "n": 3,
+            "mean": 0.311971257130305,
+            "sd": 0.09245746252148444,
+            "median": 0.26718421777089435,
+            "min": 0.250436395406723,
+            "max": 0.41829315821329754
+          },
+          "mid": {
+            "n": 0,
+            "mean": null,
+            "sd": null,
+            "median": null,
+            "min": null,
+            "max": null
+          },
+          "small": {
+            "n": 8,
+            "mean": 0.35288903034395636,
+            "sd": 0.02564272600771792,
+            "median": 0.3537083301279279,
+            "min": 0.31328221162160236,
+            "max": 0.383303337626987
+          }
+        },
+        "gradient_small_minus_large": 0.040917773213651365,
+        "gradient_ci": {
+          "low": -0.1801772424636735,
+          "high": 0.26201278889097623,
+          "se": 0.054144754746964445,
+          "df": 2.116542315782612,
+          "excludes_zero": false,
+          "method": "Welch two-sample t, filing-level, 95%"
+        },
+        "monotone_small_gt_mid_gt_large": false,
+        "contradicts_primary": false
+      },
+      "4-5": {
+        "n_filings": 19,
+        "tier_composition": {
+          "large": 5,
+          "mid": 8,
+          "small": 6
+        },
+        "identified_for_three_tier": true,
+        "identification_note": "contains all three tiers",
+        "tier_means": {
+          "large": {
+            "n": 5,
+            "mean": 0.33477144400278724,
+            "sd": 0.02085266250899564,
+            "median": 0.3361266533533732,
+            "min": 0.3057188292344411,
+            "max": 0.363726278146108
+          },
+          "mid": {
+            "n": 8,
+            "mean": 0.35013261636098225,
+            "sd": 0.031600599510901196,
+            "median": 0.35369170705477393,
+            "min": 0.3075264573097229,
+            "max": 0.40829650958379105
+          },
+          "small": {
+            "n": 6,
+            "mean": 0.3262865993711683,
+            "sd": 0.03516232807857837,
+            "median": 0.32276720801989234,
+            "min": 0.28045976658662153,
+            "max": 0.3732320417960485
+          }
+        },
+        "gradient_small_minus_large": -0.00848484463161897,
+        "gradient_ci": {
+          "low": -0.047736412038500986,
+          "high": 0.030766722775263045,
+          "se": 0.017118165577160362,
+          "df": 8.269731708867512,
+          "excludes_zero": false,
+          "method": "Welch two-sample t, filing-level, 95%"
+        },
+        "monotone_small_gt_mid_gt_large": false,
+        "contradicts_primary": false
+      },
+      "6-8": {
+        "n_filings": 20,
+        "tier_composition": {
+          "large": 7,
+          "mid": 8,
+          "small": 5
+        },
+        "identified_for_three_tier": true,
+        "identification_note": "contains all three tiers",
+        "tier_means": {
+          "large": {
+            "n": 7,
+            "mean": 0.29802131024347683,
+            "sd": 0.031447718842714495,
+            "median": 0.2955225422268822,
+            "min": 0.24516488611698145,
+            "max": 0.3313279085689121
+          },
+          "mid": {
+            "n": 8,
+            "mean": 0.3172827762743783,
+            "sd": 0.042002087438024326,
+            "median": 0.306455986603858,
+            "min": 0.25245894136882957,
+            "max": 0.37070764766799075
+          },
+          "small": {
+            "n": 5,
+            "mean": 0.32146846247570854,
+            "sd": 0.022144047524708887,
+            "median": 0.32482371065351695,
+            "min": 0.2878215346071455,
+            "max": 0.34725220253070194
+          }
+        },
+        "gradient_small_minus_large": 0.023447152232231705,
+        "gradient_ci": {
+          "low": -0.011026215425436303,
+          "high": 0.05792051988989971,
+          "se": 0.015470993123065652,
+          "df": 9.996049314390035,
+          "excludes_zero": false,
+          "method": "Welch two-sample t, filing-level, 95%"
+        },
+        "monotone_small_gt_mid_gt_large": true,
+        "contradicts_primary": false
+      },
+      "9+": {
+        "n_filings": 9,
+        "tier_composition": {
+          "large": 5,
+          "mid": 4,
+          "small": 0
+        },
+        "identified_for_three_tier": false,
+        "identification_note": "NOT IDENTIFIED for a three-tier comparison - missing tier(s): small",
+        "tier_means": {
+          "large": {
+            "n": 5,
+            "mean": 0.34150515993436176,
+            "sd": 0.01762280682257736,
+            "median": 0.3361884289317661,
+            "min": 0.3268845160802205,
+            "max": 0.37167185213830733
+          },
+          "mid": {
+            "n": 4,
+            "mean": 0.3429081576816762,
+            "sd": 0.03002018568882175,
+            "median": 0.34811362072273533,
+            "min": 0.3038785970873303,
+            "max": 0.371526792193904
+          },
+          "small": {
+            "n": 0,
+            "mean": null,
+            "sd": null,
+            "median": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gradient_small_minus_large": null,
+        "gradient_ci": {
+          "low": null,
+          "high": null,
+          "se": null,
+          "df": null,
+          "excludes_zero": false,
+          "method": "Welch two-sample t, filing-level, 95%"
+        },
+        "monotone_small_gt_mid_gt_large": false,
+        "contradicts_primary": false
+      }
+    },
+    "bins_identified_for_three_tier": [
+      "4-5",
+      "6-8"
+    ],
+    "bins_not_identified": [
+      "2-3",
+      "9+"
+    ],
+    "filings_outside_bins": {
+      "n": 0,
+      "filing_keys": []
+    },
+    "coarsened_exact_matching": {
+      "coarsening": "exact on (window-count bin, filing_type)",
+      "estimand": "ATT-style weighted Small-minus-Large, weights = n_small per stratum",
+      "strata_retained": [
+        {
+          "bin": "2-3",
+          "filing_type": "10-K",
+          "n_small": 3,
+          "n_large": 1,
+          "mean_small": 0.3314617783934981,
+          "mean_large": 0.250436395406723,
+          "diff": 0.08102538298677509
+        },
+        {
+          "bin": "2-3",
+          "filing_type": "10-Q",
+          "n_small": 5,
+          "n_large": 2,
+          "mean_small": 0.36574538151423136,
+          "mean_large": 0.34273868799209595,
+          "diff": 0.023006693522135413
+        },
+        {
+          "bin": "4-5",
+          "filing_type": "10-K",
+          "n_small": 4,
+          "n_large": 1,
+          "mean_small": 0.33547391792138415,
+          "mean_large": 0.33935186266899103,
+          "diff": -0.0038779447476068873
+        },
+        {
+          "bin": "4-5",
+          "filing_type": "10-Q",
+          "n_small": 2,
+          "n_large": 4,
+          "mean_small": 0.30791196227073664,
+          "mean_large": 0.3336263393362363,
+          "diff": -0.02571437706549967
+        },
+        {
+          "bin": "6-8",
+          "filing_type": "10-K",
+          "n_small": 2,
+          "n_large": 5,
+          "mean_small": 0.3397166776869978,
+          "mean_large": 0.30367828792049767,
+          "diff": 0.036038389766500145
+        },
+        {
+          "bin": "6-8",
+          "filing_type": "10-Q",
+          "n_small": 3,
+          "n_large": 2,
+          "mean_small": 0.3093029856681824,
+          "mean_large": 0.28387886605092455,
+          "diff": 0.025424119617257823
+        }
+      ],
+      "strata_discarded": [
+        {
+          "bin": "9+",
+          "filing_type": "10-K",
+          "n_small": 0,
+          "n_large": 3,
+          "reason": "no overlap: no small-cap"
+        },
+        {
+          "bin": "9+",
+          "filing_type": "10-Q",
+          "n_small": 0,
+          "n_large": 2,
+          "reason": "no overlap: no small-cap"
+        }
+      ],
+      "n_strata_retained": 6,
+      "n_filings_discarded_no_overlap": 5,
+      "n_mid_filings_outside_contrast": 20,
+      "weighted_small_minus_large": 0.023132537991281538,
+      "unweighted_stratum_mean_difference": 0.022650377346593652,
+      "sign_agrees_with_primary": true
+    },
+    "criterion": "the primary sign must not be CONTRADICTED (reversed with a CI excluding 0) in any bin containing all three tiers",
+    "criterion_met": true,
+    "criterion_vacuous": false,
+    "criterion_note": "evaluated on 2 bin(s) containing all three tiers",
+    "contradicting_bins": [],
+    "filing_table": [
+      {
+        "ticker": "AAPL",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "AAPL|10-K|2025-10-31",
+        "n_windows": 2,
+        "value": 0.250436395406723,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "AAPL",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "AAPL|10-Q|2026-07-31",
+        "n_windows": 3,
+        "value": 0.26718421777089435,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "AMZN",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "AMZN|10-K|2026-02-06",
+        "n_windows": 6,
+        "value": 0.3313279085689121,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "AMZN",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "AMZN|10-Q|2026-07-31",
+        "n_windows": 5,
+        "value": 0.3361266533533732,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "BAC",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "BAC|10-K|2026-02-25",
+        "n_windows": 10,
+        "value": 0.34074214696884153,
+        "bin": "9+"
+      },
+      {
+        "ticker": "BAC",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "BAC|10-Q|2026-07-31",
+        "n_windows": 25,
+        "value": 0.3268845160802205,
+        "bin": "9+"
+      },
+      {
+        "ticker": "CATY",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "CATY|10-K|2026-03-02",
+        "n_windows": 12,
+        "value": 0.3038785970873303,
+        "bin": "9+"
+      },
+      {
+        "ticker": "CATY",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "CATY|10-Q|2026-08-07",
+        "n_windows": 7,
+        "value": 0.29079367717107135,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "CLFD",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "CLFD|10-K|2025-11-25",
+        "n_windows": 5,
+        "value": 0.3075264573097229,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "CLFD",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "CLFD|10-Q|2026-08-06",
+        "n_windows": 4,
+        "value": 0.36739569902420044,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "CLIR",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "CLIR|10-K|2026-03-31",
+        "n_windows": 3,
+        "value": 0.33547853098975283,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "CLIR",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "CLIR|10-Q|2026-08-14",
+        "n_windows": 3,
+        "value": 0.383303337626987,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "DRI",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "DRI|10-K|2026-07-24",
+        "n_windows": 5,
+        "value": 0.3201568961143494,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "DRI",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "DRI|10-Q|2026-03-27",
+        "n_windows": 6,
+        "value": 0.29601410693592495,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "GOOGL",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "GOOGL|10-K|2026-02-05",
+        "n_windows": 7,
+        "value": 0.2955225422268822,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "GOOGL",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "GOOGL|10-Q|2026-07-23",
+        "n_windows": 7,
+        "value": 0.32259284598486765,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "HAS",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "HAS|10-K|2026-02-25",
+        "n_windows": 7,
+        "value": 0.25245894136882957,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "HAS",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "HAS|10-Q|2026-07-30",
+        "n_windows": 7,
+        "value": 0.316897866271791,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "HAYN",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "HAYN|10-Q|2024-08-01",
+        "n_windows": 6,
+        "value": 0.3152637117438846,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "HD",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "HD|10-K|2026-03-18",
+        "n_windows": 4,
+        "value": 0.33935186266899103,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "HD",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "HD|10-Q|2026-08-25",
+        "n_windows": 4,
+        "value": 0.3057188292344411,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "IBP",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "IBP|10-K|2026-02-26",
+        "n_windows": 8,
+        "value": 0.29344164331754047,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "IBP",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "IBP|10-Q|2026-08-06",
+        "n_windows": 5,
+        "value": 0.3612756133079528,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "IIIN",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "IIIN|10-K|2025-10-23",
+        "n_windows": 3,
+        "value": 0.34562459256913924,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "IIIN",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "IIIN|10-Q|2026-07-16",
+        "n_windows": 3,
+        "value": 0.38075686163372463,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "JPM",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "JPM|10-K|2026-02-13",
+        "n_windows": 8,
+        "value": 0.2834562410910924,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "JPM",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "JPM|10-Q|2026-08-06",
+        "n_windows": 3,
+        "value": 0.41829315821329754,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "KFRC",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "KFRC|10-K|2026-02-20",
+        "n_windows": 5,
+        "value": 0.32902634143829346,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "KFRC",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "KFRC|10-Q|2026-07-29",
+        "n_windows": 4,
+        "value": 0.35409708321094513,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "LWAY",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "LWAY|10-K|2026-03-17",
+        "n_windows": 4,
+        "value": 0.3101702580849329,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "LWAY",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "LWAY|10-Q|2026-08-13",
+        "n_windows": 3,
+        "value": 0.3617920676867166,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "MLAB",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "MLAB|10-K|2026-06-03",
+        "n_windows": 5,
+        "value": 0.30169391234715776,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "MLAB",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "MLAB|10-Q|2026-08-10",
+        "n_windows": 4,
+        "value": 0.33536415795485175,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "MSFT",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "MSFT|10-K|2026-07-29",
+        "n_windows": 6,
+        "value": 0.28020992543962264,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "MSFT",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "MSFT|10-Q|2026-04-29",
+        "n_windows": 8,
+        "value": 0.24516488611698145,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "NGVC",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "NGVC|10-K|2025-12-11",
+        "n_windows": 7,
+        "value": 0.3321811528432937,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "NGVC",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "NGVC|10-Q|2026-08-06",
+        "n_windows": 6,
+        "value": 0.32482371065351695,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "OFLX",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "OFLX|10-K|2026-03-12",
+        "n_windows": 4,
+        "value": 0.3732320417960485,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "OFLX",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "OFLX|10-Q|2026-08-13",
+        "n_windows": 2,
+        "value": 0.37256932258605957,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "PG",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "PG|10-K|2026-08-04",
+        "n_windows": 12,
+        "value": 0.37167185213830733,
+        "bin": "9+"
+      },
+      {
+        "ticker": "PG",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "PG|10-Q|2026-04-24",
+        "n_windows": 10,
+        "value": 0.3320388555526733,
+        "bin": "9+"
+      },
+      {
+        "ticker": "PLAB",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "PLAB|10-K|2025-12-17",
+        "n_windows": 5,
+        "value": 0.40829650958379105,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "PLAB",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "PLAB|10-Q|2026-06-11",
+        "n_windows": 4,
+        "value": 0.3532863308986028,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "RELL",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "RELL|10-K|2026-08-03",
+        "n_windows": 5,
+        "value": 0.35679945945739744,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "RELL",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "RELL|10-Q|2026-04-09",
+        "n_windows": 4,
+        "value": 0.28045976658662153,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "TOL",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "TOL|10-K|2025-12-19",
+        "n_windows": 11,
+        "value": 0.371526792193904,
+        "bin": "9+"
+      },
+      {
+        "ticker": "TOL",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "TOL|10-Q|2026-05-29",
+        "n_windows": 9,
+        "value": 0.36050531378498785,
+        "bin": "9+"
+      },
+      {
+        "ticker": "UFPT",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "UFPT|10-K|2026-02-27",
+        "n_windows": 3,
+        "value": 0.31328221162160236,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "UFPT",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "UFPT|10-Q|2026-08-06",
+        "n_windows": 3,
+        "value": 0.3303053180376689,
+        "bin": "2-3"
+      },
+      {
+        "ticker": "UTMD",
+        "tier": "small",
+        "filing_type": "10-K",
+        "filing_key": "UTMD|10-K|2026-03-27",
+        "n_windows": 8,
+        "value": 0.34725220253070194,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "UTMD",
+        "tier": "small",
+        "filing_type": "10-Q",
+        "filing_key": "UTMD|10-Q|2026-08-12",
+        "n_windows": 6,
+        "value": 0.2878215346071455,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "WMT",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "WMT|10-K|2026-03-13",
+        "n_windows": 7,
+        "value": 0.3278748222759792,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "WMT",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "WMT|10-Q|2026-05-29",
+        "n_windows": 5,
+        "value": 0.32893359661102295,
+        "bin": "4-5"
+      },
+      {
+        "ticker": "WTS",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "WTS|10-K|2026-02-23",
+        "n_windows": 9,
+        "value": 0.33572192766048287,
+        "bin": "9+"
+      },
+      {
+        "ticker": "WTS",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "WTS|10-Q|2026-08-06",
+        "n_windows": 6,
+        "value": 0.37070764766799075,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "WYNN",
+        "tier": "mid",
+        "filing_type": "10-K",
+        "filing_key": "WYNN|10-K|2026-03-02",
+        "n_windows": 8,
+        "value": 0.3521199325720469,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "WYNN",
+        "tier": "mid",
+        "filing_type": "10-Q",
+        "filing_key": "WYNN|10-Q|2026-08-06",
+        "n_windows": 7,
+        "value": 0.3658283948898315,
+        "bin": "6-8"
+      },
+      {
+        "ticker": "XOM",
+        "tier": "large",
+        "filing_type": "10-K",
+        "filing_key": "XOM|10-K|2026-02-18",
+        "n_windows": 9,
+        "value": 0.3361884289317661,
+        "bin": "9+"
+      },
+      {
+        "ticker": "XOM",
+        "tier": "large",
+        "filing_type": "10-Q",
+        "filing_key": "XOM|10-Q|2026-08-03",
+        "n_windows": 5,
+        "value": 0.363726278146108,
+        "bin": "4-5"
+      }
+    ]
+  },
+  "W3": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "seed": 20261004,
+    "n_iterations": 2000,
+    "primary_sign": 1,
+    "criterion": "the primary sign must hold in >= 90% of k = 2 draws",
+    "by_k": {
+      "k=2": {
+        "k": 2,
+        "restriction": "every filing (k equals the sample minimum)",
+        "n_filings_used": 59,
+        "n_filings_dropped": 0,
+        "filings_dropped": [],
+        "n_firms_used": 30,
+        "firms_dropped": [],
+        "n_firms_dropped": 0,
+        "tier_firm_counts": {
+          "large": 10,
+          "mid": 10,
+          "small": 10
+        },
+        "gradient_distribution": {
+          "n": 2000,
+          "mean": 0.014706727141141915,
+          "sd": 0.012290480090726669,
+          "median": 0.014867626875638973,
+          "min": -0.026160360872745536,
+          "max": 0.056852393349011765,
+          "percentiles": {
+            "p0.5": -0.01615990942468239,
+            "p1": -0.014537078842520696,
+            "p2.5": -0.009756443264583647,
+            "p5": -0.0056624799966811575,
+            "p10": -0.000844440509875576,
+            "p25": 0.0065710924565792195,
+            "p50": 0.014867626875638973,
+            "p75": 0.022957519814372163,
+            "p90": 0.030155622263749442,
+            "p95": 0.03490267738699917,
+            "p97.5": 0.038673748522996924,
+            "p99": 0.04354733707507452,
+            "p99.5": 0.04721676967293023
+          },
+          "share_gradient_positive": 0.8855,
+          "share_gradient_zero": 0.0
+        },
+        "tier_mean_distributions": {
+          "large": {
+            "n": 2000,
+            "mean": 0.3202472807685534,
+            "sd": 0.009067707011913497,
+            "median": 0.32025699193278945,
+            "min": 0.28882959634065625,
+            "max": 0.35178319066762925,
+            "percentiles": {
+              "p0.5": 0.2980910597965122,
+              "p1": 0.30002126544217267,
+              "p2.5": 0.3030180024604002,
+              "p5": 0.305553773244222,
+              "p10": 0.3084119673569997,
+              "p25": 0.3142441637814045,
+              "p50": 0.32025699193278945,
+              "p75": 0.3261541588852802,
+              "p90": 0.3321247810622056,
+              "p95": 0.33526108577847474,
+              "p97.5": 0.3379828580717245,
+              "p99": 0.34165419247746465,
+              "p99.5": 0.3454209295908609
+            }
+          },
+          "mid": {
+            "n": 2000,
+            "mean": 0.3353408922826251,
+            "sd": 0.008714979926235815,
+            "median": 0.33496819039185843,
+            "min": 0.30509215493996933,
+            "max": 0.3684731582800547,
+            "percentiles": {
+              "p0.5": 0.3144211243713895,
+              "p1": 0.317070128912727,
+              "p2.5": 0.31874347209930415,
+              "p5": 0.3215123567730188,
+              "p10": 0.32418681696057317,
+              "p25": 0.32934324443340296,
+              "p50": 0.33496819039185843,
+              "p75": 0.34153133966028687,
+              "p90": 0.34662932073076563,
+              "p95": 0.34999792369703453,
+              "p97.5": 0.3523216825972,
+              "p99": 0.35595077318449814,
+              "p99.5": 0.3567987692902485
+            }
+          },
+          "small": {
+            "n": 2000,
+            "mean": 0.3349540079096953,
+            "sd": 0.008382091617339759,
+            "median": 0.33483594482143725,
+            "min": 0.30909519096215565,
+            "max": 0.3655875275532405,
+            "percentiles": {
+              "p0.5": 0.3145334150145451,
+              "p1": 0.3166497199237346,
+              "p2.5": 0.31945286996662614,
+              "p5": 0.3216765498618285,
+              "p10": 0.32405384813745813,
+              "p25": 0.32908811084926126,
+              "p50": 0.33483594482143725,
+              "p75": 0.34065262774626415,
+              "p90": 0.3458514985938867,
+              "p95": 0.3490948254118363,
+              "p97.5": 0.35207124547412005,
+              "p99": 0.3550188089708487,
+              "p99.5": 0.35645180211961264
+            }
+          }
+        },
+        "share_primary_sign_holds": 0.8855,
+        "share_ordering_small_gt_mid_gt_large": 0.392,
+        "n_filings_whose_draw_is_deterministic": 2,
+        "observed_gradient_on_this_subset": 0.014999595016004508,
+        "criterion_met": false,
+        "criterion_applies": true
+      },
+      "k=4": {
+        "k": 4,
+        "restriction": "filings with at least 4 surviving windows",
+        "n_filings_used": 48,
+        "n_filings_dropped": 11,
+        "filings_dropped": [
+          "AAPL|10-K|2025-10-31",
+          "AAPL|10-Q|2026-07-31",
+          "CLIR|10-K|2026-03-31",
+          "CLIR|10-Q|2026-08-14",
+          "IIIN|10-K|2025-10-23",
+          "IIIN|10-Q|2026-07-16",
+          "JPM|10-Q|2026-08-06",
+          "LWAY|10-Q|2026-08-13",
+          "OFLX|10-Q|2026-08-13",
+          "UFPT|10-K|2026-02-27",
+          "UFPT|10-Q|2026-08-06"
+        ],
+        "n_firms_used": 26,
+        "firms_dropped": [
+          "AAPL",
+          "CLIR",
+          "IIIN",
+          "UFPT"
+        ],
+        "n_firms_dropped": 4,
+        "tier_firm_counts": {
+          "large": 9,
+          "mid": 10,
+          "small": 7
+        },
+        "gradient_distribution": {
+          "n": 2000,
+          "mean": 0.006571846085842003,
+          "sd": 0.007996721822525928,
+          "median": 0.006446763025547503,
+          "min": -0.01773666196241569,
+          "max": 0.03565543732315146,
+          "percentiles": {
+            "p0.5": -0.01301955463315436,
+            "p1": -0.01164805760104503,
+            "p2.5": -0.009119384762431938,
+            "p5": -0.006493397790288097,
+            "p10": -0.003591160815228822,
+            "p25": 0.0011364174858918552,
+            "p50": 0.006446763025547503,
+            "p75": 0.01201066414199807,
+            "p90": 0.017135660622328127,
+            "p95": 0.020000084458047133,
+            "p97.5": 0.021973048478719694,
+            "p99": 0.024706134395624472,
+            "p99.5": 0.026401422743601747
+          },
+          "share_gradient_positive": 0.789,
+          "share_gradient_zero": 0.0
+        },
+        "tier_mean_distributions": {
+          "large": {
+            "n": 2000,
+            "mean": 0.31952927745575155,
+            "sd": 0.005807318994304002,
+            "median": 0.31963255573753957,
+            "min": 0.2991097580503534,
+            "max": 0.3388583897440521,
+            "percentiles": {
+              "p0.5": 0.30448230898628637,
+              "p1": 0.30639005263646435,
+              "p2.5": 0.3081965274280972,
+              "p5": 0.30967764255625224,
+              "p10": 0.3118962904369389,
+              "p25": 0.31558917752570576,
+              "p50": 0.31963255573753957,
+              "p75": 0.3236339557915926,
+              "p90": 0.32666946619197174,
+              "p95": 0.328794302046299,
+              "p97.5": 0.3304294963470763,
+              "p99": 0.33241596431919823,
+              "p99.5": 0.33408903930336237
+            }
+          },
+          "mid": {
+            "n": 2000,
+            "mean": 0.3355137334836026,
+            "sd": 0.004466391919985858,
+            "median": 0.3355489131063223,
+            "min": 0.3225423949460189,
+            "max": 0.3483280532062053,
+            "percentiles": {
+              "p0.5": 0.32434504851450524,
+              "p1": 0.3248415117561817,
+              "p2.5": 0.3269887600652873,
+              "p5": 0.3281915263955791,
+              "p10": 0.32983489602804184,
+              "p25": 0.33242323355128367,
+              "p50": 0.3355489131063223,
+              "p75": 0.3385213011254867,
+              "p90": 0.34129810743033884,
+              "p95": 0.34271227876345317,
+              "p97.5": 0.3445223739370703,
+              "p99": 0.3459960974430044,
+              "p99.5": 0.34680706088120733
+            }
+          },
+          "small": {
+            "n": 2000,
+            "mean": 0.3261011235415935,
+            "sd": 0.005301747867874478,
+            "median": 0.3261867820152214,
+            "min": 0.3090765142724627,
+            "max": 0.3421785529880296,
+            "percentiles": {
+              "p0.5": 0.31335982191598133,
+              "p1": 0.31423079758527733,
+              "p2.5": 0.3156684070293392,
+              "p5": 0.31697218595516113,
+              "p10": 0.3191029819349448,
+              "p25": 0.3224288864682118,
+              "p50": 0.3261867820152214,
+              "p75": 0.3297687752970627,
+              "p90": 0.33314495164723623,
+              "p95": 0.3348441198645603,
+              "p97.5": 0.3358812493139079,
+              "p99": 0.3369724263002475,
+              "p99.5": 0.3376479578035927
+            }
+          }
+        },
+        "share_primary_sign_holds": 0.789,
+        "share_ordering_small_gt_mid_gt_large": 0.089,
+        "n_filings_whose_draw_is_deterministic": 9,
+        "observed_gradient_on_this_subset": 0.006481208370678837,
+        "criterion_met": null,
+        "criterion_applies": false,
+        "criterion_note": "the pre-declared >= 90% criterion is defined on k = 2 only; this row is reported for information"
+      }
+    },
+    "criterion_met": false,
+    "share_primary_sign_holds_k2": 0.8855
+  },
+  "W4": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "primary_sign": 1,
+    "first_k": 2,
+    "variants": {
+      "first_2_windows": {
+        "note": "windows with chunk_index < 2 in every filing",
+        "n_windows": 118,
+        "n_filings": 59,
+        "n_filings_dropped": 0,
+        "filings_dropped": [],
+        "n_firms": 30,
+        "n_firms_dropped": 0,
+        "firms_dropped": [],
+        "tier_firm_counts": {
+          "large": 10,
+          "mid": 10,
+          "small": 10
+        },
+        "tier_means": {
+          "large": {
+            "n": 10,
+            "mean": 0.3293313135703405,
+            "sd": 0.059519705409331346,
+            "median": 0.3348229179779688,
+            "min": 0.209777683019638,
+            "max": 0.4111633002758026
+          },
+          "mid": {
+            "n": 10,
+            "mean": 0.3441281740864118,
+            "sd": 0.039908634575072925,
+            "median": 0.338635670642058,
+            "min": 0.29688342412312824,
+            "max": 0.3984011709690094
+          },
+          "small": {
+            "n": 10,
+            "mean": 0.34976680427789686,
+            "sd": 0.03703089481115732,
+            "median": 0.3514265989263852,
+            "min": 0.29446777701377863,
+            "max": 0.4011261612176895
+          }
+        },
+        "gradient_small_minus_large": 0.020435490707556347,
+        "monotone_small_gt_mid_gt_large": true,
+        "sign_agrees_with_primary": true
+      },
+      "excluding_first_window": {
+        "note": "all windows except each section's first (chunk_index >= 1)",
+        "n_windows": 303,
+        "n_filings": 59,
+        "n_filings_dropped": 0,
+        "filings_dropped": [],
+        "n_firms": 30,
+        "n_firms_dropped": 0,
+        "firms_dropped": [],
+        "tier_firm_counts": {
+          "large": 10,
+          "mid": 10,
+          "small": 10
+        },
+        "tier_means": {
+          "large": {
+            "n": 10,
+            "mean": 0.3183540108265599,
+            "sd": 0.03257884880814698,
+            "median": 0.33024584121174283,
+            "min": 0.24516481161117554,
+            "max": 0.3440724590209999
+          },
+          "mid": {
+            "n": 10,
+            "mean": 0.32997381704161954,
+            "sd": 0.03127998284033958,
+            "median": 0.3372440398448989,
+            "min": 0.2737778243091371,
+            "max": 0.38187100572718513
+          },
+          "small": {
+            "n": 10,
+            "mean": 0.3290882045338078,
+            "sd": 0.029337296764354016,
+            "median": 0.33951715793874526,
+            "min": 0.28343385372843055,
+            "max": 0.3638457953929901
+          }
+        },
+        "gradient_small_minus_large": 0.01073419370724793,
+        "monotone_small_gt_mid_gt_large": false,
+        "sign_agrees_with_primary": true,
+        "n_filings_reduced_to_one_window": 2,
+        "n_one_window_sections_contributing_zero": 0,
+        "note_on_dropout": "a 2-window filing contributes 1 window here; a 1-window section contributes 0 and the filing drops out entirely"
+      }
+    },
+    "position_decile": {
+      "formula": "chunk_index / max(1, n_in_section - 1)",
+      "exposed_by": "analysis.window_battery.position_decile_frame",
+      "n_windows": 362,
+      "by_tier": {
+        "large": {
+          "n": 146,
+          "mean": 0.5,
+          "sd": 0.33576500220191796,
+          "median": 0.5,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "mid": {
+          "n": 134,
+          "mean": 0.4973347547974413,
+          "sd": 0.3372237812540032,
+          "median": 0.5,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "small": {
+          "n": 82,
+          "mean": 0.5,
+          "sd": 0.3719674560493006,
+          "median": 0.5,
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "share_of_windows_that_are_section_opening_by_tier": {
+        "large": 0.136986301369863,
+        "mid": 0.14925373134328357,
+        "small": 0.23170731707317074
+      },
+      "spearman_position_vs_measure": {
+        "rho": -0.09319537465401043,
+        "p_value": 0.07657961722782736,
+        "n": 362
+      }
+    },
+    "criterion": "directional agreement with the primary",
+    "criterion_met": true
+  },
+  "W6": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "seed": 20261004,
+    "n_iterations": 10000,
+    "held_fixed": [
+      "each filing's real surviving-window count",
+      "the filing -> firm -> tier structure and tier sizes",
+      "the pooled empirical distribution of window-level disagreement",
+      "the pre-registered window -> filing -> firm -> tier aggregation"
+    ],
+    "randomised": [
+      "which pooled value lands in which window (i.i.d., with replacement)",
+      "and therefore all tier, firm and filing signal in the measure"
+    ],
+    "pooled_distribution": {
+      "n": 362,
+      "mean": 0.32906295943655356,
+      "sd": 0.07343108189141834,
+      "median": 0.3270979324976603,
+      "min": 0.1524829069773356,
+      "max": 0.6848337650299072,
+      "percentiles": {
+        "p0.5": 0.1618309399485588,
+        "p1": 0.17806152164936062,
+        "p2.5": 0.20855387647946674,
+        "p5": 0.2245943417151769,
+        "p10": 0.24098844925562532,
+        "p25": 0.2791665097077687,
+        "p50": 0.3270979324976603,
+        "p75": 0.36759792268276215,
+        "p90": 0.4227672894795737,
+        "p95": 0.46326264043649035,
+        "p97.5": 0.4908338104685144,
+        "p99": 0.5409515140453972,
+        "p99.5": 0.5651947094003356
+      }
+    },
+    "window_counts_by_filing": {
+      "AAPL|10-K|2025-10-31": 2,
+      "AAPL|10-Q|2026-07-31": 3,
+      "AMZN|10-K|2026-02-06": 6,
+      "AMZN|10-Q|2026-07-31": 5,
+      "BAC|10-K|2026-02-25": 10,
+      "BAC|10-Q|2026-07-31": 25,
+      "CATY|10-K|2026-03-02": 12,
+      "CATY|10-Q|2026-08-07": 7,
+      "CLFD|10-K|2025-11-25": 5,
+      "CLFD|10-Q|2026-08-06": 4,
+      "CLIR|10-K|2026-03-31": 3,
+      "CLIR|10-Q|2026-08-14": 3,
+      "DRI|10-K|2026-07-24": 5,
+      "DRI|10-Q|2026-03-27": 6,
+      "GOOGL|10-K|2026-02-05": 7,
+      "GOOGL|10-Q|2026-07-23": 7,
+      "HAS|10-K|2026-02-25": 7,
+      "HAS|10-Q|2026-07-30": 7,
+      "HAYN|10-Q|2024-08-01": 6,
+      "HD|10-K|2026-03-18": 4,
+      "HD|10-Q|2026-08-25": 4,
+      "IBP|10-K|2026-02-26": 8,
+      "IBP|10-Q|2026-08-06": 5,
+      "IIIN|10-K|2025-10-23": 3,
+      "IIIN|10-Q|2026-07-16": 3,
+      "JPM|10-K|2026-02-13": 8,
+      "JPM|10-Q|2026-08-06": 3,
+      "KFRC|10-K|2026-02-20": 5,
+      "KFRC|10-Q|2026-07-29": 4,
+      "LWAY|10-K|2026-03-17": 4,
+      "LWAY|10-Q|2026-08-13": 3,
+      "MLAB|10-K|2026-06-03": 5,
+      "MLAB|10-Q|2026-08-10": 4,
+      "MSFT|10-K|2026-07-29": 6,
+      "MSFT|10-Q|2026-04-29": 8,
+      "NGVC|10-K|2025-12-11": 7,
+      "NGVC|10-Q|2026-08-06": 6,
+      "OFLX|10-K|2026-03-12": 4,
+      "OFLX|10-Q|2026-08-13": 2,
+      "PG|10-K|2026-08-04": 12,
+      "PG|10-Q|2026-04-24": 10,
+      "PLAB|10-K|2025-12-17": 5,
+      "PLAB|10-Q|2026-06-11": 4,
+      "RELL|10-K|2026-08-03": 5,
+      "RELL|10-Q|2026-04-09": 4,
+      "TOL|10-K|2025-12-19": 11,
+      "TOL|10-Q|2026-05-29": 9,
+      "UFPT|10-K|2026-02-27": 3,
+      "UFPT|10-Q|2026-08-06": 3,
+      "UTMD|10-K|2026-03-27": 8,
+      "UTMD|10-Q|2026-08-12": 6,
+      "WMT|10-K|2026-03-13": 7,
+      "WMT|10-Q|2026-05-29": 5,
+      "WTS|10-K|2026-02-23": 9,
+      "WTS|10-Q|2026-08-06": 6,
+      "WYNN|10-K|2026-03-02": 8,
+      "WYNN|10-Q|2026-08-06": 7,
+      "XOM|10-K|2026-02-18": 9,
+      "XOM|10-Q|2026-08-03": 5
+    },
+    "window_count_summary": {
+      "n": 59,
+      "mean": 6.135593220338983,
+      "sd": 3.4812682346140114,
+      "median": 5.0,
+      "min": 2.0,
+      "max": 25.0
+    },
+    "null_gradient": {
+      "n": 10000,
+      "mean": -9.616195831693203e-06,
+      "sd": 0.011049513336028254,
+      "median": 8.167167804229436e-05,
+      "min": -0.045907813758682914,
+      "max": 0.041450659156082204,
+      "percentiles": {
+        "p0.5": -0.02909926957219789,
+        "p1": -0.025801627126828007,
+        "p2.5": -0.02153967214742343,
+        "p5": -0.018214409938482168,
+        "p10": -0.014213237189056094,
+        "p25": -0.0074274952328472615,
+        "p50": 8.167167804229436e-05,
+        "p75": 0.007262301155065376,
+        "p90": 0.013961825126306969,
+        "p95": 0.01837738472403824,
+        "p97.5": 0.02184074318901141,
+        "p99": 0.026004341484390278,
+        "p99.5": 0.028734974720800853
+      }
+    },
+    "null_tier_means": {
+      "large": {
+        "n": 10000,
+        "mean": 0.3289529053787794,
+        "sd": 0.006934447691070506,
+        "median": 0.3288600731343819,
+        "min": 0.3049341360938454,
+        "max": 0.3597351989819417
+      },
+      "mid": {
+        "n": 10000,
+        "mean": 0.3290209042404292,
+        "sd": 0.006601835244515123,
+        "median": 0.3289463025919229,
+        "min": 0.2999879400047934,
+        "max": 0.35694693386135423
+      },
+      "small": {
+        "n": 10000,
+        "mean": 0.3289432891829477,
+        "sd": 0.008569749440419541,
+        "median": 0.32879328791761686,
+        "min": 0.2974413720530177,
+        "max": 0.3627481947472644
+      }
+    },
+    "null_share_ordering_small_gt_mid_gt_large": 0.1845,
+    "observed_gradient": 0.014999595016004508,
+    "observed_gradient_source": "this module's own window set",
+    "observed_gradient_on_w6_window_set": 0.014999595016004508,
+    "observed_percentile_in_null": 91.39,
+    "p_value_one_sided": 0.0861913808619138,
+    "p_value_convention": "(1 + #{null >= observed}) / (1 + n_iterations), one-sided",
+    "null_abs_gradient_p95": 0.021762885699381677,
+    "interpretation": "the 95th percentile of the null gradient is the largest Small-minus-Large difference that unequal window counts alone manufacture 5% of the time",
+    "criterion": null,
+    "note": "No pass/fail (ANALYSIS_PLAN.md s5, W6)."
+  },
+  "W7": {
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "primary_sign": 1,
+    "exact_window_words": 1200,
+    "exact_windows_only": {
+      "note": "only windows of exactly 1200 words (tail-merged windows excluded)",
+      "n_windows": 303,
+      "n_filings": 59,
+      "n_filings_dropped": 0,
+      "filings_dropped": [],
+      "n_firms": 30,
+      "n_firms_dropped": 0,
+      "firms_dropped": [],
+      "tier_firm_counts": {
+        "large": 10,
+        "mid": 10,
+        "small": 10
+      },
+      "tier_means": {
+        "large": {
+          "n": 10,
+          "mean": 0.32670191751206185,
+          "sd": 0.04129142829555489,
+          "median": 0.3353598317614308,
+          "min": 0.24608953651927762,
+          "max": 0.3705357185431889
+        },
+        "mid": {
+          "n": 10,
+          "mean": 0.33332349545382833,
+          "sd": 0.03427913948018656,
+          "median": 0.327187153555098,
+          "min": 0.2784467769993676,
+          "max": 0.39149190651045906
+        },
+        "small": {
+          "n": 10,
+          "mean": 0.3367972147133615,
+          "sd": 0.027375805365742342,
+          "median": 0.32710932112402386,
+          "min": 0.3076352493630514,
+          "max": 0.3917290733920203
+        }
+      },
+      "gradient_small_minus_large": 0.010095297201299647,
+      "monotone_small_gt_mid_gt_large": true,
+      "sign_agrees_with_primary": true,
+      "n_windows_dropped": 59,
+      "word_count_distribution_all_windows": {
+        "n": 362,
+        "mean": 1170.03591160221,
+        "sd": 168.06874774907533,
+        "median": 1200.0,
+        "min": 403.0,
+        "max": 1577.0
+      },
+      "filings_below_min_usable_chunks_gate": [
+        "AAPL|10-K|2025-10-31",
+        "OFLX|10-Q|2026-08-13"
+      ],
+      "n_filings_below_min_usable_chunks_gate": 2,
+      "any_filing_below_gate": true,
+      "gate_note": "MIN_USABLE_CHUNKS = 2. These filings are RETAINED in the W7(i) recomputation and reported, so the sensitivity check is not quietly narrowed; the pre-registered gate governs the primary pipeline, and W7(i) is a sensitivity analysis of it.",
+      "gradient_if_gate_applied": 0.007294047942251691,
+      "n_filings_if_gate_applied": 57,
+      "n_firms_if_gate_applied": 30,
+      "sign_agrees_with_primary_if_gate_applied": true
+    },
+    "word_count_covariate_ols": {
+      "n_observations": 362,
+      "n_parameters": 4,
+      "df_residual": 358,
+      "r_squared": 0.00927929266555394,
+      "n_clusters_firm": 30,
+      "coefficients": {
+        "intercept": {
+          "coef": 0.13274969102078016,
+          "se": 0.1427729138140582,
+          "t": 0.929796047965149,
+          "p_value": 0.3531032138727084,
+          "ci_low": -0.14802930863799935,
+          "ci_high": 0.41352869067955966,
+          "ci_excludes_zero": false,
+          "se_cluster_firm": 0.08737027364901902,
+          "ci_low_cluster_firm": -0.039073782912339594,
+          "ci_high_cluster_firm": 0.3045731649538999,
+          "ci_excludes_zero_cluster_firm": false
+        },
+        "tier_mid": {
+          "coef": 0.01026129086851798,
+          "se": 0.008780567248489328,
+          "t": 1.1686364420571356,
+          "p_value": 0.24332773145049236,
+          "ci_low": -0.007006682604926101,
+          "ci_high": 0.02752926434196206,
+          "ci_excludes_zero": false,
+          "se_cluster_firm": 0.013710462427659435,
+          "ci_low_cluster_firm": -0.01670187618087822,
+          "ci_high_cluster_firm": 0.03722445791791418,
+          "ci_excludes_zero_cluster_firm": false
+        },
+        "tier_small": {
+          "coef": 0.009772861100193044,
+          "se": 0.010137734490699902,
+          "t": 0.9640083895626204,
+          "p_value": 0.3356924288447832,
+          "ci_low": -0.010164134461949406,
+          "ci_high": 0.029709856662335492,
+          "ci_excludes_zero": false,
+          "se_cluster_firm": 0.010259091477867155,
+          "ci_low_cluster_firm": -0.0104027966321619,
+          "ci_high_cluster_firm": 0.02994851883254799,
+          "ci_excludes_zero_cluster_firm": false
+        },
+        "log_word_count": {
+          "coef": 0.02699341564499782,
+          "se": 0.020217458834485287,
+          "t": 1.335153733512476,
+          "p_value": 0.18267439203492447,
+          "ci_low": -0.012766491998144926,
+          "ci_high": 0.06675332328814057,
+          "ci_excludes_zero": false,
+          "se_cluster_firm": 0.012355823206247535,
+          "ci_low_cluster_firm": 0.002694299046949414,
+          "ci_high_cluster_firm": 0.051292532243046224,
+          "ci_excludes_zero_cluster_firm": true
+        }
+      },
+      "se_note": "classical SEs are the pre-registered 'simple OLS'; firm-clustered SEs are reported beside them because windows are nested in filings in firms and classical SEs understate uncertainty",
+      "specification": "embedding_disagreement_window ~ 1 + tier_mid + tier_small + log(word_count); reference tier = large; unit = window",
+      "sign_agrees_with_primary": true
+    },
+    "criterion": "directional agreement with the primary",
+    "criterion_met": true
+  },
+  "gate": {
+    "rule": "ANALYSIS_PLAN.md s5: the tier result is reported as SUPPORTED only if it passes W3 and W5 and is not contradicted in an overlapping W2 bin",
+    "W3_passed": false,
+    "W2_not_contradicted": true,
+    "W2_criterion_vacuous": false,
+    "W5_passed": null,
+    "W5_status": "not evaluated here - separate module",
+    "battery_half_of_gate_passed": false,
+    "W4_directional_agreement": true,
+    "W7_directional_agreement": true,
+    "verdict_pending_W5": "NOT ROBUST TO WINDOW COUNT on the battery's own tests - ANALYSIS_PLAN.md s7 clause 2 applies"
+  }
+}

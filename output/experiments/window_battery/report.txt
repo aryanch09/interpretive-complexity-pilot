@@ -1,0 +1,204 @@
+==============================================================================
+WINDOW-COUNT BATTERY - W1-W4, W6-W7 (ANALYSIS_PLAN.md section 5)
+==============================================================================
+section            : mda
+measure            : embedding_disagreement
+seed               : 20261004   (W3 2000 iters, W6 10000 iters, perm 10000 draws)
+aggregation        : window -> filing (unweighted mean over that filing's windows of the analysed section) -> firm (unweighted mean over the firm's filings) -> tier
+confirmatory unit  : firm
+failed windows     : any_failed windows are DROPPED, never imputed (ANALYSIS_PLAN.md s8 rule 1)
+usability gate     : the ANALYSIS_PLAN.md s8 rule 2 gate (>= 2 surviving windows AND >= half surviving) governs the PRIMARY pipeline and is applied there by aggregate_to_firm.  The battery's variants deliberately do not re-apply it, because W4(ii) is defined to leave a 2-window filing with 1 window and W7(i) is defined to exclude tails; re-gating would silently narrow the sensitivity checks.  Each variant reports its own filing and firm counts, and W7(i) also reports the gradient with the gate applied.
+network/model calls: 0/0
+sibling provenance : aggregate_to_firm=analysis.trend_tests; jonckheere_terpstra=analysis.trend_tests; label_permutation_test=analysis.trend_tests; tier_trend_statistic=analysis.trend_tests
+W5                 : W5 (window-level mixed model) is implemented in a separate module and is deliberately not imported here
+
+------------------------------------------------------------------------------
+PRIMARY (the number every test below is compared against)
+------------------------------------------------------------------------------
+windows in section 363, dropped for failure 1, used 362
+filings 59, firms 30  (tier firm counts {'large': 10, 'mid': 10, 'small': 10})
+firm-level tier means: large: 0.3202 (sd 0.0341, n 10)  mid: 0.3355 (sd 0.0312, n 10)  small: 0.3352 (sd 0.0218, n 10)
+gradient (Small - Large) = 0.0150   sign +1   monotone Small>Mid>Large: no
+C1  Jonckheere-Terpstra: JT = 169.0, z = 0.722, one-sided p = 0.2350, n = 30
+C1-perm label permutation of Jonckheere-Terpstra J (C1-perm as pre-registered):
+      observed 169.0, one-sided p = 0.2419 (10000 draws, seed 20261004)
+label permutation of the signed Small-minus-Large firm-mean difference:
+      observed 0.0150, one-sided p = 0.1316, null mean 0.0000, null sd 0.0132
+tier_trend_statistic (JT J) = 169.0  [the ordered-trend (Jonckheere-Terpstra) statistic returned by analysis.trend_tests.tier_trend_statistic; non-negative, hence not usable as a signed gradient]
+gradient definition: firm-level small-cap mean minus large-cap mean; this is the signed quantity W2/W3/W4/W6/W7 are defined on
+
+------------------------------------------------------------------------------
+W1  DESCRIPTIVES  [descriptive - no pass/fail]
+------------------------------------------------------------------------------
+windows per filing, by tier:
+   large  n=20  mean 7.30  median 6.50  sd 4.92  min 2  max 25
+   mid    n=20  mean 6.70  median 6.50  sd 2.27  min 4  max 12
+   small  n=19  mean 4.32  median 4.00  sd 1.63  min 2  max 8
+windows per firm (total across the firm's filings), by tier:
+   large  n=10  mean 14.60  median 13.00  sd 8.44  min 5  max 35
+   mid    n=10  mean 13.40  median 13.50  sd 4.01  min 9  max 20
+   small  n=10  mean 8.20  median 6.50  sd 3.05  min 6  max 14
+mean window size (words), by tier, filing level:
+   large  n=20  mean 1177.2  median 1148.5  min 1042  max 1360
+   mid    n=20  mean 1171.4  median 1175.1  min 1058  max 1259
+   small  n=19  mean 1162.3  median 1158.5  min 998  max 1338
+tier rank convention: large=3, mid=2, small=1 (as in coverage_diagnostic.py)
+Spearman (filing level):
+   window_count_vs_tier_rank          rho =   0.372   p =  0.0037   n = 59
+   window_count_vs_numeric            rho =   0.040   p =  0.7608   n = 59
+   window_count_vs_embedding          rho =  -0.158   p =  0.2306   n = 59
+   mean_window_words_vs_tier_rank     rho =   0.045   p =  0.7341   n = 59
+   mean_window_words_vs_numeric       rho =   0.046   p =  0.7268   n = 59
+   mean_window_words_vs_embedding     rho =  -0.035   p =  0.7914   n = 59
+Spearman (firm level):
+   window_count_vs_tier_rank          rho =   0.435   p =  0.0164   n = 30
+   window_count_vs_numeric            rho =   0.047   p =  0.8058   n = 30
+   window_count_vs_embedding          rho =  -0.008   p =  0.9681   n = 30
+   mean_window_words_vs_tier_rank     rho =   0.156   p =  0.4115   n = 30
+   mean_window_words_vs_numeric       rho =   0.149   p =  0.4311   n = 30
+   mean_window_words_vs_embedding     rho =  -0.172   p =  0.3623   n = 30
+
+------------------------------------------------------------------------------
+W2  MATCHED COMPARISON  [criterion: primary sign not CONTRADICTED in any all-three-tier bin]
+------------------------------------------------------------------------------
+unit of analysis inside a bin: filing (a firm's two filings can fall in different bins)
+ bin 2-3  n=11  composition large/mid/small = 3/0/8
+          NOT IDENTIFIED for a three-tier comparison - missing tier(s): mid
+          tier means: large: 0.3120 (sd 0.0925, n 3)  mid: n/a (sd n/a, n 0)  small: 0.3529 (sd 0.0256, n 8)
+          Small-Large = 0.0409  95% CI [-0.1802, 0.2620]  excludes 0: no  contradicts primary: no
+ bin 4-5  n=19  composition large/mid/small = 5/8/6
+          contains all three tiers
+          tier means: large: 0.3348 (sd 0.0209, n 5)  mid: 0.3501 (sd 0.0316, n 8)  small: 0.3263 (sd 0.0352, n 6)
+          Small-Large = -0.0085  95% CI [-0.0477, 0.0308]  excludes 0: no  contradicts primary: no
+ bin 6-8  n=20  composition large/mid/small = 7/8/5
+          contains all three tiers
+          tier means: large: 0.2980 (sd 0.0314, n 7)  mid: 0.3173 (sd 0.0420, n 8)  small: 0.3215 (sd 0.0221, n 5)
+          Small-Large = 0.0234  95% CI [-0.0110, 0.0579]  excludes 0: no  contradicts primary: no
+ bin 9+   n=9   composition large/mid/small = 5/4/0
+          NOT IDENTIFIED for a three-tier comparison - missing tier(s): small
+          tier means: large: 0.3415 (sd 0.0176, n 5)  mid: 0.3429 (sd 0.0300, n 4)  small: n/a (sd n/a, n 0)
+          Small-Large = n/a  95% CI [n/a, n/a]  excludes 0: no  contradicts primary: no
+ bins identified for a three-tier comparison : ['4-5', '6-8']
+ bins NOT identified (labelled, not averaged): ['2-3', '9+']
+ coarsened exact matching:
+   coarsening  : exact on (window-count bin, filing_type)
+   estimand    : ATT-style weighted Small-minus-Large, weights = n_small per stratum
+   strata kept : 6
+      (2-3, 10-K)  n_small=3 n_large=1  diff = 0.0810
+      (2-3, 10-Q)  n_small=5 n_large=2  diff = 0.0230
+      (4-5, 10-K)  n_small=4 n_large=1  diff = -0.0039
+      (4-5, 10-Q)  n_small=2 n_large=4  diff = -0.0257
+      (6-8, 10-K)  n_small=2 n_large=5  diff = 0.0360
+      (6-8, 10-Q)  n_small=3 n_large=2  diff = 0.0254
+   filings discarded for lack of overlap : 5
+      (9+, 10-K)  n_small=0 n_large=3  - no overlap: no small-cap
+      (9+, 10-Q)  n_small=0 n_large=2  - no overlap: no small-cap
+   mid-cap filings outside the contrast  : 20
+   weighted Small-Large = 0.0231  (unweighted stratum mean 0.0227)  sign agrees: yes
+ W2 CRITERION MET: yes
+   evaluated on 2 bin(s) containing all three tiers
+
+------------------------------------------------------------------------------
+W3  EQUAL-k SUBSAMPLING  [THE DECISIVE TEST]
+------------------------------------------------------------------------------
+criterion: the primary sign must hold in >= 90% of k = 2 draws
+ k=2  (every filing (k equals the sample minimum))
+      filings used 59, dropped 0
+      firms used 30, dropped 0, tier firm counts {'large': 10, 'mid': 10, 'small': 10}
+      filings whose k-draw is deterministic (n == k): 2
+      gradient: mean 0.0147  sd 0.0123  median 0.0149  min -0.0262  max 0.0569
+      percentiles: 1=-0.0145  2.5=-0.0098  5=-0.0057  10=-0.0008  25=0.0066  50=0.0149  75=0.0230  90=0.0302  95=0.0349  97.5=0.0387  99=0.0435
+      observed gradient on this subset: 0.0150
+      share primary sign holds           : 0.8855
+      share ordering Small>Mid>Large     : 0.3920
+      >>> PRE-DECLARED CRITERION MET: NO (88.5% vs required 90%)
+ k=4  (filings with at least 4 surviving windows)
+      filings used 48, dropped 11 ['AAPL|10-K|2025-10-31', 'AAPL|10-Q|2026-07-31', 'CLIR|10-K|2026-03-31', 'CLIR|10-Q|2026-08-14', 'IIIN|10-K|2025-10-23', 'IIIN|10-Q|2026-07-16', 'JPM|10-Q|2026-08-06', 'LWAY|10-Q|2026-08-13', 'OFLX|10-Q|2026-08-13', 'UFPT|10-K|2026-02-27', 'UFPT|10-Q|2026-08-06']
+      firms used 26, dropped 4 ['AAPL', 'CLIR', 'IIIN', 'UFPT'], tier firm counts {'large': 9, 'mid': 10, 'small': 7}
+      filings whose k-draw is deterministic (n == k): 9
+      gradient: mean 0.0066  sd 0.0080  median 0.0064  min -0.0177  max 0.0357
+      percentiles: 1=-0.0116  2.5=-0.0091  5=-0.0065  10=-0.0036  25=0.0011  50=0.0064  75=0.0120  90=0.0171  95=0.0200  97.5=0.0220  99=0.0247
+      observed gradient on this subset: 0.0065
+      share primary sign holds           : 0.7890
+      share ordering Small>Mid>Large     : 0.0890
+      criterion not applicable: the pre-declared >= 90% criterion is defined on k = 2 only; this row is reported for information
+ W3 CRITERION MET (k=2): NO   share = 0.8855
+
+------------------------------------------------------------------------------
+W4  POSITION CONTROL  [criterion: directional agreement with the primary]
+------------------------------------------------------------------------------
+ first_2_windows: windows with chunk_index < 2 in every filing
+      windows 118, filings 59 (dropped 0), firms 30 (dropped 0)
+      tier means: large: 0.3293 (sd 0.0595, n 10)  mid: 0.3441 (sd 0.0399, n 10)  small: 0.3498 (sd 0.0370, n 10)
+      gradient 0.0204  monotone yes  sign agrees with primary: yes
+ excluding_first_window: all windows except each section's first (chunk_index >= 1)
+      windows 303, filings 59 (dropped 0), firms 30 (dropped 0)
+      filings reduced to a single window: 2; one-window sections contributing zero: 0
+      a 2-window filing contributes 1 window here; a 1-window section contributes 0 and the filing drops out entirely
+      tier means: large: 0.3184 (sd 0.0326, n 10)  mid: 0.3300 (sd 0.0313, n 10)  small: 0.3291 (sd 0.0293, n 10)
+      gradient 0.0107  monotone no  sign agrees with primary: yes
+ position_decile = chunk_index / max(1, n_in_section - 1)  (exposed by analysis.window_battery.position_decile_frame)
+      large  mean 0.500  median 0.500  n 146
+      mid    mean 0.497  median 0.500  n 134
+      small  mean 0.500  median 0.500  n 82
+      share of windows that are section-opening, by tier: large=0.137  mid=0.149  small=0.232
+      Spearman(position_decile, embedding_disagreement) rho = -0.093, p = 0.0766, n = 362
+ W4 CRITERION MET: yes
+
+------------------------------------------------------------------------------
+W6  NULL SIMULATION  [no pass/fail - quantifies the advisor's concern]
+------------------------------------------------------------------------------
+ HELD FIXED:
+   - each filing's real surviving-window count
+   - the filing -> firm -> tier structure and tier sizes
+   - the pooled empirical distribution of window-level disagreement
+   - the pre-registered window -> filing -> firm -> tier aggregation
+ RANDOMISED:
+   - which pooled value lands in which window (i.i.d., with replacement)
+   - and therefore all tier, firm and filing signal in the measure
+ pooled window distribution: n 362  mean 0.3291  sd 0.0734  min 0.1525  max 0.6848
+ window counts held fixed: n_filings 59  mean 6.14  median 5.0  min 2  max 25
+ null gradient: mean -0.0000  sd 0.0110  min -0.0459  max 0.0415
+   percentiles: 1=-0.0258  2.5=-0.0215  5=-0.0182  25=-0.0074  50=0.0001  75=0.0073  95=0.0184  97.5=0.0218  99=0.0260
+   95th percentile of |null gradient| = 0.0218
+   the 95th percentile of the null gradient is the largest Small-minus-Large difference that unequal window counts alone manufacture 5% of the time
+ null share ordering Small>Mid>Large = 0.1845
+ OBSERVED gradient 0.0150 [this module's own window set] sits at the 91.39th percentile of this null
+ one-sided p = 0.0862   [(1 + #{null >= observed}) / (1 + n_iterations), one-sided]
+
+------------------------------------------------------------------------------
+W7  WINDOW-SIZE CHECK  [criterion: directional agreement with the primary]
+------------------------------------------------------------------------------
+ (i) only windows of exactly 1200 words (tail-merged windows excluded)
+      windows kept 303, dropped 59; filings 59 (dropped 0), firms 30 (dropped 0)
+      filings now below the MIN_USABLE_CHUNKS=2 gate: 2 ['AAPL|10-K|2025-10-31', 'OFLX|10-Q|2026-08-13']
+      MIN_USABLE_CHUNKS = 2. These filings are RETAINED in the W7(i) recomputation and reported, so the sensitivity check is not quietly narrowed; the pre-registered gate governs the primary pipeline, and W7(i) is a sensitivity analysis of it.
+      tier means: large: 0.3267 (sd 0.0413, n 10)  mid: 0.3333 (sd 0.0343, n 10)  small: 0.3368 (sd 0.0274, n 10)
+      gradient 0.0101  sign agrees: yes
+      gradient if the 2-window gate IS applied: 0.0073 (57 filings, 30 firms), sign agrees: yes
+ (ii) embedding_disagreement_window ~ 1 + tier_mid + tier_small + log(word_count); reference tier = large; unit = window
+      n = 362, df_resid = 358, R2 = 0.0093, firm clusters = 30
+      intercept        coef    0.1327  se   0.1428  p   0.3531  95% CI [-0.1480, 0.4135]  excl 0: no
+                       firm-clustered se 0.0874  95% CI [-0.0391, 0.3046]  excl 0: no
+      tier_mid         coef    0.0103  se   0.0088  p   0.2433  95% CI [-0.0070, 0.0275]  excl 0: no
+                       firm-clustered se 0.0137  95% CI [-0.0167, 0.0372]  excl 0: no
+      tier_small       coef    0.0098  se   0.0101  p   0.3357  95% CI [-0.0102, 0.0297]  excl 0: no
+                       firm-clustered se 0.0103  95% CI [-0.0104, 0.0299]  excl 0: no
+      log_word_count   coef    0.0270  se   0.0202  p   0.1827  95% CI [-0.0128, 0.0668]  excl 0: no
+                       firm-clustered se 0.0124  95% CI [0.0027, 0.0513]  excl 0: yes
+      classical SEs are the pre-registered 'simple OLS'; firm-clustered SEs are reported beside them because windows are nested in filings in firms and classical SEs understate uncertainty
+      tier_small coefficient sign agrees with primary: yes
+ W7 CRITERION MET: yes
+
+==============================================================================
+GATE (ANALYSIS_PLAN.md section 5)
+==============================================================================
+ ANALYSIS_PLAN.md s5: the tier result is reported as SUPPORTED only if it passes W3 and W5 and is not contradicted in an overlapping W2 bin
+   W3 passed                        : no
+   W2 not contradicted              : yes
+   W5                               : not evaluated here - separate module
+   W4 directional agreement         : yes
+   W7 directional agreement         : yes
+   battery half of the gate passed  : no
+   NOT ROBUST TO WINDOW COUNT on the battery's own tests - ANALYSIS_PLAN.md s7 clause 2 applies
+==============================================================================

@@ -1,0 +1,199 @@
+{
+ "seed": 20261004,
+ "section": "mda",
+ "n_windows_in_file": 667,
+ "embedding_disagreement": {
+  "split_half": {
+   "section": "mda",
+   "measure": "embedding_disagreement",
+   "seed": 20261004,
+   "n_filings_used": 48,
+   "n_filings_dropped": 11,
+   "filings_dropped": [
+    {
+     "filing": "AAPL_10-K_2025-10-31",
+     "n_windows": 2,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "AAPL_10-Q_2026-07-31",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "CLIR_10-K_2026-03-31",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "CLIR_10-Q_2026-08-14",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "IIIN_10-K_2025-10-23",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "IIIN_10-Q_2026-07-16",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "JPM_10-Q_2026-08-06",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "LWAY_10-Q_2026-08-13",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "OFLX_10-Q_2026-08-13",
+     "n_windows": 2,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "UFPT_10-K_2026-02-27",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "UFPT_10-Q_2026-08-06",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    }
+   ],
+   "gate": "a filing needs >= 4 surviving windows, and each half >= 2",
+   "pearson_half_half": 0.13578950063110273,
+   "pearson_p": 0.3574416999253627,
+   "spearman_half_half": 0.03115501519756839,
+   "spearman_p": 0.8335041445733601,
+   "spearman_brown_from_pearson": 0.2391103290806107,
+   "spearman_brown_from_spearman": 0.0604274134119381,
+   "interpretation": "Spearman-Brown estimates the reliability of the FULL-length filing mean from the correlation between two half-length means. It assumes the halves are equivalent and equally long; window counts here are odd/even splits of an often-odd total, so the halves can differ by one window.",
+   "mean_half_difference": 0.010280703573867128,
+   "mean_half_difference_ci": [
+    -0.006691270262968758,
+    0.026668150578453034
+   ],
+   "halves_unbiased": true
+  },
+  "test_retest": {
+   "section": "mda",
+   "measure": "embedding_disagreement",
+   "seed": 20261004,
+   "n_firms_with_both": 29,
+   "n_firms_with_one": 1,
+   "firms_with_one": [
+    "HAYN"
+   ],
+   "pearson_10K_10Q": 0.2760283912399705,
+   "pearson_p": 0.1472242418869806,
+   "spearman_10K_10Q": 0.23694581280788174,
+   "spearman_p": 0.21587151798750362,
+   "mean_10K": 0.32574656988287704,
+   "mean_10Q": 0.3358848844000163,
+   "caveat": "A 10-K and a 10-Q are different documents of very different length, so this is an attenuated lower bound on firm-level stability, not a pure reliability coefficient. Split-half is the cleaner measurement-reliability estimate."
+  }
+ },
+ "numeric_disagreement": {
+  "split_half": {
+   "section": "mda",
+   "measure": "numeric_disagreement",
+   "seed": 20261004,
+   "n_filings_used": 48,
+   "n_filings_dropped": 11,
+   "filings_dropped": [
+    {
+     "filing": "AAPL_10-K_2025-10-31",
+     "n_windows": 2,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "AAPL_10-Q_2026-07-31",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "CLIR_10-K_2026-03-31",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "CLIR_10-Q_2026-08-14",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "IIIN_10-K_2025-10-23",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "IIIN_10-Q_2026-07-16",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "JPM_10-Q_2026-08-06",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "LWAY_10-Q_2026-08-13",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "OFLX_10-Q_2026-08-13",
+     "n_windows": 2,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "UFPT_10-K_2026-02-27",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    },
+    {
+     "filing": "UFPT_10-Q_2026-08-06",
+     "n_windows": 3,
+     "reason": "fewer than 4 surviving windows"
+    }
+   ],
+   "gate": "a filing needs >= 4 surviving windows, and each half >= 2",
+   "pearson_half_half": 0.35119200453778554,
+   "pearson_p": 0.014384702724371042,
+   "spearman_half_half": 0.2978804245675937,
+   "spearman_p": 0.03975214492264551,
+   "spearman_brown_from_pearson": 0.5198254627889409,
+   "spearman_brown_from_spearman": 0.45902599180789183,
+   "interpretation": "Spearman-Brown estimates the reliability of the FULL-length filing mean from the correlation between two half-length means. It assumes the halves are equivalent and equally long; window counts here are odd/even splits of an often-odd total, so the halves can differ by one window.",
+   "mean_half_difference": 0.016330157515099555,
+   "mean_half_difference_ci": [
+    -0.05080926869118819,
+    0.08523283854645135
+   ],
+   "halves_unbiased": true
+  },
+  "test_retest": {
+   "section": "mda",
+   "measure": "numeric_disagreement",
+   "seed": 20261004,
+   "n_firms_with_both": 29,
+   "n_firms_with_one": 1,
+   "firms_with_one": [
+    "HAYN"
+   ],
+   "pearson_10K_10Q": 0.32247998570864167,
+   "pearson_p": 0.08798186525573247,
+   "spearman_10K_10Q": 0.29162561576354673,
+   "spearman_p": 0.12479441145903974,
+   "mean_10K": 0.5579951741939545,
+   "mean_10Q": 0.6073142701721359,
+   "caveat": "A 10-K and a 10-Q are different documents of very different length, so this is an attenuated lower bound on firm-level stability, not a pure reliability coefficient. Split-half is the cleaner measurement-reliability estimate."
+  }
+ }
+}

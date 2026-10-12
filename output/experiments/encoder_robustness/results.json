@@ -1,0 +1,544 @@
+{
+ "section": "mda",
+ "seed": 20261004,
+ "primary_encoder": "sentence-transformers/all-MiniLM-L6-v2",
+ "max_length": 256,
+ "n_windows": 667,
+ "note": "Re-encodes persisted persona reasoning. No model/API calls.",
+ "arms": {
+  "sentence-transformers/all-MiniLM-L6-v2": {
+   "tier_means": {
+    "large": 0.3201722981390499,
+    "mid": 0.3355477885904795,
+    "small": 0.3351718931550544
+   },
+   "monotone_small_gt_mid_gt_large": false,
+   "jt_statistic": 169.0,
+   "jt_z": 0.7224456455979048,
+   "jt_p_one_sided": 0.23501026593314445,
+   "n_firms": 30,
+   "firm_means": [
+    {
+     "ticker": "AAPL",
+     "tier": "large",
+     "firm_mean": 0.25881030658880866
+    },
+    {
+     "ticker": "AMZN",
+     "tier": "large",
+     "firm_mean": 0.3337272809611427
+    },
+    {
+     "ticker": "BAC",
+     "tier": "large",
+     "firm_mean": 0.333813331524531
+    },
+    {
+     "ticker": "GOOGL",
+     "tier": "large",
+     "firm_mean": 0.3090576941058749
+    },
+    {
+     "ticker": "HD",
+     "tier": "large",
+     "firm_mean": 0.32253534595171607
+    },
+    {
+     "ticker": "JPM",
+     "tier": "large",
+     "firm_mean": 0.350874699652195
+    },
+    {
+     "ticker": "MSFT",
+     "tier": "large",
+     "firm_mean": 0.2626874057783021
+    },
+    {
+     "ticker": "PG",
+     "tier": "large",
+     "firm_mean": 0.3518553538454903
+    },
+    {
+     "ticker": "WMT",
+     "tier": "large",
+     "firm_mean": 0.328404209443501
+    },
+    {
+     "ticker": "XOM",
+     "tier": "large",
+     "firm_mean": 0.34995735353893703
+    },
+    {
+     "ticker": "CATY",
+     "tier": "mid",
+     "firm_mean": 0.2973361371292008
+    },
+    {
+     "ticker": "CLFD",
+     "tier": "mid",
+     "firm_mean": 0.33746107816696164
+    },
+    {
+     "ticker": "DRI",
+     "tier": "mid",
+     "firm_mean": 0.30808550152513714
+    },
+    {
+     "ticker": "HAS",
+     "tier": "mid",
+     "firm_mean": 0.2846784038203103
+    },
+    {
+     "ticker": "IBP",
+     "tier": "mid",
+     "firm_mean": 0.32735862831274665
+    },
+    {
+     "ticker": "KFRC",
+     "tier": "mid",
+     "firm_mean": 0.3415617123246193
+    },
+    {
+     "ticker": "PLAB",
+     "tier": "mid",
+     "firm_mean": 0.38079142024119694
+    },
+    {
+     "ticker": "TOL",
+     "tier": "mid",
+     "firm_mean": 0.36601605298944595
+    },
+    {
+     "ticker": "WTS",
+     "tier": "mid",
+     "firm_mean": 0.3532147876642368
+    },
+    {
+     "ticker": "WYNN",
+     "tier": "mid",
+     "firm_mean": 0.35897416373093916
+    },
+    {
+     "ticker": "CLIR",
+     "tier": "small",
+     "firm_mean": 0.3593909343083699
+    },
+    {
+     "ticker": "HAYN",
+     "tier": "small",
+     "firm_mean": 0.3152637117438846
+    },
+    {
+     "ticker": "IIIN",
+     "tier": "small",
+     "firm_mean": 0.36319072710143196
+    },
+    {
+     "ticker": "LWAY",
+     "tier": "small",
+     "firm_mean": 0.3359811628858248
+    },
+    {
+     "ticker": "MLAB",
+     "tier": "small",
+     "firm_mean": 0.3185290351510048
+    },
+    {
+     "ticker": "NGVC",
+     "tier": "small",
+     "firm_mean": 0.3285024317484053
+    },
+    {
+     "ticker": "OFLX",
+     "tier": "small",
+     "firm_mean": 0.372900682191054
+    },
+    {
+     "ticker": "RELL",
+     "tier": "small",
+     "firm_mean": 0.31862961302200954
+    },
+    {
+     "ticker": "UFPT",
+     "tier": "small",
+     "firm_mean": 0.3217937648296356
+    },
+    {
+     "ticker": "UTMD",
+     "tier": "small",
+     "firm_mean": 0.3175368685689237
+    }
+   ],
+   "_group_sizes": [
+    10,
+    10,
+    10
+   ]
+  },
+  "sentence-transformers/all-mpnet-base-v2": {
+   "tier_means": {
+    "large": 0.23216840075024256,
+    "mid": 0.24389992390429968,
+    "small": 0.24925098889936356
+   },
+   "monotone_small_gt_mid_gt_large": true,
+   "jt_statistic": 174.0,
+   "jt_z": 0.9125629207552481,
+   "jt_p_one_sided": 0.18073623154541285,
+   "n_firms": 30,
+   "firm_means": [
+    {
+     "ticker": "AAPL",
+     "tier": "large",
+     "firm_mean": 0.1664407620850164
+    },
+    {
+     "ticker": "AMZN",
+     "tier": "large",
+     "firm_mean": 0.24240813098759523
+    },
+    {
+     "ticker": "BAC",
+     "tier": "large",
+     "firm_mean": 0.25152353960247376
+    },
+    {
+     "ticker": "GOOGL",
+     "tier": "large",
+     "firm_mean": 0.2324161263742214
+    },
+    {
+     "ticker": "HD",
+     "tier": "large",
+     "firm_mean": 0.22314618397158442
+    },
+    {
+     "ticker": "JPM",
+     "tier": "large",
+     "firm_mean": 0.2585015039554247
+    },
+    {
+     "ticker": "MSFT",
+     "tier": "large",
+     "firm_mean": 0.19537407484767522
+    },
+    {
+     "ticker": "PG",
+     "tier": "large",
+     "firm_mean": 0.26537276675486443
+    },
+    {
+     "ticker": "WMT",
+     "tier": "large",
+     "firm_mean": 0.23588815916666533
+    },
+    {
+     "ticker": "XOM",
+     "tier": "large",
+     "firm_mean": 0.250612759756905
+    },
+    {
+     "ticker": "CATY",
+     "tier": "mid",
+     "firm_mean": 0.22608205474963558
+    },
+    {
+     "ticker": "CLFD",
+     "tier": "mid",
+     "firm_mean": 0.24801466474821854
+    },
+    {
+     "ticker": "DRI",
+     "tier": "mid",
+     "firm_mean": 0.2167162934088866
+    },
+    {
+     "ticker": "HAS",
+     "tier": "mid",
+     "firm_mean": 0.20713898076901452
+    },
+    {
+     "ticker": "IBP",
+     "tier": "mid",
+     "firm_mean": 0.20021922584424406
+    },
+    {
+     "ticker": "KFRC",
+     "tier": "mid",
+     "firm_mean": 0.27338686279056107
+    },
+    {
+     "ticker": "PLAB",
+     "tier": "mid",
+     "firm_mean": 0.2970361143415215
+    },
+    {
+     "ticker": "TOL",
+     "tier": "mid",
+     "firm_mean": 0.280399176996179
+    },
+    {
+     "ticker": "WTS",
+     "tier": "mid",
+     "firm_mean": 0.23706565915568872
+    },
+    {
+     "ticker": "WYNN",
+     "tier": "mid",
+     "firm_mean": 0.2529402062390472
+    },
+    {
+     "ticker": "CLIR",
+     "tier": "small",
+     "firm_mean": 0.28530489648353763
+    },
+    {
+     "ticker": "HAYN",
+     "tier": "small",
+     "firm_mean": 0.22562922388477735
+    },
+    {
+     "ticker": "IIIN",
+     "tier": "small",
+     "firm_mean": 0.27231107992750325
+    },
+    {
+     "ticker": "LWAY",
+     "tier": "small",
+     "firm_mean": 0.2726468229193869
+    },
+    {
+     "ticker": "MLAB",
+     "tier": "small",
+     "firm_mean": 0.2315100536042533
+    },
+    {
+     "ticker": "NGVC",
+     "tier": "small",
+     "firm_mean": 0.21634194757895203
+    },
+    {
+     "ticker": "OFLX",
+     "tier": "small",
+     "firm_mean": 0.2698217673479097
+    },
+    {
+     "ticker": "RELL",
+     "tier": "small",
+     "firm_mean": 0.23462188365594244
+    },
+    {
+     "ticker": "UFPT",
+     "tier": "small",
+     "firm_mean": 0.2405911026712123
+    },
+    {
+     "ticker": "UTMD",
+     "tier": "small",
+     "firm_mean": 0.24373111092016098
+    }
+   ],
+   "_group_sizes": [
+    10,
+    10,
+    10
+   ],
+   "window_rank_corr_with_primary": {
+    "spearman_rho": 0.7553006842461876,
+    "p": 1.3506158010281871e-123,
+    "n_windows": 664
+   }
+  },
+  "BAAI/bge-small-en-v1.5": {
+   "tier_means": {
+    "large": 0.2060433943223603,
+    "mid": 0.21831974685630512,
+    "small": 0.2124296239633204
+   },
+   "monotone_small_gt_mid_gt_large": false,
+   "jt_statistic": 158.0,
+   "jt_z": 0.3041876402517494,
+   "jt_p_one_sided": 0.38049247030847017,
+   "n_firms": 30,
+   "firm_means": [
+    {
+     "ticker": "AAPL",
+     "tier": "large",
+     "firm_mean": 0.16341115737767895
+    },
+    {
+     "ticker": "AMZN",
+     "tier": "large",
+     "firm_mean": 0.2167645796774136
+    },
+    {
+     "ticker": "BAC",
+     "tier": "large",
+     "firm_mean": 0.2170272902690247
+    },
+    {
+     "ticker": "GOOGL",
+     "tier": "large",
+     "firm_mean": 0.2106756074307158
+    },
+    {
+     "ticker": "HD",
+     "tier": "large",
+     "firm_mean": 0.22817991375852192
+    },
+    {
+     "ticker": "JPM",
+     "tier": "large",
+     "firm_mean": 0.18811858301303955
+    },
+    {
+     "ticker": "MSFT",
+     "tier": "large",
+     "firm_mean": 0.18281425378170507
+    },
+    {
+     "ticker": "PG",
+     "tier": "large",
+     "firm_mean": 0.2296791684513143
+    },
+    {
+     "ticker": "WMT",
+     "tier": "large",
+     "firm_mean": 0.20163429127307497
+    },
+    {
+     "ticker": "XOM",
+     "tier": "large",
+     "firm_mean": 0.22212909819111415
+    },
+    {
+     "ticker": "CATY",
+     "tier": "mid",
+     "firm_mean": 0.2030110806964974
+    },
+    {
+     "ticker": "CLFD",
+     "tier": "mid",
+     "firm_mean": 0.22933935767414962
+    },
+    {
+     "ticker": "DRI",
+     "tier": "mid",
+     "firm_mean": 0.21297346235195347
+    },
+    {
+     "ticker": "HAS",
+     "tier": "mid",
+     "firm_mean": 0.1961282815375664
+    },
+    {
+     "ticker": "IBP",
+     "tier": "mid",
+     "firm_mean": 0.2010352772114521
+    },
+    {
+     "ticker": "KFRC",
+     "tier": "mid",
+     "firm_mean": 0.22519770091932736
+    },
+    {
+     "ticker": "PLAB",
+     "tier": "mid",
+     "firm_mean": 0.22731193967350954
+    },
+    {
+     "ticker": "TOL",
+     "tier": "mid",
+     "firm_mean": 0.23622830276726595
+    },
+    {
+     "ticker": "WTS",
+     "tier": "mid",
+     "firm_mean": 0.21835532185522105
+    },
+    {
+     "ticker": "WYNN",
+     "tier": "mid",
+     "firm_mean": 0.23361674387610865
+    },
+    {
+     "ticker": "CLIR",
+     "tier": "small",
+     "firm_mean": 0.22199160960177367
+    },
+    {
+     "ticker": "HAYN",
+     "tier": "small",
+     "firm_mean": 0.19278229246205258
+    },
+    {
+     "ticker": "IIIN",
+     "tier": "small",
+     "firm_mean": 0.23901142309585083
+    },
+    {
+     "ticker": "LWAY",
+     "tier": "small",
+     "firm_mean": 0.20673583793152916
+    },
+    {
+     "ticker": "MLAB",
+     "tier": "small",
+     "firm_mean": 0.20118613170098984
+    },
+    {
+     "ticker": "NGVC",
+     "tier": "small",
+     "firm_mean": 0.2035221814101988
+    },
+    {
+     "ticker": "OFLX",
+     "tier": "small",
+     "firm_mean": 0.24817606784817456
+    },
+    {
+     "ticker": "RELL",
+     "tier": "small",
+     "firm_mean": 0.1940018349908424
+    },
+    {
+     "ticker": "UFPT",
+     "tier": "small",
+     "firm_mean": 0.20880829773917958
+    },
+    {
+     "ticker": "UTMD",
+     "tier": "small",
+     "firm_mean": 0.20808056285261267
+    }
+   ],
+   "_group_sizes": [
+    10,
+    10,
+    10
+   ],
+   "window_rank_corr_with_primary": {
+    "spearman_rho": 0.7126128301181456,
+    "p": 5.392076758702958e-104,
+    "n_windows": 664
+   }
+  }
+ },
+ "firm_level_rank_correlations": {
+  "sentence-transformers/all-MiniLM-L6-v2 vs sentence-transformers/all-mpnet-base-v2": {
+   "spearman_rho": 0.8527252502780869,
+   "p": 2.195545642869936e-09,
+   "n_firms": 30
+  },
+  "sentence-transformers/all-MiniLM-L6-v2 vs BAAI/bge-small-en-v1.5": {
+   "spearman_rho": 0.7543937708565073,
+   "p": 1.4710757990281695e-06,
+   "n_firms": 30
+  },
+  "sentence-transformers/all-mpnet-base-v2 vs BAAI/bge-small-en-v1.5": {
+   "spearman_rho": 0.6760845383759733,
+   "p": 4.1193695031548065e-05,
+   "n_firms": 30
+  }
+ }
+}

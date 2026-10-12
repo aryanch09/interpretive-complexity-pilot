@@ -1,0 +1,51 @@
+R1 — Reliability of the disagreement measure
+==============================================================================
+
+Window-level input: chunk_level_results.csv (667 rows)
+Section analysed  : mda   (the pre-registered primary section)
+Seed              : 20261004
+
+EMBEDDING (primary) — embedding_disagreement
+------------------------------------------------------------------------------
+  Split-half (odd vs even windows within a filing), n = 48 filings
+    Pearson  r = +0.136 (p = 0.3574)
+    Spearman r = +0.031 (p = 0.8335)
+    Spearman-Brown corrected reliability of the full filing mean = +0.239
+    Mean odd-even difference = +0.0103 [-0.0067, +0.0267] — halves unbiased
+    11 filing(s) dropped (too few windows to split)
+
+  Test-retest (10-K vs 10-Q, same firm), n = 29 firms
+    Pearson  r = +0.276 (p = 0.1472)
+    Spearman r = +0.237 (p = 0.2159)
+    Mean 10-K = 0.3257, mean 10-Q = 0.3359
+    Firms contributing one form only: HAYN
+
+NUMERIC (secondary) — numeric_disagreement
+------------------------------------------------------------------------------
+  Split-half (odd vs even windows within a filing), n = 48 filings
+    Pearson  r = +0.351 (p = 0.0144)
+    Spearman r = +0.298 (p = 0.0398)
+    Spearman-Brown corrected reliability of the full filing mean = +0.520
+    Mean odd-even difference = +0.0163 [-0.0508, +0.0852] — halves unbiased
+    11 filing(s) dropped (too few windows to split)
+
+  Test-retest (10-K vs 10-Q, same firm), n = 29 firms
+    Pearson  r = +0.322 (p = 0.0880)
+    Spearman r = +0.292 (p = 0.1248)
+    Mean 10-K = 0.5580, mean 10-Q = 0.6073
+    Firms contributing one form only: HAYN
+
+How to read these numbers
+------------------------------------------------------------------------------
+  Split-half is the measurement-reliability estimate: it asks whether two
+  disjoint halves of the SAME filing agree. Test-retest asks a different
+  and harder question — whether disagreement is a stable property of the
+  FIRM across two different documents — so it is attenuated by genuine
+  cross-document variation and is a lower bound, not a reliability
+  coefficient. A high split-half with a low test-retest would mean the
+  measure is reliable but document-specific, which is itself a finding and
+  would need saying plainly rather than hiding.
+
+  Labelled EXPLORATORY in ANALYSIS_PLAN.md section 6: not part of the
+  confirmatory family, and cannot convert a failed confirmatory test into a
+  supported one.

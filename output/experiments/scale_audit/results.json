@@ -1,0 +1,85 @@
+{
+ "seed": 20261004,
+ "n_attempted_measured": 800,
+ "n_unavailable": 0,
+ "n_usable": 785,
+ "extraction_success_rate": 0.98125,
+ "float_range_usd": [
+  49.17,
+  4135959950000.0
+ ],
+ "elasticity_log_narrative_on_log_float": 0.05266200358373747,
+ "spearman_float_vs_narrative": {
+  "rho": 0.16122298273624408,
+  "p": 5.6346870156236064e-06,
+  "n": 785
+ },
+ "budgets": {
+  "512 tokens": {
+   "budget_words": 384,
+   "median_overall": 0.018290940268648186,
+   "median_bottom_decile": 0.025683048297752614,
+   "median_top_decile": 0.017834763918030565,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.15407491509729004,
+    "p": 1.4517497416122294e-05
+   },
+   "share_truncated": 1.0
+  },
+  "2,000 words": {
+   "budget_words": 2000,
+   "median_overall": 0.0952653138992093,
+   "median_bottom_decile": 0.13376587655079486,
+   "median_top_decile": 0.0928893954064092,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.15406716490171835,
+    "p": 1.4532075091649962e-05
+   },
+   "share_truncated": 0.9910828025477707
+  },
+  "4k tokens": {
+   "budget_words": 3072,
+   "median_overall": 0.14632752214918548,
+   "median_bottom_decile": 0.2054643863820209,
+   "median_top_decile": 0.14267811134424452,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.15389841167489024,
+    "p": 1.485296620547484e-05
+   },
+   "share_truncated": 0.9770700636942675
+  },
+  "8k tokens": {
+   "budget_words": 6144,
+   "median_overall": 0.29265504429837097,
+   "median_bottom_decile": 0.4109287727640418,
+   "median_top_decile": 0.28535622268848904,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.1532530127108821,
+    "p": 1.6143534646416448e-05
+   },
+   "share_truncated": 0.9375796178343949
+  },
+  "32k tokens": {
+   "budget_words": 24576,
+   "median_overall": 1.0,
+   "median_bottom_decile": 1.0,
+   "median_top_decile": 1.0,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.06740936655314297,
+    "p": 0.05905231945216784
+   },
+   "share_truncated": 0.3974522292993631
+  },
+  "128k tokens": {
+   "budget_words": 98304,
+   "median_overall": 1.0,
+   "median_bottom_decile": 1.0,
+   "median_top_decile": 1.0,
+   "spearman_decile_vs_fraction_read": {
+    "rho": -0.04347994811139122,
+    "p": 0.22366168576086518
+   },
+   "share_truncated": 0.0012738853503184713
+  }
+ }
+}

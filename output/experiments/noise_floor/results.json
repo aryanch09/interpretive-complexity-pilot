@@ -1,0 +1,160 @@
+{
+ "seed": 20261004,
+ "n_windows": 27,
+ "by_tier": {
+  "large": {
+   "n": 11,
+   "inter_persona": {
+    "mean": 0.33114722136796915,
+    "ci": [
+     0.28270662803635577,
+     0.37777569076563466
+    ]
+   },
+   "intra_persona": {
+    "mean": 0.21455486982072866,
+    "ci": [
+     0.1898649590018273,
+     0.24533213909429807
+    ]
+   },
+   "persona_free_baseline": {
+    "mean": 0.21159992860667495,
+    "ci": [
+     0.16902215333377948,
+     0.253147995881624
+    ]
+   },
+   "ratio": {
+    "mean": 1.5560053707328516,
+    "ci": [
+     1.3755303318400713,
+     1.7150634111662368
+    ]
+   },
+   "lens_effect": {
+    "mean": 0.11954729276129421,
+    "ci": [
+     0.053050238178451406,
+     0.18623418928619725
+    ]
+   }
+  },
+  "mid": {
+   "n": 8,
+   "inter_persona": {
+    "mean": 0.38643272989768157,
+    "ci": [
+     0.3353003552172576,
+     0.448131570825568
+    ]
+   },
+   "intra_persona": {
+    "mean": 0.23394817840557458,
+    "ci": [
+     0.1941648720287977,
+     0.2843223876489228
+    ]
+   },
+   "persona_free_baseline": {
+    "mean": 0.21643369100697465,
+    "ci": [
+     0.18005675853527942,
+     0.25807460538039506
+    ]
+   },
+   "ratio": {
+    "mean": 1.7111275739992027,
+    "ci": [
+     1.4765713156895586,
+     1.9554811891700439
+    ]
+   },
+   "lens_effect": {
+    "mean": 0.1699990388907069,
+    "ci": [
+     0.12060665771102894,
+     0.23006692612193574
+    ]
+   }
+  },
+  "small": {
+   "n": 8,
+   "inter_persona": {
+    "mean": 0.32387275084266526,
+    "ci": [
+     0.27466343373918384,
+     0.3694575877527528
+    ]
+   },
+   "intra_persona": {
+    "mean": 0.1938422031087076,
+    "ci": [
+     0.16928462227800814,
+     0.21805354515782568
+    ]
+   },
+   "persona_free_baseline": {
+    "mean": 0.18745350962737606,
+    "ci": [
+     0.15492943268319723,
+     0.23044193602175683
+    ]
+   },
+   "ratio": {
+    "mean": 1.6724677212017127,
+    "ci": [
+     1.528623631952129,
+     1.8156750166172952
+    ]
+   },
+   "lens_effect": {
+    "mean": 0.1364192412152892,
+    "ci": [
+     0.0911200422959934,
+     0.185840601410655
+    ]
+   }
+  }
+ },
+ "inter_persona": {
+  "mean": 0.3453727141100162,
+  "ci": [
+   0.31570392823362525,
+   0.3768762395337049
+  ]
+ },
+ "intra_persona": {
+  "mean": 0.21416394889415824,
+  "ci": [
+   0.1955567108202525,
+   0.2352461800543875
+  ]
+ },
+ "persona_free_baseline": {
+  "mean": 0.20587765999067517,
+  "ci": [
+   0.18224045058549346,
+   0.22994893953201448
+  ]
+ },
+ "ratio_inter_over_intra": {
+  "mean": 1.6364748681358774,
+  "ci": [
+   1.5233273722627374,
+   1.7493147395715911
+  ]
+ },
+ "lens_effect_over_baseline": {
+  "mean": 0.13949505411934093,
+  "ci": [
+   0.10415330519351632,
+   0.1751874040998813
+  ]
+ },
+ "verdict": {
+  "inter_exceeds_intra": true,
+  "lens_effect_positive": true,
+  "reading": "The measure survives both checks only if inter-persona disagreement exceeds the intra-persona noise floor AND exceeds the persona-free baseline. Failing the second means three samples of one neutral prompt disagree about as much as three different lenses do, in which case the measure is sampling variation rather than analytical perspective, and the paper must say so."
+ }
+}

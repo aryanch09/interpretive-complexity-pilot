@@ -1,0 +1,24 @@
+E7 — Cross-model replication of the placebo result
+==========================================================================
+
+cross model : meta-llama/llama-3.3-70b-instruct
+served by   : ['Novita']
+windows     : 50
+
+Mean embedding disagreement (95% bootstrap CI)
+--------------------------------------------------------------------------
+  real           0.2797  [0.2582, 0.3019]
+  shuffled       0.2967  [0.2756, 0.3189]
+  boilerplate    0.3036  [0.2898, 0.3173]
+  (main model,   real text: 0.3261 [0.3057, 0.3479])
+
+  real - shuffled     -0.0170 [-0.0398, +0.0064]  NOT distinguishable
+  real - boilerplate  -0.0238 [-0.0467, -0.0002]  differs
+
+  ordering real < shuffled < boilerplate matches: True
+  boilerplate contrast clears zero on this arm : True
+
+  If it replicates on a second model family at the same precision, the
+  inversion is a property of the measure -- three prompted lenses reading
+  one text -- rather than a quirk of the model used for the main run.
+  Labelled robustness check; never merged into the main results.

@@ -1,0 +1,31 @@
+# Secrets
+.env
+
+# Raw filing corpus (large, re-fetchable from EDGAR)
+data/filings/
+
+# Caches
+__pycache__/
+*.pyc
+.cik_cache.json
+output/embedding_cache.json
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+
+# Third-party dictionary: free for academic use, redistribution not granted.
+# Fetch with scripts/fetch_lm_dictionary.sh
+data/dictionaries/
+
+# S2 at-scale filing cache (large, re-fetchable from EDGAR)
+data/scale_audit_filings/

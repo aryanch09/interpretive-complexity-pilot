@@ -1,0 +1,11 @@
+variant,k,n_filings_gate_eligible,n_filings_gate_failed,n_filings_with_at_least_k,n_filings_short_of_k,n_filings_dropped_by_strict,n_windows_in_budget,n_windows_dropped_failed,n_filings_failing_within_budget_gate,n_filings_contributing,n_filings_no_surviving_window,n_windows_used
+inclusive,1.0,59,0,59,0,0,59,0,59,59,0,59
+inclusive,2.0,59,0,59,0,0,118,0,0,59,0,118
+inclusive,4.0,59,0,48,11,0,223,0,0,59,0,223
+inclusive,8.0,59,0,15,44,0,328,1,0,59,0,327
+inclusive,,59,0,59,0,0,363,1,0,59,0,362
+strict,1.0,59,0,59,0,0,59,0,59,59,0,59
+strict,2.0,59,0,59,0,0,118,0,0,59,0,118
+strict,4.0,59,0,48,11,11,192,0,0,48,0,192
+strict,8.0,59,0,15,44,44,120,1,0,15,0,119
+strict,,59,0,59,0,0,363,1,0,59,0,362

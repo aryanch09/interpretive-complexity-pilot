@@ -1,0 +1,122 @@
+Extraction report — complete sections and scoring windows
+==============================================================================
+
+Filings in analysis sample: 59
+Firms: 30
+Window size: 1200 words, tail merged below 400
+
+TOTAL SCORING WINDOWS: 667
+PERSONA CALLS:         2,001
+  of which MD&A (the pre-registered primary section): 363 windows, 1,089 calls
+
+Per-filing table
+------------------------------------------------------------------------------
+ticker  tier   form  date        mda_w  risk_w  mda_win  risk_win  win_min  win_max
+AAPL    large  10-K  20251031    2,720   9,784        2         8     1200     1520
+AAPL    large  10-Q  20260731    3,340   2,794        3         2      940     1594
+AMZN    large  10-K  20260206    6,833   8,875        6         8      475     1200
+AMZN    large  10-Q  20260731    6,352   8,929        5         8      529     1552
+BAC     large  10-K  20260225   12,290  16,574       10        14      974     1490
+BAC     large  10-Q  20260731   30,340  14,484       25        12     1200     1540
+CATY    mid    10-K  20260302   13,995  13,945       12        12      745     1200
+CATY    mid    10-Q  20260807    8,713     153        7         0     1200     1513
+CLFD    mid    10-K  20251125    5,471   6,341        5         5      671     1541
+CLFD    mid    10-Q  20260806    4,843     334        4         0     1200     1243
+CLIR    small  10-K  20260331    3,977   9,282        3         8      882     1577
+CLIR    small  10-Q  20260814    3,244   1,051        3         1      844     1200
+DRI     mid    10-K  20260724    6,052   9,700        5         8     1200     1300
+DRI     mid    10-Q  20260327    6,463   5,226        6         5      426     1200
+GOOGL   large  10-K  20260205    7,603  12,587        7        11      403     1200
+GOOGL   large  10-Q  20260723    7,980   2,530        7         2      780     1330
+HAS     mid    10-K  20260225    8,575   9,686        7         8     1200     1375
+HAS     mid    10-Q  20260730    8,636     717        7         1      717     1436
+HAYN    small  10-Q  20240801    6,881   1,475        6         1      881     1475
+HD      large  10-K  20260318    4,802  10,746        4         9     1146     1202
+HD      large  10-Q  20260825    4,168   3,543        4         3      568     1200
+IBP     mid    10-K  20260226    9,477  13,966        8        12      766     1200
+IBP     mid    10-Q  20260806    6,187     319        5         0     1200     1387
+IIIN    small  10-K  20251023    3,041   3,415        3         3      641     1200
+IIIN    small  10-Q  20260716    3,774     154        3         0     1200     1374
+JPM     large  10-K  20260213    9,499  15,883        8        13     1099     1483
+JPM     large  10-Q  20260806    3,622  12,210        3        10     1200     1410
+KFRC    mid    10-K  20260220    5,920   5,238        5         5      438     1200
+KFRC    mid    10-Q  20260729    4,598     230        4         0      998     1200
+LWAY    small  10-K  20260317    4,814   7,318        4         6     1200     1318
+LWAY    small  10-Q  20260813    3,783   1,627        3         2      427     1383
+MLAB    small  10-K  20260603    5,613  10,183        5         9      583     1200
+MLAB    small  10-Q  20260810    4,288     202        4         0      688     1200
+MSFT    large  10-K  20260729    7,571   4,602        6         4     1002     1571
+MSFT    large  10-Q  20260429    8,829   7,068        8         6      429     1200
+NGVC    small  10-K  20251211    7,880  15,794        7        13      680     1394
+NGVC    small  10-Q  20260806    7,277   5,131        6         4     1200     1531
+OFLX    small  10-K  20260312    4,027   2,641        4         2      427     1441
+OFLX    small  10-Q  20260813    2,675     224        2         0     1200     1475
+PG      large  10-K  20260804   13,739   5,442       12         5      539     1200
+PG      large  10-Q  20260424   11,491     297       10         0      691     1200
+PLAB    mid    10-K  20251217    5,291   6,346        5         5      491     1546
+PLAB    mid    10-Q  20260611    4,501   4,384        4         4      784     1200
+RELL    small  10-K  20260803    5,209   6,315        5         5      409     1515
+RELL    small  10-Q  20260409    5,145     419        4         1      419     1545
+TOL     mid    10-K  20251219   12,591   7,810       11         7      591     1200
+TOL     mid    10-Q  20260529   10,408   5,996        9         5      808     1200
+UFPT    small  10-K  20260227    2,993   9,590        3         8      593     1200
+UFPT    small  10-Q  20260806    3,602   2,379        3         2     1179     1202
+UTMD    small  10-K  20260327    9,845   1,030        8         1     1030     1445
+UTMD    small  10-Q  20260812    6,951     334        6         0      951     1200
+WMT     large  10-K  20260313    7,992  13,566        7        11      792     1566
+WMT     large  10-Q  20260529    6,320     143        5         0     1200     1520
+WTS     mid    10-K  20260223   10,085   9,367        9         8      485     1200
+WTS     mid    10-Q  20260806    7,554   2,798        6         2     1200     1598
+WYNN    mid    10-K  20260302    9,766  11,472        8        10      672     1366
+WYNN    mid    10-Q  20260806    9,078   8,100        8         7      678     1200
+XOM     large  10-K  20260218   10,331   5,098        9         4      731     1498
+XOM     large  10-Q  20260803    5,708   4,799        5         4      908     1200
+
+Windows per filing, by tier
+------------------------------------------------------------------------------
+  large  n=20  all sections: median  13.0, range 5-37  |  MD&A only: median   6.5, range 2-25
+  mid    n=20  all sections: median  10.5, range 4-24  |  MD&A only: median   6.5, range 4-12
+  small  n=19  all sections: median   6.0, range 2-20  |  MD&A only: median   4.0, range 2-8
+
+  Window count scales with filing length and so with tier. This is the
+  artifact the advisor flagged: a mean over many windows is mechanically
+  less variable than a mean over two. The pre-registered window-count
+  battery (ANALYSIS_PLAN.md section 5) tests it before any gradient is read.
+
+Anomaly gate
+------------------------------------------------------------------------------
+  extraction_failed                        : 0  NONE
+  MD&A > 40,000 words (boundary failure): 0  NONE
+  MD&A < 1,000 words (extraction miss)   : 0  NONE
+  filings with 0 MD&A windows              : 0
+  MD&A word range                          : 2,675 - 30,340
+
+Filings with no Risk Factors windows — classified individually
+------------------------------------------------------------------------------
+  10 of 59 filings. 49 filings have Risk Factors windows.
+
+  CATY 10-Q (153 words) -> legitimate: incorporated by reference
+      "Item 1A. RISK FACTORS. The Company is not aware of any material change to the risk factors as previously disclosed in Part I, Item 1A, of the Company’s 2025 Form 10-K for the year ended December 31, 2"
+  CLFD 10-Q (334 words) -> legitimate: incorporated by reference (verified against the full filing text)
+      "Item 1A “ Risk Factors ” of this Quarterly Report on Form 10-Q, as well as other filings with the Securities and Exchange Commission. The Company undertakes no obligation to update these statements to"
+  IBP 10-Q (319 words) -> legitimate: incorporated by reference (verified against the full filing text)
+      "Item 1A. Risk Factors As of the date of this report, there have been no material changes from the risk factors disclosed in our 2025 Form 10-K. Item 2. Unregistered Sales of Equity Securities and Use "
+  IIIN 10-Q (154 words) -> legitimate: incorporated by reference
+      "Item 1A. Risk Factors During the quarter ended June 27, 2026, there have been no material changes from the risk factors set forth under Part II, Item 1A. “Risk Factors” in our Quarterly Report on Form"
+  KFRC 10-Q (230 words) -> legitimate: incorporated by reference
+      "RISK FACTORS. There have been no material changes in the risk factors previously disclosed in our 2025 Annual Report on Form 10-K. 24 Table of Contents ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES "
+  MLAB 10-Q (202 words) -> legitimate: incorporated by reference
+      "Item 1A. Risk Factors During the three months ended June 30, 2026, there were no material changes to the risk factors described in Part I, Item 1A. Risk Factors of our Annual Report on Form 10-K for t"
+  OFLX 10-Q (224 words) -> legitimate: incorporated by reference
+      "Risk Factors Risk factors are discussed in detail in the Company’s December 31, 2025 Form 10-K. Item 2 – Unregistered Sales of Equity Securities and Use of Proceeds None. Item 3 – Defaults Upon Senior"
+  PG 10-Q (297 words) -> legitimate: incorporated by reference
+      "Item 1A. Risk Factors For information on risk factors, please refer to "Risk Factors" in Part I, Item 1A of the Company's Form 10-K for the fiscal year ended June 30, 2025. The Procter & Gamble Compan"
+  UTMD 10-Q (334 words) -> legitimate: incorporated by reference
+      "Risk Factors In addition to the other information set forth in this report, investors should carefully consider the factors discussed in Part I, “Item 1A. Risk Factors” in UTMD’s Annual Report on Form"
+  WMT 10-Q (143 words) -> legitimate: incorporated by reference
+      "Item 1A. Risk Factors In addition to the other information set forth in this report, you should carefully consider the risk factors disclosed in Part I, Item 1A, under the caption "Risk Factors," of o"
+
+  All are 10-Q sections that incorporate the 10-K's risk factors by
+  reference — legitimately absent, not extraction failures. Under the
+  pre-registered missing-section rule the primary analysis is MD&A only,
+  so none of these filings is lost from the primary sample.

@@ -1,0 +1,30 @@
+Pre-registered secondary family (ANALYSIS_PLAN.md section 6)
+==============================================================================
+
+Two-sided, alpha = 0.05, Holm-corrected within this family of three.
+Specified before scoring; reported whatever it shows.
+
+S1_numeric  —  tier trend in numeric disagreement (MD&A, firm level)
+------------------------------------------------------------------------------
+  large 0.5978   mid 0.5981   small 0.5434   n = 30 firms
+  gradient (small - large) = -0.0544   non-monotone
+  two-sided p = 0.1190   Holm-adjusted p = 0.3570   reject at 0.05: False
+
+S2_risk_factors  —  tier trend in Risk Factors embedding disagreement, filings with Risk windows only
+------------------------------------------------------------------------------
+  large 0.3576   mid 0.3553   small 0.3462   n = 28 firms
+  filings contributing: 49
+  gradient (small - large) = -0.0114   decreasing (small lowest)
+  two-sided p = 0.8329   Holm-adjusted p = 1.0000   reject at 0.05: False
+
+S3_within_filing_sd  —  tier trend in within-filing SD of embedding disagreement
+------------------------------------------------------------------------------
+  large 0.0661   mid 0.0635   small 0.0616   n = 30 firms
+  gradient (small - large) = -0.0046   decreasing (small lowest)
+  two-sided p = 0.5945   Holm-adjusted p = 1.0000   reject at 0.05: False
+
+Any test rejected after correction: False
+
+  The family is two-sided by design. The numeric measure runs AGAINST the
+  hypothesis, and a one-sided test in the hypothesised direction would
+  bury that behind a p near 1 rather than report it.

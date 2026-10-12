@@ -1,0 +1,52 @@
+D1 — Discriminant validity
+==============================================================================
+
+Filings: 59   Section: mda   Measure: embedding_disagreement
+
+Dictionary note
+------------------------------------------------------------------------------
+  These use the real Loughran-McDonald Master Dictionary (2,345 negative words).
+  The list previously reported as 'lm_neg_pct' covers 11.0% of it and contains 32 words L-M does not classify as negative.
+  Both are reported below so the difference is visible.
+
+Correlations with candidate confounds (Spearman)
+------------------------------------------------------------------------------
+  embedding_disagreement
+    log_mda_words          rho = -0.148  p = 0.2626  n = 59
+    fog_index              rho = -0.007  p = 0.9555  n = 59
+    lm_negative            rho = -0.083  p = 0.5320  n = 59
+    lm_uncertainty         rho = -0.032  p = 0.8080  n = 59
+    lm_litigious           rho = +0.072  p = 0.5857  n = 59
+    type_token_ratio       rho = +0.212  p = 0.1065  n = 59
+    legacy_lm_neg_pct      rho = -0.176  p = 0.1836  n = 59
+
+  numeric_disagreement
+    log_mda_words          rho = +0.046  p = 0.7271  n = 59
+    fog_index              rho = +0.086  p = 0.5159  n = 59
+    lm_negative            rho = -0.218  p = 0.0966  n = 59
+    lm_uncertainty         rho = -0.021  p = 0.8754  n = 59
+    lm_litigious           rho = -0.062  p = 0.6405  n = 59
+    type_token_ratio       rho = -0.122  p = 0.3572  n = 59
+    legacy_lm_neg_pct      rho = -0.212  p = 0.1076  n = 59
+
+Does the tier relationship survive the controls?
+------------------------------------------------------------------------------
+  embedding_disagreement ~ C(tier) + log_mda_words + fog_index + lm_negative + lm_uncertainty + lm_litigious + type_token_ratio
+  n = 59 filings, 30 firm clusters, SEs clustered by firm, R^2 = 0.148
+  Reference tier: large
+
+    C(tier)[T.mid]               +0.01361 [-0.01757, +0.04480]  p = 0.3922
+    C(tier)[T.small]             +0.01111 [-0.02494, +0.04715]  p = 0.5459
+    log_mda_words                +0.04182 [-0.01091, +0.09455]  p = 0.1201
+    fog_index                    +0.00201 [-0.00558, +0.00959]  p = 0.6037
+    lm_negative                  -0.64032 [-2.97221, +1.69157]  p = 0.5904
+    lm_uncertainty               -1.18735 [-2.84841, +0.47370]  p = 0.1612
+    lm_litigious                 +0.46140 [-3.67553, +4.59834]  p = 0.8270
+    type_token_ratio             +0.60960 [-0.01719, +1.23638]  p = 0.0566
+
+  Tier term significant at 0.05 after controls: False
+
+  Descriptive, not confirmatory. If the tier term does not survive these
+  controls, that is reported as what it is: the measure covaries with
+  length, readability or tone strongly enough that size adds little
+  beyond them in this sample.

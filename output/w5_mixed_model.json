@@ -1,0 +1,442 @@
+{
+  "seed": 20261004,
+  "section": "mda",
+  "measure": "embedding_disagreement",
+  "direction": "positive",
+  "tier_reference": "large",
+  "form_reference": "10-K",
+  "position_term": "linear in decile 0-9",
+  "quality": {
+    "csv_path": "/Users/aryanch_09/Desktop/Projects/mizzou/interpretive-complexity-pilot/output/chunk_level_results.csv",
+    "section": "mda",
+    "measure": "embedding_disagreement",
+    "n_rows_file": 667,
+    "n_rows_section": 363,
+    "n_failed_dropped": 1,
+    "n_null_measure_dropped": 0,
+    "n_filings_dropped_gate": 0,
+    "filings_dropped_gate": [],
+    "n_windows_dropped_gate": 0,
+    "n_windows_used": 362,
+    "n_filings_used": 59,
+    "n_firms_used": 30,
+    "windows_by_tier": {
+      "large": 146,
+      "mid": 134,
+      "small": 82
+    },
+    "firms_by_tier": {
+      "large": 10,
+      "mid": 10,
+      "small": 10
+    },
+    "filings_by_tier": {
+      "large": 20,
+      "mid": 20,
+      "small": 19
+    },
+    "single_filing_firms": [
+      "HAYN"
+    ],
+    "n_in_section_mismatches": [],
+    "served_by_values": [
+      "DeepInfra",
+      "None"
+    ],
+    "n_parse_errors_kept": 0
+  },
+  "specs": {
+    "nested": {
+      "key": "nested",
+      "label": "(a) firm grouping + filing variance component nested in firm",
+      "engine": "statsmodels MixedLM (REML)",
+      "inference": "Wald z, normal-approximation CIs (MixedLM does not provide Satterthwaite/Kenward-Roger df)",
+      "converged": false,
+      "message": "DID NOT CONVERGE - coefficients and variance components from this specification are not trustworthy and W5 falls back to (b).",
+      "coefficients": {
+        "Intercept": {
+          "estimate": 0.1792789040769365,
+          "se": 0.1471772019870363,
+          "ci_low": -0.1091831111630315,
+          "ci_high": 0.46774091931690454,
+          "p": 0.22317989579443598
+        },
+        "tier_mid": {
+          "estimate": 0.01358567051658231,
+          "se": 0.015031279492113874,
+          "ci_low": -0.0158750959295164,
+          "ci_high": 0.04304643696268102,
+          "p": 0.3660873447558165
+        },
+        "tier_small": {
+          "estimate": 0.013630113567694977,
+          "se": 0.01593670813180671,
+          "ci_low": -0.01760526040277278,
+          "ci_high": 0.04486548753816273,
+          "p": 0.39240428930908555
+        },
+        "log_window_words": {
+          "estimate": 0.021091142971786547,
+          "se": 0.020579869843193595,
+          "ci_low": -0.01924466072739487,
+          "ci_high": 0.061426946670967965,
+          "p": 0.30543710316018036
+        },
+        "position_decile": {
+          "estimate": -0.00213078261797134,
+          "se": 0.0011674827937524777,
+          "ci_low": -0.004419006846296401,
+          "ci_high": 0.0001574416103537206,
+          "p": 0.06798467746201597
+        },
+        "form_10Q": {
+          "estimate": 0.005685125773931652,
+          "se": 0.012066206366741467,
+          "ci_low": -0.01796420413490952,
+          "ci_high": 0.029334455682772827,
+          "p": 0.6375257717881522
+        }
+      },
+      "variances": {
+        "firm": 0.00010834032101762086,
+        "filing_within_firm": 0.001278924925099745,
+        "residual_within_filing": 0.004615966909255955,
+        "total": 0.006003232155373321
+      },
+      "iccs": {
+        "icc_firm": 0.018046998385802645,
+        "icc_filing": 0.23108638983346072
+      },
+      "n_obs": 362,
+      "n_groups": 30,
+      "diagnostics": {
+        "loglike": 410.3318991409084,
+        "method": "REML",
+        "converged_flag": false,
+        "n_firms": 30,
+        "n_filings": 59,
+        "min_group_size": 5,
+        "max_group_size": 35,
+        "vc_names": [
+          "filing"
+        ]
+      },
+      "warnings": [
+        "Gradient optimization failed, |grad| = 25.570045",
+        "Maximum Likelihood optimization failed to converge. Check mle_retvals",
+        "MixedLM optimization failed, trying a different optimizer may help.",
+        "Retrying MixedLM optimization with cg",
+        "Retrying MixedLM optimization with lbfgs",
+        "The MLE may be on the boundary of the parameter space."
+      ],
+      "criterion_small_vs_large": null
+    },
+    "firm_only": {
+      "key": "firm_only",
+      "label": "(b) firm random intercept only",
+      "engine": "statsmodels MixedLM (REML)",
+      "inference": "Wald z, normal-approximation CIs",
+      "converged": true,
+      "message": "converged",
+      "coefficients": {
+        "Intercept": {
+          "estimate": 0.1843226785726183,
+          "se": 0.1476032382505674,
+          "ci_low": -0.10497435239997871,
+          "ci_high": 0.4736197095452153,
+          "p": 0.21174875660147496
+        },
+        "tier_mid": {
+          "estimate": 0.013831739877411249,
+          "se": 0.012740921694883733,
+          "ci_low": -0.011140007774405892,
+          "ci_high": 0.03880348752922839,
+          "p": 0.2776492157047835
+        },
+        "tier_small": {
+          "estimate": 0.014226218083542155,
+          "se": 0.01370511603218561,
+          "ci_low": -0.01263531574348413,
+          "ci_high": 0.04108775191056844,
+          "p": 0.2992596046576771
+        },
+        "log_window_words": {
+          "estimate": 0.02042271677451124,
+          "se": 0.020668665735158874,
+          "ci_low": -0.020087123674897234,
+          "ci_high": 0.060932557223919714,
+          "p": 0.3231034823983979
+        },
+        "position_decile": {
+          "estimate": -0.002136733016882846,
+          "se": 0.00120845898345198,
+          "ci_low": -0.004505269101242612,
+          "ci_high": 0.00023180306747691993,
+          "p": 0.07703634698416344
+        },
+        "form_10Q": {
+          "estimate": 0.0029204873037529384,
+          "se": 0.0075702972015146575,
+          "ci_low": -0.011917022563480149,
+          "ci_high": 0.017757997170986025,
+          "p": 0.6996578426574179
+        }
+      },
+      "variances": {
+        "firm": 0.0004176280781357023,
+        "filing_within_firm": null,
+        "residual_within_filing": 0.004982716989071699,
+        "total": 0.005400345067207402
+      },
+      "iccs": {
+        "icc_firm": 0.07733359126839351,
+        "icc_filing": null
+      },
+      "n_obs": 362,
+      "n_groups": 30,
+      "diagnostics": {
+        "loglike": 414.8626575957137,
+        "method": "REML",
+        "converged_flag": true,
+        "n_firms": 30
+      },
+      "warnings": [
+        "The MLE may be on the boundary of the parameter space."
+      ],
+      "criterion_small_vs_large": false
+    },
+    "ols_cluster": {
+      "key": "ols_cluster",
+      "label": "(c) OLS, SEs clustered by firm",
+      "engine": "statsmodels OLS",
+      "inference": "cluster-robust (CR1) by firm, t with 29 df (= n_firms - 1)",
+      "converged": true,
+      "message": "fitted (closed form; no iterative convergence to check)",
+      "coefficients": {
+        "Intercept": {
+          "estimate": 0.22112935340033352,
+          "se": 0.10360125732091238,
+          "ci_low": 0.00924099096538572,
+          "ci_high": 0.4330177158352813,
+          "p": 0.04138806679919881
+        },
+        "tier_mid": {
+          "estimate": 0.010431105112935811,
+          "se": 0.013636787764402403,
+          "ci_low": -0.01745925744629255,
+          "ci_high": 0.038321467672164176,
+          "p": 0.4504971615676347
+        },
+        "tier_small": {
+          "estimate": 0.009753758826020975,
+          "se": 0.010328186909089198,
+          "ci_low": -0.011369755189935202,
+          "ci_high": 0.030877272841977152,
+          "p": 0.35277644095752203
+        },
+        "log_window_words": {
+          "estimate": 0.015747381277105166,
+          "se": 0.01365787241667566,
+          "ci_low": -0.012186104237946523,
+          "ci_high": 0.04368086679215685,
+          "p": 0.2583300702233249
+        },
+        "position_decile": {
+          "estimate": -0.0022314764044105567,
+          "se": 0.0016001630020016872,
+          "ci_low": -0.005504177208348461,
+          "ci_high": 0.0010412243995273469,
+          "p": 0.17374933004116644
+        },
+        "form_10Q": {
+          "estimate": 0.0022300593766866055,
+          "se": 0.007542240536775241,
+          "ci_low": -0.013195554537220993,
+          "ci_high": 0.017655673290594205,
+          "p": 0.7695843832661
+        }
+      },
+      "variances": {
+        "firm": null,
+        "filing_within_firm": null,
+        "residual_within_filing": 0.005368279272233521,
+        "total": null
+      },
+      "iccs": {
+        "icc_firm": null,
+        "icc_filing": null
+      },
+      "n_obs": 362,
+      "n_groups": 30,
+      "diagnostics": {
+        "r_squared": 0.018211268487798304,
+        "n_clusters": 30,
+        "use_t": true,
+        "df_resid_ols": 356.0,
+        "df_resid_inference": 29.0,
+        "note": "30 clusters is few for cluster-robust inference; CR1 SEs can be anti-conservative below ~40 clusters."
+      },
+      "warnings": [],
+      "criterion_small_vs_large": false
+    }
+  },
+  "primary_spec": "firm_only",
+  "primary_spec_reason": "Specification (a) did not converge (or did not return the tier coefficient), so by the rule stated before the fit the W5 claim falls back to (b), the firm-only random intercept. (a)'s convergence diagnostics are reported in full and the filing-level ICC is NOT available from (b).",
+  "criterion_met": false,
+  "variance_decomposition": {
+    "raw": {
+      "value_col": "y",
+      "n_obs": 362,
+      "n_firms": 30,
+      "n_filings": 59,
+      "grand_mean": 0.32906295943655356,
+      "sd_total": 0.07343108189141834,
+      "ss_total": 1.946556687375651,
+      "ss_between_firms": 0.26963093248538117,
+      "ss_between_filings_within_firm": 0.15235964332237614,
+      "ss_within_filings": 1.524566111567894,
+      "share_between_firms": 0.1385168663384254,
+      "share_between_filings_within_firm": 0.07827136209826363,
+      "share_within_filings": 0.7832117715633111,
+      "df_between_firms": 29,
+      "df_between_filings_within_firm": 29,
+      "df_within_filings": 303,
+      "ms_between_firms": 0.009297618361564867,
+      "ms_between_filings_within_firm": 0.005253780804219867,
+      "ms_within_filings": 0.005031571325306581,
+      "additivity_check_abs_error": 2.220446049250313e-16
+    },
+    "conditional_on_fixed_effects": {
+      "value_col": "y_resid",
+      "n_obs": 362,
+      "n_firms": 30,
+      "n_filings": 59,
+      "grand_mean": 3.4349441645861195e-17,
+      "sd_total": 0.0727593730987708,
+      "ss_total": 1.9111074209151337,
+      "ss_between_firms": 0.26494089924856973,
+      "ss_between_filings_within_firm": 0.1503199698618946,
+      "ss_within_filings": 1.4958465518046693,
+      "share_between_firms": 0.13863213357295362,
+      "share_between_filings_within_firm": 0.07865595006162128,
+      "share_within_filings": 0.782711916365425,
+      "df_between_firms": 29,
+      "df_between_filings_within_firm": 29,
+      "df_within_filings": 303,
+      "ms_between_firms": 0.009135893077536887,
+      "ms_between_filings_within_firm": 0.005183447236617056,
+      "ms_within_filings": 0.004936787299685377,
+      "additivity_check_abs_error": 0.0
+    }
+  },
+  "collinearity": {
+    "regressors": [
+      "tier_mid",
+      "tier_small",
+      "log_window_words",
+      "position_decile",
+      "form_10Q"
+    ],
+    "correlations": {
+      "tier_mid": {
+        "tier_mid": 1.0,
+        "tier_small": -0.4149,
+        "log_window_words": 0.0142,
+        "position_decile": -0.002,
+        "form_10Q": -0.0619
+      },
+      "tier_small": {
+        "tier_mid": -0.4149,
+        "tier_small": 1.0,
+        "log_window_words": -0.0444,
+        "position_decile": 0.0086,
+        "form_10Q": 0.0077
+      },
+      "log_window_words": {
+        "tier_mid": 0.0142,
+        "tier_small": -0.0444,
+        "log_window_words": 1.0,
+        "position_decile": -0.2892,
+        "form_10Q": 0.066
+      },
+      "position_decile": {
+        "tier_mid": -0.002,
+        "tier_small": 0.0086,
+        "log_window_words": -0.2892,
+        "position_decile": 1.0,
+        "form_10Q": -0.0007
+      },
+      "form_10Q": {
+        "tier_mid": -0.0619,
+        "tier_small": 0.0077,
+        "log_window_words": 0.066,
+        "position_decile": -0.0007,
+        "form_10Q": 1.0
+      }
+    },
+    "vif": {
+      "tier_mid": 1.2129581315162972,
+      "tier_small": 1.2104325355742767,
+      "log_window_words": 1.0985799719387606,
+      "position_decile": 1.091672098679511,
+      "form_10Q": 1.0090420702646388
+    },
+    "n_windows_exactly_chunk_words": 303,
+    "n_windows_final_in_section": 59,
+    "mean_log_words_final_vs_other": {
+      "final": 6.843628816106032,
+      "other": 7.090076835776091
+    }
+  },
+  "bootstrap": {
+    "n_requested": 0,
+    "seed": 20261004,
+    "coef": "tier_small",
+    "n_successful": 0,
+    "n_failed": 0,
+    "failure_reasons": {},
+    "status": "not run (n_boot=0)"
+  },
+  "design_summary": {
+    "formula_preregistered": "disagreement_w ~ tier + log(window_words) + position_decile + form_type + (1 | firm/filing)",
+    "fixed_effects_fitted": "y ~ tier_mid + tier_small + log_window_words + position_decile + form_10Q",
+    "tier_levels_present": [
+      "large",
+      "mid",
+      "small"
+    ],
+    "tier_is_three_level": true,
+    "position_decile_counts": {
+      "0": 63,
+      "1": 23,
+      "2": 34,
+      "3": 26,
+      "4": 20,
+      "5": 43,
+      "6": 33,
+      "7": 27,
+      "8": 29,
+      "9": 64
+    },
+    "position_frac_range": [
+      0.0,
+      1.0
+    ],
+    "word_count_range": [
+      403,
+      1577
+    ],
+    "measure_mean": 0.32906295943655356,
+    "measure_sd": 0.07343108189141834,
+    "measure_mean_by_tier": {
+      "large": 0.3232008824337563,
+      "mid": 0.33340734243392944,
+      "small": 0.3324009584702127
+    },
+    "windows_per_filing": {
+      "min": 2,
+      "median": 5.0,
+      "max": 25
+    }
+  }
+}

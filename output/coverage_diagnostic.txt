@@ -1,0 +1,49 @@
+Coverage diagnostic — what the fixed word cap did to the sample
+========================================================================
+
+Retired design: MAX_WORDS_PER_FILING = 2000, applied to the concatenated
+narrative sections after extraction.
+Current design: MD&A and Risk Factors extracted complete; comparability enforced
+at the chunk level (1200 words per window).
+
+Filings in sample: 59
+Filings truncated by the old cap: 59 of 59
+
+Complete section length and fraction read, by tier (old cap)
+------------------------------------------------------------------------
+  large  n=20  median section = 15,488 words | read: mean 15.1%, median 12.9%, min 4.5%
+  mid    n=20  median section = 11,750 words | read: mean 17.9%, median 17.0%, min 7.2%
+  small  n=19  median section =  7,285 words | read: mean 29.0%, median 27.5%, min 8.5%
+
+THE PROBLEM — coverage was correlated with the independent variable
+------------------------------------------------------------------------
+  tier rank (large=3) x fraction read          n=59  rho=-0.415  p=0.0011
+  tier rank (large=3) x complete section words n=59  rho=+0.415  p=0.0011
+
+  Larger firms file longer narrative sections, so a fixed cap read a
+  smaller share of them.  'How much of the filing the model read' was
+  therefore a function of firm size — the variable the hypothesis is
+  about — and any tier gradient in disagreement was confounded with a
+  tier gradient in coverage.  Under the current design every filing is
+  read in full, so this correlation is undefined by construction.
+
+Length vs. disagreement (the control the advisor asked for)
+------------------------------------------------------------------------
+  Scored rows available: 59 of 59
+  numeric_disagreement x words actually read   n=59  rho=+0.380  p=0.0030
+  numeric_disagreement x complete section length n=59  rho=+0.324  p=0.0123
+  embedding_disagreement x words actually read n=59  rho=-0.016  p=0.9049
+  embedding_disagreement x complete section length n=59  rho=-0.040  p=0.7644
+
+  NOTE: computed on the CURRENT complete-section run. The length
+  variable is the true narrative length, not a constant imposed by
+  the retired cap.
+  The length control that belongs in the paper is the one computed
+  after the complete-section re-run, where the length variable is
+  the true section length rather than a constant imposed by the cap.
+
+Chunk budget under the current design
+------------------------------------------------------------------------
+  Windows (real chunker): 667
+  Persona calls:          2,001
+  Every filing read at 100% coverage; each judgment made on a 1200-word window.

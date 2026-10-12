@@ -1,0 +1,31 @@
+Continuous size test — public float instead of three tiers
+==============================================================================
+
+30 firms, public float $27,596,237 to $3,600,000,000,000 (5.1 orders of magnitude).
+EXPLORATORY — the pre-registered IV is tier
+
+Sanity: does tier order float as the design assumes?
+------------------------------------------------------------------------------
+  large  n=10  median float $627,216,906,748
+  mid    n=10  median float $5,409,711,849
+  small  n=10  median float $263,101,606
+  Spearman(tier rank, float) = +0.910, p = 3.06e-12
+
+Disagreement against public float
+------------------------------------------------------------------------------
+  mda_embedding  (n = 30 firms)
+    Spearman rho = -0.295  p = 0.1138  CI [-0.601, +0.109]
+    per decade of float: -0.0067
+
+  mda_numeric  (n = 30 firms)
+    Spearman rho = +0.235  p = 0.2110  CI [-0.151, +0.583]
+    per decade of float: +0.0109
+
+  risk_embedding  (n = 28 firms)
+    Spearman rho = +0.020  p = 0.9185  CI [-0.416, +0.444]
+    per decade of float: +0.0020
+
+  The hypothesis predicts a NEGATIVE correlation: smaller firms, more
+  interpretive complexity. A null here cannot be blamed on the size
+  variable being three coarse bins, which is the first objection to the
+  pre-registered result.

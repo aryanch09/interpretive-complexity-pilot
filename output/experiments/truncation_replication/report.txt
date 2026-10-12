@@ -1,0 +1,17 @@
+S1b — Exact replication of the retired 2,000-word cap
+==========================================================================
+
+Filings scored under the cap: 59/59
+
+arm             large      mid    small   gradient  monotone    JT p
+truncated      0.3350   0.3706   0.3921    +0.0571      True  0.0286
+complete       0.3202   0.3355   0.3352    +0.0150     False  0.2350
+
+Gradient shift (truncated - complete): +0.0421
+Paired firm-level difference: +0.0356 [+0.0172, +0.0540]  n = 30 firms
+  differs from zero: True
+
+  This is the same model, the same filings and the same personas. The
+  only difference is how much of the document was read, and whether it
+  was read whole. Unlike S1a this involves no simulation: the truncated
+  arm really was scored on 2,000 words as a single unit.

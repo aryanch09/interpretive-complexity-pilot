@@ -1,0 +1,29 @@
+E1/E2 — Noise floor and persona-free baseline
+==============================================================================
+
+Windows: 27   seed: 20261004
+
+Embedding distance, mean with 95% bootstrap CI
+------------------------------------------------------------------------------
+  inter-persona (3 lenses)           0.3454  [0.3157, 0.3769]
+  intra-persona (same lens x3)       0.2142  [0.1956, 0.2352]
+  persona-free (neutral x3)          0.2059  [0.1822, 0.2299]
+
+  ratio inter / intra                1.6365  [1.5233, 1.7493]
+  lens effect (inter - neutral)      0.1395  [0.1042, 0.1752]
+
+  inter-persona exceeds the noise floor : True
+  lens effect above the baseline       : True
+
+By tier
+------------------------------------------------------------------------------
+  large  n= 11  ratio 1.56 [1.38, 1.72]  
+          lens effect +0.1195 [+0.0531, +0.1862]
+  mid    n=  8  ratio 1.71 [1.48, 1.96]  
+          lens effect +0.1700 [+0.1206, +0.2301]
+  small  n=  8  ratio 1.67 [1.53, 1.82]  
+          lens effect +0.1364 [+0.0911, +0.1858]
+
+The measure survives both checks only if inter-persona disagreement exceeds the intra-persona noise floor AND exceeds the persona-free baseline. Failing the second means three samples of one neutral prompt disagree about as much as three different lenses do, in which case the measure is sampling variation rather than analytical perspective, and the paper must say so.
+
+Labelled EXPLORATORY in ANALYSIS_PLAN.md section 6.

@@ -1,0 +1,15 @@
+E4b — Boilerplate, measured across DISTINCT real passages
+==========================================================================
+
+  real MD&A windows        0.3291  [0.3215, 0.3370]   n = 362
+  real boilerplate (10 texts) 0.3874  [0.3305, 0.4510]
+    spread across texts: sd 0.1029, range 0.2522 to 0.6156
+  (E4's single synthetic passage: 0.3587)
+
+  boilerplate exceeds real MD&A: True  (difference +0.0583)
+
+  Passages are forward-looking-statement disclaimers taken from the
+  sample's own filings, screened to be near-free of figures, so this is
+  genuine filing prose rather than text written for the experiment. With
+  several distinct passages the spread ACROSS texts is estimated, which
+  the single-passage version of this test could not do.

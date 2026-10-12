@@ -1,0 +1,203 @@
+{
+ "section": "mda",
+ "measure": "embedding_disagreement",
+ "n_filings": 59,
+ "dictionary": {
+  "legacy_list_size": 290,
+  "lm_negative_size": 2345,
+  "coverage_of_lm_negative": 0.11002132196162047,
+  "legacy_words_not_in_lm_negative": 32,
+  "misplacement_breakdown": {
+   "in dictionary, no sentiment category": 23,
+   "Uncertainty": 5,
+   "Litigious": 1,
+   "Constraining": 3
+  },
+  "examples": [
+   "ABSENT",
+   "ARBITRARY",
+   "CLAIM",
+   "CONSTRAINT",
+   "CONSTRAINTS",
+   "DEPARTURE",
+   "DEPARTURES",
+   "ELIMINATE",
+   "ELIMINATED",
+   "ELIMINATION",
+   "ENFORCEMENT",
+   "EXHAUSTED",
+   "EXHAUSTION",
+   "EXPIRATION",
+   "FALLING"
+  ],
+  "verdict": "The legacy list is not the Loughran-McDonald Negative category. It covers a small fraction of it and includes words L-M assigns to other categories or to none. Reporting it as 'L-M negative' would be wrong."
+ },
+ "correlations": {
+  "embedding_disagreement": {
+   "log_mda_words": {
+    "spearman_rho": -0.14821741671537117,
+    "p": 0.2625766021897733,
+    "n": 59
+   },
+   "fog_index": {
+    "spearman_rho": -0.007422559906487435,
+    "p": 0.955505410321012,
+    "n": 59
+   },
+   "lm_negative": {
+    "spearman_rho": -0.08299240210403273,
+    "p": 0.5320257144124576,
+    "n": 59
+   },
+   "lm_uncertainty": {
+    "spearman_rho": -0.03232028053769726,
+    "p": 0.8079988062422935,
+    "n": 59
+   },
+   "lm_litigious": {
+    "spearman_rho": 0.0724137931034483,
+    "p": 0.5857285366534062,
+    "n": 59
+   },
+   "type_token_ratio": {
+    "spearman_rho": 0.2122735242548218,
+    "p": 0.10651198421789335,
+    "n": 59
+   },
+   "legacy_lm_neg_pct": {
+    "spearman_rho": -0.1755139613565696,
+    "p": 0.18363317927192327,
+    "n": 59
+   }
+  },
+  "numeric_disagreement": {
+   "log_mda_words": {
+    "spearman_rho": 0.04640561075394507,
+    "p": 0.7270819748674502,
+    "n": 59
+   },
+   "fog_index": {
+    "spearman_rho": 0.08626534190531854,
+    "p": 0.5159170560062529,
+    "n": 59
+   },
+   "lm_negative": {
+    "spearman_rho": -0.21835184102863825,
+    "p": 0.09662883990333107,
+    "n": 59
+   },
+   "lm_uncertainty": {
+    "spearman_rho": -0.02086499123319696,
+    "p": 0.875359151103096,
+    "n": 59
+   },
+   "lm_litigious": {
+    "spearman_rho": -0.062068965517241385,
+    "p": 0.6404922394203939,
+    "n": 59
+   },
+   "type_token_ratio": {
+    "spearman_rho": -0.12203389830508476,
+    "p": 0.35717995051527807,
+    "n": 59
+   },
+   "legacy_lm_neg_pct": {
+    "spearman_rho": -0.21160449453595076,
+    "p": 0.10764578108078357,
+    "n": 59
+   }
+  }
+ },
+ "ols": {
+  "formula": "embedding_disagreement ~ C(tier) + log_mda_words + fog_index + lm_negative + lm_uncertainty + lm_litigious + type_token_ratio",
+  "n_obs": 59,
+  "n_clusters": 30,
+  "se": "clustered by firm",
+  "reference_tier": "large",
+  "r_squared": 0.14824853411186023,
+  "coefficients": {
+   "Intercept": {
+    "estimate": -0.1710188463846105,
+    "se": 0.2975552148358674,
+    "p": 0.5654626901722901,
+    "ci": [
+     -0.754216350874989,
+     0.4121786581057679
+    ]
+   },
+   "C(tier)[T.mid]": {
+    "estimate": 0.013612616947690448,
+    "se": 0.015910928177440737,
+    "p": 0.39224595947490004,
+    "ci": [
+     -0.01757222924069692,
+     0.04479746313607781
+    ]
+   },
+   "C(tier)[T.small]": {
+    "estimate": 0.011106801232949553,
+    "se": 0.018391959287247486,
+    "p": 0.5459138516637229,
+    "ci": [
+     -0.024940776575182483,
+     0.04715437904108159
+    ]
+   },
+   "log_mda_words": {
+    "estimate": 0.041820252372888195,
+    "se": 0.026903962037263956,
+    "p": 0.12008253165771365,
+    "ci": [
+     -0.010910544261582021,
+     0.09455104900735842
+    ]
+   },
+   "fog_index": {
+    "estimate": 0.002008919268373523,
+    "se": 0.0038703147472561273,
+    "p": 0.6037200369406859,
+    "ci": [
+     -0.005576758245082728,
+     0.009594596781829775
+    ]
+   },
+   "lm_negative": {
+    "estimate": -0.6403193090530069,
+    "se": 1.1897625271041028,
+    "p": 0.590445294455616,
+    "ci": [
+     -2.9722110123324086,
+     1.6915723942263945
+    ]
+   },
+   "lm_uncertainty": {
+    "estimate": -1.187354891159242,
+    "se": 0.8474921960955344,
+    "p": 0.1612076074683656,
+    "ci": [
+     -2.8484090726852465,
+     0.4736992903667625
+    ]
+   },
+   "lm_litigious": {
+    "estimate": 0.46140471616725875,
+    "se": 2.1107187557611677,
+    "p": 0.826961063673213,
+    "ci": [
+     -3.6755280266178243,
+     4.598337458952342
+    ]
+   },
+   "type_token_ratio": {
+    "estimate": 0.6095973136976998,
+    "se": 0.31979508597087547,
+    "p": 0.056622672187099515,
+    "ci": [
+     -0.017189537238106456,
+     1.236384164633506
+    ]
+   }
+  },
+  "tier_survives_controls": false
+ }
+}

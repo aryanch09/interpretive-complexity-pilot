@@ -1,0 +1,67 @@
+{
+ "seed": 20261004,
+ "family": "ANALYSIS_PLAN.md section 6 \u2014 two-sided, Holm within family",
+ "alpha": 0.05,
+ "n_tests": 3,
+ "tests": {
+  "S1_numeric": {
+   "tier_means": {
+    "large": 0.597823431575275,
+    "mid": 0.5981274339768696,
+    "small": 0.5433809174737997
+   },
+   "gradient_small_minus_large": -0.05444251410147527,
+   "monotone_increasing": false,
+   "monotone_decreasing": false,
+   "jt_statistic": 109.0,
+   "jt_z": -1.5589616562902158,
+   "p_one_sided_increasing": 0.9404972721236061,
+   "p_one_sided_decreasing": 0.05950272787639387,
+   "p_two_sided": 0.11900545575278774,
+   "n_firms": 30,
+   "description": "tier trend in numeric disagreement (MD&A, firm level)",
+   "p_holm_adjusted": 0.3570163672583632,
+   "reject_at_05": false
+  },
+  "S2_risk_factors": {
+   "tier_means": {
+    "large": 0.35755102620435175,
+    "mid": 0.35526566939024373,
+    "small": 0.3461795292325063
+   },
+   "gradient_small_minus_large": -0.011371496971845474,
+   "monotone_increasing": false,
+   "monotone_decreasing": true,
+   "jt_statistic": 125.0,
+   "jt_z": -0.21097484626532276,
+   "p_one_sided_increasing": 0.5835465503218216,
+   "p_one_sided_decreasing": 0.4164534496781785,
+   "p_two_sided": 0.832906899356357,
+   "n_firms": 28,
+   "n_filings_with_risk": 49,
+   "description": "tier trend in Risk Factors embedding disagreement, filings with Risk windows only",
+   "p_holm_adjusted": 1.0,
+   "reject_at_05": false
+  },
+  "S3_within_filing_sd": {
+   "tier_means": {
+    "large": 0.06613532386485219,
+    "mid": 0.06352140320201345,
+    "small": 0.06156087751332341
+   },
+   "gradient_small_minus_large": -0.004574446351528774,
+   "monotone_increasing": false,
+   "monotone_decreasing": true,
+   "jt_statistic": 136.0,
+   "jt_z": -0.5323283704405615,
+   "p_one_sided_increasing": 0.7027507069172428,
+   "p_one_sided_decreasing": 0.29724929308275716,
+   "p_two_sided": 0.5944985861655143,
+   "n_firms": 30,
+   "description": "tier trend in within-filing SD of embedding disagreement",
+   "p_holm_adjusted": 1.0,
+   "reject_at_05": false
+  }
+ },
+ "any_rejected": false
+}

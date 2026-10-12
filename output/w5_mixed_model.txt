@@ -1,0 +1,206 @@
+W5 - window-level mixed model (ANALYSIS_PLAN.md section 5)
+==============================================================================
+
+Pre-registered specification:
+  disagreement_w ~ tier + log(window_words) + position_decile + form_type + (1 | firm/filing)
+Pre-declared criterion:
+  the Small-vs-Large tier coefficient CI must exclude 0 in the positive direction
+  (H1: smaller firms -> MORE inter-persona disagreement).
+
+Input file      : /Users/aryanch_09/Desktop/Projects/mizzou/interpretive-complexity-pilot/output/chunk_level_results.csv
+Section         : mda  (the pre-registered primary section)
+Measure         : embedding_disagreement  (primary)
+Tier reference  : large  <- the sign of the Small-vs-Large coefficient is relative to this
+Form reference  : 10-K
+Position term   : position_decile = floor(10 * chunk_index / max(1, n_in_section - 1)), capped at 9; entered linear in decile 0-9
+Seed            : 20261004  (the three fits are deterministic given the input; the seed governs the optional cluster bootstrap)
+
+Sample actually used
+------------------------------------------------------------------------------
+  rows in file                     667
+  rows in section 'mda'            363
+  dropped, any_failed=True         1   (pre-registered rule 8.1: dropped, NEVER imputed)
+  dropped, null embedding_disagreement 0
+  filings dropped by the 8.2 gate  0   (0 window(s) with them)
+
+  WINDOWS used                     362
+  FILINGS used                     59
+  FIRMS used                       30
+  tier       windows   filings   firms
+  large          146        20      10
+  mid            134        20      10
+  small           82        19      10
+
+  tier is a 3-level factor, levels present: ['large', 'mid', 'small']
+  firms contributing a single filing: ['HAYN']
+  windows per filing: min 2, median 5.0, max 25
+  window word_count range: [403, 1577]
+  served_by backends present: ['DeepInfra', 'None']   <- MORE THAN ONE BACKEND: the served-backend audit (plan 8.4) fails; do not report these results
+
+  raw window-level mean of embedding_disagreement by tier (no covariates, no nesting):
+      large   0.3232
+      mid     0.3334
+      small   0.3324
+      overall  0.3291  (sd 0.0734)
+
+Three specifications, side by side
+------------------------------------------------------------------------------
+statsmodels MixedLM fits ONE grouping factor; (1 | firm/filing) is not
+directly supported, so the nesting is expressed as a variance component
+and all three specifications are reported rather than one presented as
+if the software had fitted the formula literally.
+
+(a) firm grouping + filing variance component nested in firm
+  engine    : statsmodels MixedLM (REML)
+  inference : Wald z, normal-approximation CIs (MixedLM does not provide Satterthwaite/Kenward-Roger df)
+  status    : DID NOT CONVERGE - coefficients and variance components from this specification are not trustworthy and W5 falls back to (b).
+  n_obs     : 362   groups (firms): 30
+  term                                 est       se    ci_low   ci_high        p
+  intercept                         0.1793   0.1472   -0.1092    0.4677   0.2232
+  tier[mid vs large]                0.0136   0.0150   -0.0159    0.0430   0.3661
+  tier[small vs large]              0.0136   0.0159   -0.0176    0.0449   0.3924
+  log(window_words)                 0.0211   0.0206   -0.0192    0.0614   0.3054
+  position_decile                  -0.0021   0.0012   -0.0044    0.0002   0.0680
+  form_type[10-Q vs 10-K]           0.0057   0.0121   -0.0180    0.0293   0.6375
+  variance components:
+      firm                          0.000108   (sd 0.0104)
+      filing_within_firm            0.001279   (sd 0.0358)
+      residual_within_filing        0.004616   (sd 0.0679)
+  ICCs:
+      icc_filing  0.2311   = corr(two windows of the SAME filing)
+      icc_firm    0.0180   = corr(two windows of the same firm, DIFFERENT filings)
+  criterion: NOT EVALUABLE (no usable fit)
+  diagnostics: {"loglike": 410.3318991409084, "method": "REML", "converged_flag": false, "n_firms": 30, "n_filings": 59, "min_group_size": 5, "max_group_size": 35, "vc_names": ["filing"]}
+  warning   : Gradient optimization failed, |grad| = 25.570045
+  warning   : Maximum Likelihood optimization failed to converge. Check mle_retvals
+  warning   : MixedLM optimization failed, trying a different optimizer may help.
+  warning   : Retrying MixedLM optimization with cg
+  warning   : Retrying MixedLM optimization with lbfgs
+  warning   : The MLE may be on the boundary of the parameter space.
+
+(b) firm random intercept only
+  engine    : statsmodels MixedLM (REML)
+  inference : Wald z, normal-approximation CIs
+  status    : converged
+  n_obs     : 362   groups (firms): 30
+  term                                 est       se    ci_low   ci_high        p
+  intercept                         0.1843   0.1476   -0.1050    0.4736   0.2117
+  tier[mid vs large]                0.0138   0.0127   -0.0111    0.0388   0.2776
+  tier[small vs large]              0.0142   0.0137   -0.0126    0.0411   0.2993
+  log(window_words)                 0.0204   0.0207   -0.0201    0.0609   0.3231
+  position_decile                  -0.0021   0.0012   -0.0045    0.0002   0.0770
+  form_type[10-Q vs 10-K]           0.0029   0.0076   -0.0119    0.0178   0.6997
+  variance components:
+      firm                          0.000418   (sd 0.0204)
+      filing_within_firm                 n/a
+      residual_within_filing        0.004983   (sd 0.0706)
+  ICCs:
+      icc_firm    0.0773   = corr(two windows of the same firm, DIFFERENT filings)
+      icc_filing  n/a - not identified without a filing variance component
+  criterion (Small-vs-Large CI excludes 0, positive): FAIL
+  diagnostics: {"loglike": 414.8626575957137, "method": "REML", "converged_flag": true, "n_firms": 30}
+  warning   : The MLE may be on the boundary of the parameter space.
+
+(c) OLS, SEs clustered by firm
+  engine    : statsmodels OLS
+  inference : cluster-robust (CR1) by firm, t with 29 df (= n_firms - 1)
+  status    : fitted (closed form; no iterative convergence to check)
+  n_obs     : 362   groups (firms): 30
+  term                                 est       se    ci_low   ci_high        p
+  intercept                         0.2211   0.1036    0.0092    0.4330   0.0414
+  tier[mid vs large]                0.0104   0.0136   -0.0175    0.0383   0.4505
+  tier[small vs large]              0.0098   0.0103   -0.0114    0.0309   0.3528
+  log(window_words)                 0.0157   0.0137   -0.0122    0.0437   0.2583
+  position_decile                  -0.0022   0.0016   -0.0055    0.0010   0.1737
+  form_type[10-Q vs 10-K]           0.0022   0.0075   -0.0132    0.0177   0.7696
+  variance components:
+      firm                               n/a
+      filing_within_firm                 n/a
+      residual_within_filing        0.005368   (sd 0.0733)
+  criterion (Small-vs-Large CI excludes 0, positive): FAIL
+  diagnostics: {"r_squared": 0.018211268487798304, "n_clusters": 30, "use_t": true, "df_resid_ols": 356.0, "df_resid_inference": 29.0, "note": "30 clusters is few for cluster-robust inference; CR1 SEs can be anti-conservative below ~40 clusters."}
+
+Which specification the paper's W5 claim rests on
+------------------------------------------------------------------------------
+  PRIMARY: (b) firm random intercept only
+  Specification (a) did not converge (or did not return the tier coefficient), so by the rule stated before the fit the W5 claim falls back to (b), the firm-only random intercept. (a)'s convergence diagnostics are reported in full and the filing-level ICC is NOT available from (b).
+
+  Small-vs-large: +0.0142 [-0.0126, +0.0411]  p=0.2993
+  Mid-vs-large:   +0.0138 [-0.0111, +0.0388]  p=0.2776
+
+  W5 CRITERION: NOT MET on the primary specification. Under the section 5 overall gate
+  the tier result is then reported as NOT ROBUST TO WINDOW COUNT, with the same
+  prominence a positive finding would get (section 7).
+  criterion across all three specifications: {'nested': None, 'firm_only': False, 'ols_cluster': False}
+
+Variance decomposition of window-level disagreement
+------------------------------------------------------------------------------
+  How much of the variance in window-level disagreement sits BETWEEN firms,
+  BETWEEN filings within a firm, and WITHIN filings.  Reported three ways,
+  because no single one of them is both assumption-free and unbiased:
+
+   (i) descriptive nested sums of squares on the raw measure - needs no
+       model and no convergence, but the between-firm share also contains
+       whatever the fixed effects explain (tier is a between-firm variable),
+       and under unbalanced group sizes the higher-level shares are biased
+       UPWARD because each group mean carries residual noise;
+  (ii) the same decomposition on the residuals from the fixed-effect fit,
+       which removes (i)'s first problem but not its second;
+ (iii) the REML variance components from specification (a) - these are the
+       actual estimates, and the ones to quote, when (a) converges.
+
+  (i) raw measure
+      level                                       SS    share      df          MS
+      between firms                          0.26963    13.9%      29    0.009298
+      between filings within a firm          0.15236     7.8%      29    0.005254
+      within filings (window to window)      1.52457    78.3%     303    0.005032
+      total                                  1.94656   100.0%
+      additivity check |SS_total - sum| = 2.220e-16
+
+  (ii) residuals, conditional on the fixed effects
+      level                                       SS    share      df          MS
+      between firms                          0.26494    13.9%      29    0.009136
+      between filings within a firm          0.15032     7.9%      29    0.005183
+      within filings (window to window)      1.49585    78.3%     303    0.004937
+      total                                  1.91111   100.0%
+      additivity check |SS_total - sum| = 0.000e+00
+
+  (iii) REML components unavailable: specification (a) did not converge,
+        so the decomposition below rests on the descriptive shares.
+
+  SUBSTANTIVE READ (basis: descriptive SS shares on the raw measure)
+       78.3% of the variance in window-level disagreement sits
+      WITHIN filings.  Filing-level means are therefore mostly
+      averaging noise, and the paper should say so explicitly: a
+      filing's headline number is a weak summary of a highly
+      variable within-document quantity, and the firm-level means
+      the confirmatory test uses inherit that noise.
+
+Design diagnostics a referee will ask for
+------------------------------------------------------------------------------
+  windows of exactly 1200 words: 303 of 362; final-in-section windows: 59
+  (every window but a section's last is exactly one CHUNK_WORDS window, so
+   log(window_words) varies almost only at the last, highest-position
+   window - the two covariates are related by construction)
+                                tier_mid        tier_small  log_window_words   position_decile          form_10Q
+  tier_mid                         1.000            -0.415             0.014            -0.002            -0.062
+  tier_small                      -0.415             1.000            -0.044             0.009             0.008
+  log_window_words                 0.014            -0.044             1.000            -0.289             0.066
+  position_decile                 -0.002             0.009            -0.289             1.000            -0.001
+  form_10Q                        -0.062             0.008             0.066            -0.001             1.000
+  VIF: tier_mid=1.21, tier_small=1.21, log_window_words=1.10, position_decile=1.09, form_10Q=1.01
+  position_decile counts: {0: 63, 1: 23, 2: 34, 3: 26, 4: 20, 5: 43, 6: 33, 7: 27, 8: 29, 9: 64}
+
+Limitations of W5 as specified
+------------------------------------------------------------------------------
+  * (1 | firm/filing) is approximated, not fitted literally: MixedLM has
+    one grouping factor and expresses the filing level as a variance
+    component inside the firm group.
+  * MixedLM CIs are Wald/normal; no Satterthwaite or Kenward-Roger
+    correction is available, so with ~30 firms they are optimistic.
+  * 30 clusters is few for cluster-robust inference in (c).
+  * W5 is one row of the section 5 battery. The section 5 overall gate
+    requires W3 and W5 to pass and W2 not to be contradicted; W5 alone
+    neither establishes nor refutes H1.
+  * The confirmatory unit of analysis remains the FIRM (n=30, test C1).
+    W5 is a window-level diagnostic, not the confirmatory test.

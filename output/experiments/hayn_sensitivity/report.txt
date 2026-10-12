@@ -1,0 +1,4 @@
+HAYN-excluded sensitivity (pre-registered, ANALYSIS_PLAN.md s1)
+==================================================================
+all_firms      n=30  large 0.3202 mid 0.3355 small 0.3352  grad +0.0150  JT p 0.2350  perm p 0.2419
+hayn_excluded  n=29  large 0.3202 mid 0.3355 small 0.3374  grad +0.0172  JT p 0.1788  perm p 0.1851

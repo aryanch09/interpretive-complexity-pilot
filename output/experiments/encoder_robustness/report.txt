@@ -1,0 +1,33 @@
+E3 — Encoder robustness
+==============================================================================
+
+Section: mda   Windows: 667   Truncation: 256 tokens (same as the primary measure)
+No model or API calls: persona reasoning was re-encoded from cached text.
+
+Tier means and the ordered-trend test under each encoder
+------------------------------------------------------------------------------
+encoder                               large      mid    small  monotone     JT p
+all-MiniLM-L6-v2                     0.3202   0.3355   0.3352     False   0.2350
+all-mpnet-base-v2                    0.2322   0.2439   0.2493      True   0.1807
+bge-small-en-v1.5                    0.2060   0.2183   0.2124     False   0.3805
+
+  window-level Spearman vs primary, all-mpnet-base-v2: rho = +0.755 (p = 1.4e-123, n = 664)
+  window-level Spearman vs primary, bge-small-en-v1.5: rho = +0.713 (p = 5.4e-104, n = 664)
+
+Firm-level rank correlations between encoders
+------------------------------------------------------------------------------
+  all-MiniLM-L6-v2 vs all-mpnet-base-v2: rho = +0.853 (p = 2.2e-09, n = 30 firms)
+  all-MiniLM-L6-v2 vs bge-small-en-v1.5: rho = +0.754 (p = 1.5e-06, n = 30 firms)
+  all-mpnet-base-v2 vs bge-small-en-v1.5: rho = +0.676 (p = 4.1e-05, n = 30 firms)
+
+How to read this
+------------------------------------------------------------------------------
+  What must hold for the paper's claim to be encoder-independent is that the
+  TIER ORDERING and the trend test agree across encoders. High window-level
+  rank correlation is reassuring but not sufficient, and a moderate one is
+  not fatal: different encoders can disagree on individual windows while
+  agreeing on firm-level aggregates, which is the level the hypothesis is
+  about. If the ordering flips under another encoder, say so plainly — that
+  would mean the result is an encoder artifact.
+
+  Labelled EXPLORATORY in ANALYSIS_PLAN.md section 6.

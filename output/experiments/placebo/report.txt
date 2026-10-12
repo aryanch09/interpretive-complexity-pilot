@@ -1,0 +1,34 @@
+E4/E6 — Content placebo and familiarity control
+==========================================================================
+
+windows: 36
+
+Mean embedding disagreement by condition (95% bootstrap CI)
+--------------------------------------------------------------------------
+  real           0.3199  [0.2966, 0.3435]
+  shuffled       0.3379  [0.3125, 0.3632]
+  boilerplate    0.3587  [0.3408, 0.3762]
+  anonymised     0.3127  [0.2880, 0.3393]
+
+Differences from the real text
+--------------------------------------------------------------------------
+  real - shuffled     -0.0173 [-0.0470, +0.0142]  NOT distinguishable
+  real - boilerplate  -0.0389 [-0.0654, -0.0110]  differs
+  real - anonymised   +0.0071 [-0.0153, +0.0297]  NOT distinguishable
+
+E4 reading: if 'real - shuffled' is not distinguishable from zero, the
+  measure responds to vocabulary rather than argument, and the construct
+  claim fails. Boilerplate is the floor: real filing language with no
+  firm-specific content.
+
+E6 — anonymisation delta by tier
+--------------------------------------------------------------------------
+  large  -0.0238  [-0.0600, +0.0060]
+  mid    +0.0412  [-0.0003, +0.0872]
+  small  +0.0099  [-0.0237, +0.0460]
+
+E6 reading: all three personas share one model's priors, and the model
+  knows large-caps far better than micro-caps. If anonymisation RAISES
+  disagreement more for large-caps, familiarity was suppressing it there —
+  which is the direction that would matter, because large-cap is where the
+  main run measures the lowest disagreement.

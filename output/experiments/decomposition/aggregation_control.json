@@ -1,0 +1,14 @@
+{
+ "seed": 20261004,
+ "n_draws": 2000,
+ "complete_all_windows_averaged": 0.014999595016004508,
+ "complete_one_random_window": {
+  "mean": 0.015207150707145555,
+  "ci": [
+   -0.02393574543297285,
+   0.0563390660534303
+  ]
+ },
+ "aggregation_effect": 0.00020755569114104706,
+ "interpretation": "Coverage and scoring unit are identical across these two arms; only the number of draws differs. An effect near zero confirms that averaging changes the variance of a filing mean rather than its expectation, so the S1b contrast cannot be explained by aggregation."
+}

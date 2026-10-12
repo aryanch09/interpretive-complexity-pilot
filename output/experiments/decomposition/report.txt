@@ -1,0 +1,16 @@
+S1c — Decomposing the truncation contrast
+==========================================================================
+
+2x2 over coverage x scoring unit; firm-level gradient (small - large)
+--------------------------------------------------------------------------
+                            single unit   windowed+avg
+  truncated (2,000w)            +0.0571        +0.0204
+  complete                      +0.0435        +0.0150
+
+  COVERAGE effect      gradient shift +0.0136   paired -0.0154 [-0.0407, +0.0093]  spans zero
+  AGGREGATION effect   gradient shift +0.0285   paired +0.0510 [+0.0283, +0.0752]  differs
+  TOTAL (S1b vs main)  gradient shift +0.0421   paired +0.0356 [+0.0172, +0.0540]  differs
+
+  S1c alone: monotone False, JT p = 0.0742
+
+  S1c scores a complete MD&A in one call, which is the design this project rejected because long-context degradation is worst for the longest sections and therefore for the largest firms. S1c carries a size-correlated bias of its own, so this decomposition bounds the two effects rather than cleanly identifying them.

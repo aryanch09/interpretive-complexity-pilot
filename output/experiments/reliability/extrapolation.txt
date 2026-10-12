@@ -1,0 +1,25 @@
+Reliability extrapolation — what would this measure need?
+==========================================================================
+
+observed split-half r (half-length filing mean) : +0.136
+Spearman-Brown reliability of the FULL mean     : +0.239
+median MD&A windows per filing                 : 5
+
+Windows per filing required to reach a target reliability:
+    target   windows needed   vs current
+      0.60               24         4.8x
+      0.70               37         7.4x
+      0.80               64        12.7x
+      0.90              143        28.6x
+
+At 1200 words per window, the median filing currently supplies
+~6,000 words of MD&A. Reaching the conventional 0.70 threshold would
+need ~37 windows, i.e. ~44,550 words — far more MD&A than
+a typical filing contains.
+
+READING: the shortfall is not a sampling accident that a bigger firm
+sample would fix. Filing-level aggregation of this measure is limited by
+how much narrative a filing HAS. Raising reliability requires a different
+estimator — pooling across filings or years, modelling at the window level
+rather than averaging to the filing, or a lens set that disagrees more
+systematically — not more firms.

@@ -1,0 +1,201 @@
+{
+ "F1_cases": [
+  {
+   "band": "lowest",
+   "ticker": "MSFT",
+   "tier": "large",
+   "filing_type": "10-K",
+   "section": "mda",
+   "chunk_index": 0,
+   "disagreement": 0.1524829069773356,
+   "numeric_density": 0.03666666666666667,
+   "excerpt": "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d) is intended to help the reader understand the results of operations and financial condition of Microsoft Corporation. MD&A is provided as a supplement to, and should be read in ",
+   "reasoning": {
+    "value": "Microsoft\u2019s FY\u20112026 MD&A shows robust top\u2011line momentum\u2014cloud revenue grew 27% to $214.4 B, Azure alone up 41%, and commercial performance obligations surged 84% to $678 B\u2014underscoring a durable competitive moat in cloud and AI. The long\u2011term OpenAI partnershi",
+    "sentiment": "The MD&A foregrounds robust growth figures\u2014Microsoft Cloud up 27%, Azure and other cloud services up 41%, and Microsoft 365 revenue up 17\u201328%\u2014which signals a confident, forward\u2011looking stance. The firm highlights its long\u2011term partnership with OpenAI and its c",
+    "fundamentals": "Microsoft\u2019s FY\u20112026 MD&A shows robust revenue expansion, especially in cloud (27% overall, 41% Azure+other) and consumer productivity (28% Microsoft 365 consumer), underscoring strong execution and market demand. The 84% jump in commercial remaining performanc"
+   }
+  },
+  {
+   "band": "lowest",
+   "ticker": "MSFT",
+   "tier": "large",
+   "filing_type": "10-Q",
+   "section": "mda",
+   "chunk_index": 1,
+   "disagreement": 0.1543614466985066,
+   "numeric_density": 0.09083333333333334,
+   "excerpt": "segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. Additional information on our reportable segments is contained in Note 16 \u2013 Segment Information and Geographic Data of the Notes to Financial Statements (Part I, Item 1 of ",
+   "reasoning": {
+    "value": "Microsoft\u2019s Q1 FY 2026 results show a robust 18 % revenue rise driven by Microsoft Cloud and Azure, with operating income up 20 % and net income up 23 %, underscoring strong profitability. Gross margin increased 16 % in absolute terms, though the margin percen",
+    "sentiment": "The MD&A emphasizes solid revenue and margin growth, citing \u201c18% revenue increase driven by Microsoft Cloud\u201d and \u201cgross margin increased 16% with growth across each of our segments.\u201d These statements convey a clear, positive outlook. However, the narrative als",
+    "fundamentals": "Microsoft\u2019s Q1 FY\u20112026 results show a robust 18% revenue increase, with gross margin rising 16% and operating income up 20%, indicating that the company is successfully scaling its cloud and productivity businesses. The decline in gross margin percentage is la"
+   }
+  },
+  {
+   "band": "lowest",
+   "ticker": "HAS",
+   "tier": "mid",
+   "filing_type": "10-K",
+   "section": "mda",
+   "chunk_index": 2,
+   "disagreement": 0.1636403203010559,
+   "numeric_density": 0.09333333333333334,
+   "excerpt": "expense, Net: Other income, net was $21.7 million in 2025 compared to other expense of $69.1 million in 2024. Other (income) expense, net in 2024 was impacted by an impairment loss of $78.2 million related to our joint venture investment in the Discovery Family Channel as discussed in Note 9, Equity Method Investment, in our notes to consolidated financial statements. The remai",
+   "reasoning": {
+    "value": "The filing shows a dramatic collapse in operating profit to a $11.1 million loss from $690 million, driven largely by a $942.6 million loss in the Consumer Products segment and a $1.02 billion goodwill impairment that is a one\u2011time hit. Revenue growth is conce",
+    "sentiment": "The filing balances upbeat metrics for the Wizards of the Coast & Digital Gaming segment\u2014highlighting a 44.7% revenue rise and a 59.3% jump in operating profit\u2014with starkly negative results for Consumer Products, which swung to a $942.6 million loss. The langu",
+    "fundamentals": "The Wizards of the Coast & Digital Gaming segment shows strong revenue and margin expansion, but the Consumer Products segment swung from a modest profit to a $942.6 million loss, dragging total operating profit from $690 million to a $11 million loss. The goo"
+   }
+  },
+  {
+   "band": "highest",
+   "ticker": "GOOGL",
+   "tier": "large",
+   "filing_type": "10-K",
+   "section": "mda",
+   "chunk_index": 1,
+   "disagreement": 0.5550384322802225,
+   "numeric_density": 0.0016666666666666668,
+   "excerpt": "and customer incentives; \u2022 general economic conditions and various external dynamics, including geopolitical events, regulations, and other measures and their effect on advertiser, consumer, and enterprise spending; \u2022 new product, service, and market launches; and \u2022 seasonality. Additionally, fluctuations in our revenues generated from advertising (\"Google advertising\"), other ",
+   "reasoning": {
+    "value": "Alphabet\u2019s 10\u2011K highlights a highly diversified revenue base\u2014advertising, subscriptions, cloud, and other bets\u2014each with distinct growth drivers and high barriers to entry, underscoring a durable moat. The cost structure shows that TAC is a significant expense",
+    "sentiment": "The filing adopts a highly descriptive, risk\u2011aware tone, listing numerous \u201cmay continue to be affected\u201d and \u201cfluctuations\u201d qualifiers that signal uncertainty without asserting a clear upward or downward outlook. The language is largely neutral, focusing on ope",
+    "fundamentals": "The excerpt provides a detailed taxonomy of revenue streams and cost components but offers no quantitative evidence of growth, margin expansion, or operational improvement. Management emphasizes that revenue fluctuations are driven by external dynamics such as"
+   }
+  },
+  {
+   "band": "highest",
+   "ticker": "TOL",
+   "tier": "mid",
+   "filing_type": "10-Q",
+   "section": "mda",
+   "chunk_index": 5,
+   "disagreement": 0.6071219046910604,
+   "numeric_density": 0.1575,
+   "excerpt": "million of cash in financing activities in the six-month period ended April 30, 2025, primarily for the repurchase of $204.9 million of our common stock, payments of $66.3 million of loans payable, net of borrowings, the payment of dividends on our common stock of $49.0 million, $35.0 million of payments related to repurchases from land bank programs, and $22.2 million of payme",
+   "reasoning": {
+    "value": "Toll Brothers\u2019 revenue fell 7 % year\u2011over\u2011year and units delivered dropped 7 % overall, while inventory surged to $11.3 billion\u2014over four times revenue\u2014indicating potential over\u2011building or slow sales. The company\u2019s debt load of $2.64 billion against $8.04 bil",
+    "sentiment": "The filing\u2019s language is largely descriptive and factual, with no explicit forward\u2011looking optimism or pessimistic warnings. Phrases such as \u201cno material changes to those critical accounting estimates\u201d and \u201cguarantees are full and unconditional\u201d provide reassu",
+    "fundamentals": "The core home\u2011building revenue fell 4 % YoY while units delivered fell 14 %, indicating a clear decline in demand that price growth (\u22488 %) has only partially offset. Land\u2011sales revenue surged 600 % and lifts overall revenue, but that is a non\u2011core, one\u2011off boo"
+   }
+  },
+  {
+   "band": "highest",
+   "ticker": "UTMD",
+   "tier": "small",
+   "filing_type": "10-K",
+   "section": "mda",
+   "chunk_index": 0,
+   "disagreement": 0.6848337650299072,
+   "numeric_density": 0.14416666666666667,
+   "excerpt": "ITEM 7 - MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Currency amounts are in thousands except per-share amounts and where noted. Currencies are abbreviated as follows: the U.S. Dollar (USD or $), the Great Britain Pound (GBP or \u00a3), the Euro (EUR or \u20ac), the Australian Dollar (AUD or A$), the New Zealand Dollar (NZD) and the Canadian Doll",
+   "reasoning": {
+    "value": "Utah Medical Products\u2019 2025 results show a modest 5.8% drop in revenue and a 5.5% decline in net margin, largely driven by a cancelled China distributor order and weaker overseas Filshie sales. Despite these headwinds, the company maintained healthy gross and ",
+    "sentiment": "The MD&A acknowledges a decline in revenue and higher operating costs, describing them as \u201cunexpected circumstances\u201d and noting \u201clower sales.\u201d However, management repeatedly highlights resilience\u2014\u201cexcellent profit margins,\u201d \u201cincreased year\u2011ending cash balances",
+    "fundamentals": "The 2025 results show a 5."
+   }
+  }
+ ],
+ "F2_location": {
+  "n_windows": 664,
+  "by_position": {
+   "first quarter": {
+    "n": 204,
+    "mean": 0.3490246132113576
+   },
+   "second": {
+    "n": 154,
+    "mean": 0.33819537838816127
+   },
+   "third": {
+    "n": 131,
+    "mean": 0.33093253559131963
+   },
+   "last quarter": {
+    "n": 175,
+    "mean": 0.3342187485240754
+   }
+  },
+  "position_vs_disagreement": {
+   "rho": -0.09050188007818681,
+   "p": 0.019676271339293512
+  },
+  "by_section": {
+   "mda": {
+    "n": 362,
+    "mean": 0.32906295943655356
+   },
+   "risk": {
+    "n": 302,
+    "mean": 0.35100252054648157
+   }
+  },
+  "informativeness": {
+   "numeric_density": {
+    "rho": -0.26020897414034205,
+    "p": 9.750596799215578e-12,
+    "n": 664
+   },
+   "type_token_ratio": {
+    "rho": 0.21273475737413783,
+    "p": 3.1133438263408703e-08,
+    "n": 664
+   },
+   "word_count": {
+    "rho": 0.07074272758333296,
+    "p": 0.06849128842387359,
+    "n": 664
+   },
+   "mean_word_len": {
+    "rho": 0.21395774323670846,
+    "p": 2.583976956216309e-08,
+    "n": 664
+   }
+  },
+  "by_topic": {
+   "liquidity": {
+    "n_with": 414,
+    "mean_with": 0.3414699118014502,
+    "n_without": 250,
+    "mean_without": 0.3350200361410776,
+    "difference": 0.006449875660372584
+   },
+   "guidance": {
+    "n_with": 315,
+    "mean_with": 0.345380538292032,
+    "n_without": 349,
+    "mean_without": 0.3333200084787385,
+    "difference": 0.01206052981329353
+   },
+   "segments": {
+    "n_with": 264,
+    "mean_with": 0.33839906827367916,
+    "n_without": 400,
+    "mean_without": 0.3394654962420463,
+    "difference": -0.0010664279683671452
+   },
+   "litigation": {
+    "n_with": 238,
+    "mean_with": 0.34940000425199835,
+    "n_without": 426,
+    "mean_without": 0.33325434626547945,
+    "difference": 0.016145657986518902
+   },
+   "macro": {
+    "n_with": 385,
+    "mean_with": 0.344046440217402,
+    "n_without": 279,
+    "mean_without": 0.3321350288077779,
+    "difference": 0.011911411409624095
+   },
+   "accounting": {
+    "n_with": 403,
+    "mean_with": 0.3355884434666093,
+    "n_without": 261,
+    "mean_without": 0.34437321763994744,
+    "difference": -0.008784774173338117
+   }
+  }
+ }
+}

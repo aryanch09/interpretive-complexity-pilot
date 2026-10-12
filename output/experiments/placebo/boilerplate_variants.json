@@ -1,0 +1,25 @@
+{
+ "seed": 20261004,
+ "n_boilerplate_texts": 10,
+ "boilerplate_real_passages": {
+  "mean": 0.3873935321966807,
+  "ci": [
+   0.33050965279340744,
+   0.45103886226812995
+  ],
+  "sd_across_texts": 0.10293593895065778,
+  "min": 0.2522267500559489,
+  "max": 0.6156299312909445
+ },
+ "real_mda_windows": {
+  "mean": 0.32906295943655356,
+  "ci": [
+   0.32153647944029295,
+   0.33700138548900194
+  ],
+  "n": 362
+ },
+ "e4_single_synthetic_passage": 0.3587201641251644,
+ "boilerplate_exceeds_real": true,
+ "difference": 0.05833057276012715
+}

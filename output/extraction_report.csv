@@ -1,0 +1,60 @@
+ticker,tier,filing_type,filing_date,extraction_failed,mda_words,mda_windows,risk_words,risk_windows,total_windows,min_window_words,max_window_words,risk_absence,risk_absence_evidence
+AAPL,large,10-K,20251031,False,2720,2,9784,8,10,1200,1520,,
+AAPL,large,10-Q,20260731,False,3340,3,2794,2,5,940,1594,,
+AMZN,large,10-K,20260206,False,6833,6,8875,8,14,475,1200,,
+AMZN,large,10-Q,20260731,False,6352,5,8929,8,13,529,1552,,
+BAC,large,10-K,20260225,False,12290,10,16574,14,24,974,1490,,
+BAC,large,10-Q,20260731,False,30340,25,14484,12,37,1200,1540,,
+CATY,mid,10-K,20260302,False,13995,12,13945,12,24,745,1200,,
+CATY,mid,10-Q,20260807,False,8713,7,153,0,7,1200,1513,legitimate: incorporated by reference,"Item 1A. RISK FACTORS. The Company is not aware of any material change to the risk factors as previously disclosed in Part I, Item 1A, of the Company’s 2025 Form 10-K for the year ended December 31, 2025. In addition to the other informatio"
+CLFD,mid,10-K,20251125,False,5471,5,6341,5,10,671,1541,,
+CLFD,mid,10-Q,20260806,False,4843,4,334,0,4,1200,1243,legitimate: incorporated by reference (verified against the full filing text),"Item 1A “ Risk Factors ” of this Quarterly Report on Form 10-Q, as well as other filings with the Securities and Exchange Commission. The Company undertakes no obligation to update these statements to reflect actual events unless required b"
+CLIR,small,10-K,20260331,False,3977,3,9282,8,11,882,1577,,
+CLIR,small,10-Q,20260814,False,3244,3,1051,1,4,844,1200,,
+DRI,mid,10-K,20260724,False,6052,5,9700,8,13,1200,1300,,
+DRI,mid,10-Q,20260327,False,6463,6,5226,5,11,426,1200,,
+GOOGL,large,10-K,20260205,False,7603,7,12587,11,18,403,1200,,
+GOOGL,large,10-Q,20260723,False,7980,7,2530,2,9,780,1330,,
+HAS,mid,10-K,20260225,False,8575,7,9686,8,15,1200,1375,,
+HAS,mid,10-Q,20260730,False,8636,7,717,1,8,717,1436,,
+HAYN,small,10-Q,20240801,False,6881,6,1475,1,7,881,1475,,
+HD,large,10-K,20260318,False,4802,4,10746,9,13,1146,1202,,
+HD,large,10-Q,20260825,False,4168,4,3543,3,7,568,1200,,
+IBP,mid,10-K,20260226,False,9477,8,13966,12,20,766,1200,,
+IBP,mid,10-Q,20260806,False,6187,5,319,0,5,1200,1387,legitimate: incorporated by reference (verified against the full filing text),"Item 1A. Risk Factors As of the date of this report, there have been no material changes from the risk factors disclosed in our 2025 Form 10-K. Item 2. Unregistered Sales of Equity Securities and Use of Proceeds Issuer Purchases of Equity S"
+IIIN,small,10-K,20251023,False,3041,3,3415,3,6,641,1200,,
+IIIN,small,10-Q,20260716,False,3774,3,154,0,3,1200,1374,legitimate: incorporated by reference,"Item 1A. Risk Factors During the quarter ended June 27, 2026, there have been no material changes from the risk factors set forth under Part II, Item 1A. “Risk Factors” in our Quarterly Report on Form 10-Q for the quarter ended March 28, 20"
+JPM,large,10-K,20260213,False,9499,8,15883,13,21,1099,1483,,
+JPM,large,10-Q,20260806,False,3622,3,12210,10,13,1200,1410,,
+KFRC,mid,10-K,20260220,False,5920,5,5238,5,10,438,1200,,
+KFRC,mid,10-Q,20260729,False,4598,4,230,0,4,998,1200,legitimate: incorporated by reference,RISK FACTORS. There have been no material changes in the risk factors previously disclosed in our 2025 Annual Report on Form 10-K. 24 Table of Contents ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS. Purchases of Equity
+LWAY,small,10-K,20260317,False,4814,4,7318,6,10,1200,1318,,
+LWAY,small,10-Q,20260813,False,3783,3,1627,2,5,427,1383,,
+MLAB,small,10-K,20260603,False,5613,5,10183,9,14,583,1200,,
+MLAB,small,10-Q,20260810,False,4288,4,202,0,4,688,1200,legitimate: incorporated by reference,"Item 1A. Risk Factors During the three months ended June 30, 2026, there were no material changes to the risk factors described in Part I, Item 1A. Risk Factors of our Annual Report on Form 10-K for the fiscal year ended March 31, 2026. I t"
+MSFT,large,10-K,20260729,False,7571,6,4602,4,10,1002,1571,,
+MSFT,large,10-Q,20260429,False,8829,8,7068,6,14,429,1200,,
+NGVC,small,10-K,20251211,False,7880,7,15794,13,20,680,1394,,
+NGVC,small,10-Q,20260806,False,7277,6,5131,4,10,1200,1531,,
+OFLX,small,10-K,20260312,False,4027,4,2641,2,6,427,1441,,
+OFLX,small,10-Q,20260813,False,2675,2,224,0,2,1200,1475,legitimate: incorporated by reference,"Risk Factors Risk factors are discussed in detail in the Company’s December 31, 2025 Form 10-K. Item 2 – Unregistered Sales of Equity Securities and Use of Proceeds None. Item 3 – Defaults Upon Senior Securities None. Item 4 – Mine Safety D"
+PG,large,10-K,20260804,False,13739,12,5442,5,17,539,1200,,
+PG,large,10-Q,20260424,False,11491,10,297,0,10,691,1200,legitimate: incorporated by reference,"Item 1A. Risk Factors For information on risk factors, please refer to ""Risk Factors"" in Part I, Item 1A of the Company's Form 10-K for the fiscal year ended June 30, 2025. The Procter & Gamble Company 31 ISSUER PURCHASES OF EQUITY SECURITI"
+PLAB,mid,10-K,20251217,False,5291,5,6346,5,10,491,1546,,
+PLAB,mid,10-Q,20260611,False,4501,4,4384,4,8,784,1200,,
+RELL,small,10-K,20260803,False,5209,5,6315,5,10,409,1515,,
+RELL,small,10-Q,20260409,False,5145,4,419,1,5,419,1545,,
+TOL,mid,10-K,20251219,False,12591,11,7810,7,18,591,1200,,
+TOL,mid,10-Q,20260529,False,10408,9,5996,5,14,808,1200,,
+UFPT,small,10-K,20260227,False,2993,3,9590,8,11,593,1200,,
+UFPT,small,10-Q,20260806,False,3602,3,2379,2,5,1179,1202,,
+UTMD,small,10-K,20260327,False,9845,8,1030,1,9,1030,1445,,
+UTMD,small,10-Q,20260812,False,6951,6,334,0,6,951,1200,legitimate: incorporated by reference,"Risk Factors In addition to the other information set forth in this report, investors should carefully consider the factors discussed in Part I, “Item 1A. Risk Factors” in UTMD’s Annual Report on Form 10-K for the year ended December 31, 20"
+WMT,large,10-K,20260313,False,7992,7,13566,11,18,792,1566,,
+WMT,large,10-Q,20260529,False,6320,5,143,0,5,1200,1520,legitimate: incorporated by reference,"Item 1A. Risk Factors In addition to the other information set forth in this report, you should carefully consider the risk factors disclosed in Part I, Item 1A, under the caption ""Risk Factors,"" of our Annual Report on Form 10-K for the fi"
+WTS,mid,10-K,20260223,False,10085,9,9367,8,17,485,1200,,
+WTS,mid,10-Q,20260806,False,7554,6,2798,2,8,1200,1598,,
+WYNN,mid,10-K,20260302,False,9766,8,11472,10,18,672,1366,,
+WYNN,mid,10-Q,20260806,False,9078,8,8100,7,15,678,1200,,
+XOM,large,10-K,20260218,False,10331,9,5098,4,13,731,1498,,
+XOM,large,10-Q,20260803,False,5708,5,4799,4,9,908,1200,,

@@ -1,0 +1,89 @@
+Interpretive Complexity Pilot — Results Memo
+============================================================
+
+Sample: 8 firms, 15 filing-observations in analysis sample (59 total rows collected; see results.csv).
+Design: prompt ensemble — openai/gpt-oss-20b, three analytical persona prompts (value / sentiment / fundamentals), no inter-persona interaction. Disagreement reflects analytical perspective, not model architecture.
+Scoring: 0-100 integer → 0.0–10.0 after /10. Filings after 2024-07-01 only.
+Rows excluded from analysis: 44 (any_failed=True — partial or complete persona-call failure). A 2-agent distance is not comparable to the 3-agent mean pairwise distance; failed agents also store error strings in the reasoning field that corrupt embedding computation. These rows are retained in results.csv for documentation but contribute no data to tier statistics, Spearman correlations, or adjusted disagreement.
+Rows with extraction_short=True: 2 (word_count below half the sample median). These rows are excluded from tier means but included in correlation tests. Excluded rows are retained in results_clean.csv for documentation.
+  Rows excluded from tier means due to extraction_short: 2. Tier means below reflect only rows with extraction_short=False.
+
+Table 1: Descriptive Statistics (firm-level means)
+
+Variable                            n     mean      std      min   median      max
+--------------------------------------------------------------------------------
+  numeric_disagreement              8   0.9429   0.5912   0.3096   0.8730   2.0138
+  embedding_disagreement            8   0.3513   0.0630   0.2577   0.3563   0.4339
+  market_cap                        5 1807526900531.2000 1877454477064.8550 335091040256.0000 890321502208.0000 4611168534528.0000
+  analyst_count                     5  34.6000  14.1174  21.0000  32.0000  55.0000
+  idiosyncratic_volatility          5   0.2182   0.0254   0.1943   0.2154   0.2530
+  firm_age_years                    5  32.3860   0.0971  32.2200  32.4100  32.4600
+  word_count                        8 1746.3750 215.4868 1260.5000 1774.5000 1918.0000
+  lm_neg_pct                        8   0.0180   0.0160   0.0026   0.0091   0.0421
+  fog_index                         8  22.7575   5.9284  15.2750  22.0050  32.6050
+
+Disagreement by tier
+
+                        Numeric disagreement        Embedding disagreement    
+                            mean       std  distinct          mean       std
+Large-cap (n=7)           0.8344    0.3918         7        0.3378    0.0570
+Mid-cap (n=0)                nan       nan         0           nan       nan
+Small-cap (n=0)              nan       nan         0           nan       nan
+
+Spearman correlations with complexity proxies
+
+Bonferroni correction: α = 0.05 / 20 tests = 0.00250. CI = bootstrap 95% confidence interval (1,000 resamples).
+Significance stars (*) are reported only for embedding_disagreement. Significance levels are not reported for numeric_disagreement because its distributional properties at n=11 do not support standard significance thresholds — the measure may carry heavy ties even after continuous rescoring. The embedding measure is the primary test of the hypothesis.
+
+Disagreement                      Proxy                            n     rho            [95% CI]         p    sig  note
+-----------------------------------------------------------------------------------------------------------------------
+  numeric_disagreement            market_cap                       5   0.100     [-1.000, 1.000]    0.8729         
+  numeric_disagreement            analyst_count                    5  -0.100     [-1.000, 1.000]    0.8729         
+  numeric_disagreement            idiosyncratic_volatility         5   0.000     [-1.000, 1.000]    1.0000         
+  numeric_disagreement            firm_age_years                   5   0.200     [-1.000, 1.000]    0.7471         
+  numeric_disagreement            word_count                       8   0.143     [-0.615, 0.926]    0.7358         
+  embedding_disagreement          market_cap                       5  -0.600     [-1.000, 1.000]    0.2848         
+  embedding_disagreement          analyst_count                    5  -0.900    [-1.000, -0.111]    0.0374         
+  embedding_disagreement          idiosyncratic_volatility         5  -0.700     [-1.000, 0.875]    0.1881         
+  embedding_disagreement          firm_age_years                   5   0.300     [-1.000, 1.000]    0.6238         
+  embedding_disagreement          word_count                       8  -0.333     [-1.000, 0.727]    0.4198         
+
+Note on analyst_count: the embedding_disagreement × analyst_count correlation (ρ = -0.900, p = 0.04) is consistent with zero — not directional support for the hypothesis. Three of four proxies (market_cap, idiosyncratic_volatility, firm_age_years) are directionally consistent for embedding_disagreement; analyst_count is flat at this sample size.
+
+Textual baseline controls (Loughran & McDonald 2014; Bushee et al. 2018)
+
+Mean word count: 1736 (median: 1879).  Half-median threshold for extraction_short: 940 words.  Mean L-M neg %: 1.68% (curated 280-word subset of ~2,355-word L-M list).
+Mean Gunning Fog Index: 22.3.
+
+Word count vs. disagreement (length-artifact control):
+  numeric_disagreement             word_count ρ=+0.143, p=0.736, n=8
+  embedding_disagreement           word_count ρ=-0.333, p=0.420, n=8
+NOTE: lm_neg_pct uses a curated 280-word subset of the full L-M negative dictionary. Results should be replicated with the complete L-M master dictionary (sraf.nd.edu/loughranmcdonald/resources/) before publication.
+
+Raw vs. adjusted Spearman correlations (text controls partialed out):
+
+Measure                                 Proxy                           raw ρ    adj ρ            CI (adj)
+----------------------------------------------------------------------------------------------------
+  numeric_disagreement                  market_cap                      0.100   -0.200     [-1.000, 1.000]
+  embedding_disagreement                market_cap                     -0.600   -0.900    [-1.000, -0.111]
+  numeric_disagreement                  analyst_count                  -0.100   -0.300     [-1.000, 1.000]
+  embedding_disagreement                analyst_count                  -0.900   -0.600     [-1.000, 1.000]
+  numeric_disagreement                  idiosyncratic_volatility        0.000   -0.100     [-1.000, 1.000]
+  embedding_disagreement                idiosyncratic_volatility       -0.700   -0.300     [-1.000, 1.000]
+
+Design
+----------------------------------------
+Prompt ensemble: single model (llama-3.1-8b-instant), three analytical persona prompts (value, sentiment, fundamentals). No inter-persona interaction. Disagreement is induced by analytical perspective — each persona reads the filing once in isolation. This design holds model architecture constant so that measured disagreement reflects filing content and analytical framing, not model-to-model differences.
+
+Limitations and open questions
+----------------------------------------
+1. PROMPT-ENSEMBLE DESIGN: all three analytical personas use the same model (llama-3.1-8b-instant). Cross-persona disagreement reflects analytical framing differences, not model-architecture differences. This is intentional — per advisor guidance (June 2026), it isolates the effect of analytical perspective.
+2. FAMILIARITY CONFOUND: the model may have stronger priors for large-cap firms (AAPL, MSFT, JPM) from pre-training, which could suppress persona disagreement regardless of filing content. The anonymization test (output/anonymization_test.csv) was run on the 11-firm pilot subset; results were inconclusive. At n=30, anonymization_delta becomes a firm-level control variable for regression analysis.
+3. SAMPLE SIZE: n=8 firms, 15 filing-observations in this run. Proxy correlations are computed on the subset with available CRSP/Compustat data. All tier gradient results should be treated as measure-validation evidence, not the definitive return-test sample (which requires many more firms and time-series depth).
+4. EMBEDDING MEASURE: neural embeddings (all-MiniLM-L6-v2) are new to this run. Interpret with caution until validated on a larger sample. If embedding_disagreement shows no variation on the 30-firm expansion, investigate the embedding pipeline.
+5. PROXY ASYNCHRONY: market_cap, analyst_count, and idiosyncratic_volatility are measured as of today, not at the filing date. For volatile small-caps this can differ substantially from the filing-date value.
+6. MULTIPLE TESTING: Bonferroni correction applied with α=0.05/n_tests across all Spearman tests. No correction applied to the trading volume regression (separate pre-specified test).
+7. CAUSAL IDENTIFICATION: cross-sectional Spearman ρ does not establish direction of causality. Higher LLM disagreement → lower market cap is equally consistent with disagreement being a cause (complexity discount) or an effect (small firms are less covered and more ambiguous).
+
+Raw data: output/results.csv, output/validation.csv
+Plots: output/plots/

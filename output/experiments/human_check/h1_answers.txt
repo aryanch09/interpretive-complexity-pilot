@@ -1,0 +1,2 @@
+# One letter per line, A or B, one per pair, in order.
+# Lines starting with # are ignored.

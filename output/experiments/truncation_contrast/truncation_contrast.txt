@@ -1,0 +1,92 @@
+S1(a) Truncation contrast — EXPLORATORY (ANALYSIS_PLAN.md §6)
+==============================================================================
+
+section=mda  windows=363  filings=59  failed windows dropped=1
+filings failing the complete-section usability gate (>= 2 usable and >= half): 0
+seed=20261004  bootstrap draws=10000  unit of analysis = firm
+
+CAVEAT: SIMULATED truncation: each window was scored in isolation, so a persona scoring window 1 of 25 never saw the rest of the filing. This is not the same as a model reading a truncated document. The exact replication is S1(b), which is not run here.
+
+numeric_disagreement  [secondary]
+------------------------------------------------------------------------------
+  variant = strict
+    k     large     mid     small    gradient (small-large)        95% CI            d vs all        mono  firms filings
+     1   0.5247  0.5889  0.6644   +0.1397   [-0.1281,+0.3958]   +0.1942  [-0.0380,+0.4254]     Y     30      59
+     2   0.5785  0.5630  0.5964   +0.0179   [-0.1469,+0.1980]   +0.0723  [-0.0359,+0.1865]     n     30      59
+     4   0.6044  0.6042  0.4874   -0.1170   [-0.2703,+0.0646]   -0.0602  [-0.1372,+0.0051]     n     26      48
+     8   0.4930  0.5579  0.7230   +0.2300   [+0.0876,+0.4004]   -0.1311  [-0.1845,-0.0776]     Y     11      15
+   all   0.5978  0.5981  0.5434   -0.0544   [-0.1789,+0.0925]                                  n     30      59
+
+  variant = inclusive
+    k     large     mid     small    gradient (small-large)        95% CI            d vs all        mono  firms filings
+     1   0.5247  0.5889  0.6644   +0.1397   [-0.1200,+0.3980]   +0.1942  [-0.0354,+0.4248]     Y     30      59
+     2   0.5785  0.5630  0.5964   +0.0179   [-0.1525,+0.1919]   +0.0723  [-0.0418,+0.1890]     n     30      59
+     4   0.6181  0.6042  0.5436   -0.0745   [-0.2056,+0.0782]   -0.0201  [-0.0734,+0.0229]     n     30      59
+     8   0.5911  0.6038  0.5434   -0.0477   [-0.1732,+0.1003]   +0.0067  [+0.0000,+0.0195]     n     30      59
+   all   0.5978  0.5981  0.5434   -0.0544   [-0.1807,+0.0900]                                  n     30      59
+
+embedding_disagreement  [PRIMARY]
+------------------------------------------------------------------------------
+  variant = strict
+    k     large     mid     small    gradient (small-large)        95% CI            d vs all        mono  firms filings
+     1   0.3245  0.3707  0.3666   +0.0421   [-0.0221,+0.1106]   +0.0271  [-0.0290,+0.0901]     n     30      59
+     2   0.3293  0.3441  0.3498   +0.0204   [-0.0207,+0.0621]   +0.0054  [-0.0251,+0.0361]     Y     30      59
+     4   0.3228  0.3380  0.3337   +0.0109   [-0.0206,+0.0484]   +0.0083  [-0.0151,+0.0344]     n     26      48
+     8   0.3180  0.3293  0.3473   +0.0293   [-0.0094,+0.0725]   +0.0416  [+0.0147,+0.0731]     Y     11      15
+   all   0.3202  0.3355  0.3352   +0.0150   [-0.0077,+0.0400]                                  n     30      59
+
+  variant = inclusive
+    k     large     mid     small    gradient (small-large)        95% CI            d vs all        mono  firms filings
+     1   0.3245  0.3707  0.3666   +0.0421   [-0.0230,+0.1115]   +0.0271  [-0.0299,+0.0902]     n     30      59
+     2   0.3293  0.3441  0.3498   +0.0204   [-0.0197,+0.0615]   +0.0054  [-0.0248,+0.0366]     Y     30      59
+     4   0.3234  0.3380  0.3406   +0.0172   [-0.0115,+0.0518]   +0.0022  [-0.0115,+0.0177]     Y     30      59
+     8   0.3240  0.3343  0.3352   +0.0112   [-0.0127,+0.0377]   -0.0038  [-0.0105,+0.0000]     Y     30      59
+   all   0.3202  0.3355  0.3352   +0.0150   [-0.0076,+0.0399]                                  n     30      59
+
+Coverage at each budget (mean fraction of the complete MD&A read, firm-level)
+------------------------------------------------------------------------------
+  variant = strict
+    k     large     mid    small   Spearman(tier rank, frac read)        filings >= k  short of k  dropped(strict)
+     1    0.188  0.169  0.267   rho=-0.358 p=0.0518 n=30               59          0              0
+     2    0.382  0.337  0.540   rho=-0.358 p=0.0518 n=30               59          0              0
+     4    0.603  0.670  0.830   rho=-0.381 p=0.0545 n=26               48         11             11
+     8    0.849  0.896  1.000   rho=-0.253 p=0.4529 n=11               15         44             44
+   all    1.000  1.000  1.000        n/a (all firms read 100%)         59          0              0
+
+  variant = inclusive
+    k     large     mid    small   Spearman(tier rank, frac read)        filings >= k  short of k  dropped(strict)
+     1    0.188  0.169  0.267   rho=-0.358 p=0.0518 n=30               59          0              0
+     2    0.382  0.337  0.540   rho=-0.358 p=0.0518 n=30               59          0              0
+     4    0.668  0.670  0.881   rho=-0.370 p=0.0440 n=30               48         11              0
+     8    0.928  0.966  1.000   rho=-0.321 p=0.0841 n=30               15         44              0
+   all    1.000  1.000  1.000        n/a (all firms read 100%)         59          0              0
+
+Firm attrition by budget (firms per tier entering the tier mean)
+------------------------------------------------------------------------------
+  variant = strict
+    k    large  mid  small   note
+     1     10   10     10   
+     2     10   10     10   
+     4      9   10      7   
+     8      5    5      1   THIN — a tier below 5 firms cannot support a meaningful CI
+   all     10   10     10   
+
+  variant = inclusive
+    k    large  mid  small   note
+     1     10   10     10   
+     2     10   10     10   
+     4     10   10     10   
+     8     10   10     10   
+   all     10   10     10   
+
+Budget rules
+------------------------------------------------------------------------------
+  inclusive: every filing contributes min(k, its window count) windows;
+             a filing with fewer than k windows contributes all of them.
+  strict   : only filings with >= k windows contribute. Drops are not
+             tier-neutral — short filings are disproportionately small-cap.
+  k = 1    : the pre-registered usability gate is evaluated once on each
+             filing's COMPLETE MD&A, not inside the budget, so k = 1 is
+             analysable. Within-filing SD is undefined at k = 1 and is
+             reported as NaN, never 0. The count of filings that would
+             fail a within-budget gate is in the diagnostics frame.

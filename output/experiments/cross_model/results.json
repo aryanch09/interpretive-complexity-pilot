@@ -1,0 +1,57 @@
+{
+ "seed": 20261004,
+ "cross_model": "meta-llama/llama-3.3-70b-instruct",
+ "backend": "Novita",
+ "n_windows": 50,
+ "served_by": [
+  "Novita"
+ ],
+ "conditions": {
+  "real": {
+   "mean": 0.2797118878364563,
+   "ci": [
+    0.25820767222841584,
+    0.3019310216406981
+   ]
+  },
+  "shuffled": {
+   "mean": 0.2966624518235524,
+   "ci": [
+    0.2755722988843917,
+    0.3189079517920811
+   ]
+  },
+  "boilerplate": {
+   "mean": 0.3035590823491414,
+   "ci": [
+    0.2898139419356982,
+    0.3173342708746592
+   ]
+  }
+ },
+ "main_model_real": {
+  "mean": 0.3261447616418202,
+  "ci": [
+   0.3056652266184489,
+   0.34790189845363295
+  ]
+ },
+ "real_minus_shuffled": {
+  "mean": -0.016950563987096146,
+  "ci": [
+   -0.039811729341745365,
+   0.006428180287281668
+  ]
+ },
+ "real_minus_boilerplate": {
+  "mean": -0.023847194512685136,
+  "ci": [
+   -0.046695391327142725,
+   -0.00023642856876055732
+  ]
+ },
+ "ordering_matches": true,
+ "boilerplate_contrast_significant": true,
+ "inversion_replicates": true,
+ "replication_note": "ordering_matches is the directional claim; boilerplate_contrast_significant is whether this arm alone clears zero. At a smaller n the second can be False while the first is True, which is an underpowered contrast rather than a failed replication."
+}

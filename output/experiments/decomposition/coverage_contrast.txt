@@ -1,0 +1,13 @@
+Coverage contrast — both arms single-unit on one backend
+==============================================================================
+
+  truncated 2,000w     large 0.3261  mid 0.3866  small 0.3557   gradient +0.0295  JT p 0.1909
+  complete MD&A        large 0.3439  mid 0.4126  small 0.3874   gradient +0.0435  JT p 0.0742
+
+  PURE COVERAGE EFFECT on the gradient: -0.0139
+  paired per-firm difference          : -0.0252 [-0.0534, +0.0027]  SPANS ZERO
+
+  aggregation effect (control)        : +0.0002
+  unit effect, single vs windowed     : +0.0285  [confounded with backend — indicative only]
+
+  Holding the scoring unit, the number of draws and the backend constant, truncation does NOT inflate the tier gradient; the point estimate runs the other way and the paired interval spans zero. The S1b contrast therefore cannot be attributed to coverage, and the claim 'truncation changes the answer' is NOT supported for this measure. What does move the gradient is the SCORING UNIT: a single holistic read versus windowing and averaging. That comparison is confounded with backend here and is reported as indicative only.

@@ -1,0 +1,68 @@
+{
+ "seed": 20261004,
+ "status": "EXPLORATORY \u2014 the pre-registered IV is tier",
+ "n_firms_with_float": 30,
+ "float_range_usd": [
+  27596237.0,
+  3600000000000.0
+ ],
+ "measures": {
+  "mda_embedding": {
+   "n_firms": 30,
+   "spearman_rho": -0.2947719688542826,
+   "spearman_p": 0.11381068481392176,
+   "spearman_ci": [
+    -0.6014319891064506,
+    0.1091358410072315
+   ],
+   "pearson_log10float_r": -0.3611149656651222,
+   "pearson_p": 0.04992643350355182,
+   "slope_per_decade_of_float": -0.006654289012333125,
+   "interpretation": "a 10x increase in public float moves firm-level embedding_disagreement by -0.0067"
+  },
+  "mda_numeric": {
+   "n_firms": 30,
+   "spearman_rho": 0.23515016685205786,
+   "spearman_p": 0.21098110982847498,
+   "spearman_ci": [
+    -0.15084141309083454,
+    0.5828508605408445
+   ],
+   "pearson_log10float_r": 0.1170193470734627,
+   "pearson_p": 0.538007773139121,
+   "slope_per_decade_of_float": 0.010933436758496147,
+   "interpretation": "a 10x increase in public float moves firm-level numeric_disagreement by +0.0109"
+  },
+  "risk_embedding": {
+   "n_firms": 28,
+   "spearman_rho": 0.020251778872468526,
+   "spearman_p": 0.9185290210791134,
+   "spearman_ci": [
+    -0.41636873283635895,
+    0.444285845107392
+   ],
+   "pearson_log10float_r": 0.09452144203252015,
+   "pearson_p": 0.6323437392560284,
+   "slope_per_decade_of_float": 0.0020210863433409347,
+   "interpretation": "a 10x increase in public float moves firm-level embedding_disagreement by +0.0020"
+  }
+ },
+ "tier_vs_float": {
+  "large": {
+   "n": 10,
+   "median_float_usd": 627216906748.0
+  },
+  "mid": {
+   "n": 10,
+   "median_float_usd": 5409711849.0
+  },
+  "small": {
+   "n": 10,
+   "median_float_usd": 263101605.5
+  }
+ },
+ "tier_float_consistency": {
+  "spearman_rho": 0.9103165971285958,
+  "p": 3.060477408933422e-12
+ }
+}

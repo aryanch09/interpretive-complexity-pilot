@@ -1,0 +1,40 @@
+{
+ "seed": 20261004,
+ "backend_both_arms": "DekaLLM (bf16)",
+ "truncated_single_unit": {
+  "tier_means": {
+   "large": 0.326130520304044,
+   "mid": 0.38655975262324016,
+   "small": 0.3556708931922912
+  },
+  "gradient": 0.029540372888247235,
+  "monotone": false,
+  "jt_p": 0.19091226874727185,
+  "n_firms": 30
+ },
+ "complete_single_unit": {
+  "tier_means": {
+   "large": 0.3439103325208028,
+   "mid": 0.4126428733269374,
+   "small": 0.38737200200557703
+  },
+  "gradient": 0.04346166948477426,
+  "monotone": false,
+  "jt_p": 0.07424421144712587,
+  "n_firms": 30
+ },
+ "coverage_effect_on_gradient": -0.013921296596527022,
+ "coverage_paired_difference": {
+  "mean": -0.02518801391124725,
+  "ci": [
+   -0.05339955602255132,
+   0.002686374377873192
+  ],
+  "n_firms": 30,
+  "differs": false
+ },
+ "main_run_complete_windowed_gradient": 0.014999595016004508,
+ "unit_effect_confounded_with_backend": 0.02846207446876975,
+ "aggregation_effect_from_control": 0.0002,
+ "conclusion": "Holding the scoring unit, the number of draws and the backend constant, truncation does NOT inflate the tier gradient; the point estimate runs the other way and the paired interval spans zero. The S1b contrast therefore cannot be attributed to coverage, and the claim 'truncation changes the answer' is NOT supported for this measure. What does move the gradient is the SCORING UNIT: a single holistic read versus windowing and averaging. That comparison is confounded with backend here and is reported as indicative only."
+}
